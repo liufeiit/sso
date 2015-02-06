@@ -1,6 +1,5 @@
 package me.sso.ti.dataobject;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -15,19 +14,19 @@ import javax.persistence.TemporalType;
 /**
  * 用户信息。
  * 
- * @author 刘飞 E-mail:liufei_it@126.com
+ * @author 刘飞
+ * 
  * @version 1.0.0
- * @since 2014年12月17日 下午11:55:39
+ * @since 2015年2月6日 下午3:24:57
  */
 @Entity
 @Table(name = "user", catalog = "sso")
-public class UserDO implements Serializable {
+public class UserDO extends BaseDO {
 
 	private static final long serialVersionUID = 829998693975891020L;
 
 	public static final byte Available = 1;
 	public static final byte Unavailable = 0;
-	public static final byte Strike_out = -1;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -35,22 +34,19 @@ public class UserDO implements Serializable {
 	private Long id;
 
 	@Column(name = "name", nullable = false, length = 64, unique = true)
-	private String name;// 设计师/企业名称
+	private String name;
 
 	@Column(name = "fullname", length = 64)
-	private String fullname;// 真实姓名
+	private String fullname;
 
 	@Column(name = "status", nullable = false)
-	private Byte status;// 状态，1:可用，0:不可用，-1:删除
+	private Byte status;// 状态，1:可用，0:不可用
 
 	@Column(name = "avatar", length = 255)
 	private String avatar;// 头像
 
 	@Column(name = "password", nullable = false, length = 64)
 	private String password;// 密码
-
-	@Column(name = "salt", nullable = false, length = 64)
-	private String salt;// 密码salt
 
 	@Column(name = "email", length = 64, unique = true)
 	private String email;// 邮箱
@@ -61,17 +57,8 @@ public class UserDO implements Serializable {
 	@Column(name = "contact", length = 64)
 	private String contact;// 联系方式
 
-	@Column(name = "category_id")
-	private Long category_id;// 特长
-
 	@Column(name = "profile", length = 255)
 	private String profile;// 简介
-
-	@Column(name = "is_email_verified", nullable = false)
-	private Boolean is_email_verified = false;// 邮箱是否验证
-
-	@Column(name = "is_mobile_verified", nullable = false)
-	private Boolean is_mobile_verified = false;// 手机是否验证
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "last_login")
@@ -136,14 +123,6 @@ public class UserDO implements Serializable {
 		this.password = password;
 	}
 
-	public String getSalt() {
-		return salt;
-	}
-
-	public void setSalt(String salt) {
-		this.salt = salt;
-	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -168,36 +147,12 @@ public class UserDO implements Serializable {
 		this.contact = contact;
 	}
 
-	public Long getCategory_id() {
-		return category_id;
-	}
-
-	public void setCategory_id(Long category_id) {
-		this.category_id = category_id;
-	}
-
 	public String getProfile() {
 		return profile;
 	}
 
 	public void setProfile(String profile) {
 		this.profile = profile;
-	}
-
-	public Boolean getIs_email_verified() {
-		return is_email_verified;
-	}
-
-	public void setIs_email_verified(Boolean is_email_verified) {
-		this.is_email_verified = is_email_verified;
-	}
-
-	public Boolean getIs_mobile_verified() {
-		return is_mobile_verified;
-	}
-
-	public void setIs_mobile_verified(Boolean is_mobile_verified) {
-		this.is_mobile_verified = is_mobile_verified;
 	}
 
 	public Date getLast_login() {
@@ -237,22 +192,18 @@ public class UserDO implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((avatar == null) ? 0 : avatar.hashCode());
-		result = prime * result + ((category_id == null) ? 0 : category_id.hashCode());
 		result = prime * result + ((contact == null) ? 0 : contact.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((fullname == null) ? 0 : fullname.hashCode());
 		result = prime * result + ((gmt_created == null) ? 0 : gmt_created.hashCode());
 		result = prime * result + ((gmt_modified == null) ? 0 : gmt_modified.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((is_email_verified == null) ? 0 : is_email_verified.hashCode());
-		result = prime * result + ((is_mobile_verified == null) ? 0 : is_mobile_verified.hashCode());
 		result = prime * result + ((last_ip == null) ? 0 : last_ip.hashCode());
 		result = prime * result + ((last_login == null) ? 0 : last_login.hashCode());
 		result = prime * result + ((mobile == null) ? 0 : mobile.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((profile == null) ? 0 : profile.hashCode());
-		result = prime * result + ((salt == null) ? 0 : salt.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		return result;
 	}
@@ -270,11 +221,6 @@ public class UserDO implements Serializable {
 			if (other.avatar != null)
 				return false;
 		} else if (!avatar.equals(other.avatar))
-			return false;
-		if (category_id == null) {
-			if (other.category_id != null)
-				return false;
-		} else if (!category_id.equals(other.category_id))
 			return false;
 		if (contact == null) {
 			if (other.contact != null)
@@ -306,16 +252,6 @@ public class UserDO implements Serializable {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (is_email_verified == null) {
-			if (other.is_email_verified != null)
-				return false;
-		} else if (!is_email_verified.equals(other.is_email_verified))
-			return false;
-		if (is_mobile_verified == null) {
-			if (other.is_mobile_verified != null)
-				return false;
-		} else if (!is_mobile_verified.equals(other.is_mobile_verified))
-			return false;
 		if (last_ip == null) {
 			if (other.last_ip != null)
 				return false;
@@ -346,11 +282,6 @@ public class UserDO implements Serializable {
 				return false;
 		} else if (!profile.equals(other.profile))
 			return false;
-		if (salt == null) {
-			if (other.salt != null)
-				return false;
-		} else if (!salt.equals(other.salt))
-			return false;
 		if (status == null) {
 			if (other.status != null)
 				return false;
@@ -358,5 +289,4 @@ public class UserDO implements Serializable {
 			return false;
 		return true;
 	}
-
 }

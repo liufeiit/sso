@@ -15,11 +15,11 @@ public class UserVO {
 
 	private Long id;
 
-	private String name;// 设计师/企业名称
+	private String name;
 
-	private String fullname;// 真实姓名
+	private String fullname;
 
-	private Byte status;// 状态，1:可用，0:不可用，-1:删除
+	private Byte status;// 状态，1:可用，0:不可用
 
 	private String avatar;// 头像
 
@@ -29,13 +29,7 @@ public class UserVO {
 
 	private String contact;// 联系方式
 
-	private Long category_id;// 特长
-
 	private String profile;// 简介
-
-	private Boolean is_email_verified;// 邮箱是否验证
-
-	private Boolean is_mobile_verified;// 手机是否验证
 
 	private Date last_login;// 最后一次登录的时间
 
@@ -52,14 +46,11 @@ public class UserVO {
 	
 	private final UserVO toUser(UserDO _do) {
 		setAvatar(_do.getAvatar());
-		setCategory_id(_do.getCategory_id());
 		setContact(_do.getContact());
 		setEmail(_do.getEmail());
 		setFullname(_do.getFullname());
 		setGmt_created(_do.getGmt_created());
 		setId(_do.getId());
-		setIs_email_verified(_do.getIs_email_verified());
-		setIs_mobile_verified(_do.getIs_mobile_verified());
 		setLast_ip(WebUtils.lngToIp(_do.getLast_ip()));
 		setLast_login(_do.getLast_login());
 		setMobile(_do.getMobile());
@@ -68,7 +59,7 @@ public class UserVO {
 		setStatus(_do.getStatus());
 		return this;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -133,36 +124,12 @@ public class UserVO {
 		this.contact = contact;
 	}
 
-	public Long getCategory_id() {
-		return category_id;
-	}
-
-	public void setCategory_id(Long category_id) {
-		this.category_id = category_id;
-	}
-
 	public String getProfile() {
 		return profile;
 	}
 
 	public void setProfile(String profile) {
 		this.profile = profile;
-	}
-
-	public Boolean getIs_email_verified() {
-		return is_email_verified;
-	}
-
-	public void setIs_email_verified(Boolean is_email_verified) {
-		this.is_email_verified = is_email_verified;
-	}
-
-	public Boolean getIs_mobile_verified() {
-		return is_mobile_verified;
-	}
-
-	public void setIs_mobile_verified(Boolean is_mobile_verified) {
-		this.is_mobile_verified = is_mobile_verified;
 	}
 
 	public Date getLast_login() {
