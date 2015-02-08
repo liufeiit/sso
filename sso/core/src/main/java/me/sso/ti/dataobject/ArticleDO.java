@@ -45,13 +45,13 @@ public class ArticleDO extends BaseDO {
 	@Column(name = "content", length = 2048)
 	private String content;
 
-	@Column(name = "avatar", length = 64)
+	@Column(name = "avatar", length = 255)
 	private String avatar;
 
-	@Column(name = "background", length = 64)
+	@Column(name = "background", length = 255)
 	private String background;
 
-	@Column(name = "gzip", length = 64)
+	@Column(name = "gzip", length = 255)
 	private String gzip;
 
 	@Column(name = "status", nullable = false)
