@@ -2,6 +2,10 @@ package me.sso.ti.srv;
 
 import javax.servlet.http.HttpServletRequest;
 
+import me.sso.ti.dao.ArticleDAO;
+import me.sso.ti.dao.CategoryDAO;
+import me.sso.ti.dao.FavoriteDAO;
+import me.sso.ti.dao.StyleDAO;
 import me.sso.ti.dao.UserDAO;
 import me.sso.ti.utils.WebUtils;
 
@@ -27,6 +31,22 @@ public class BaseService implements InitializingBean {
 	@Autowired
 	@Qualifier(value = "userDAO")
 	protected UserDAO userDAO;
+
+	@Autowired
+	@Qualifier(value = "articleDAO")
+	protected ArticleDAO articleDAO;
+
+	@Autowired
+	@Qualifier(value = "categoryDAO")
+	protected CategoryDAO categoryDAO;
+
+	@Autowired
+	@Qualifier(value = "favoriteDAO")
+	protected FavoriteDAO favoriteDAO;
+
+	@Autowired
+	@Qualifier(value = "styleDAO")
+	protected StyleDAO styleDAO;
 	
 	protected final long getIp() {
         return WebUtils.ipToLng(WebUtils.getIpAddr(request));
