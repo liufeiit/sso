@@ -3,6 +3,8 @@ package me.sso.ti.gson;
 import java.util.List;
 import java.util.Map;
 
+import me.sso.ti.vo.ArticleVO;
+import me.sso.ti.vo.StyleVO;
 import me.sso.ti.vo.UserVO;
 
 import com.google.gson.Gson;
@@ -42,6 +44,12 @@ public class SmartTypeAdapterFactory implements TypeAdapterFactory {
 		}
 		if(UserVO.class == rawType) {
 			return (TypeAdapter<T>) new ObjectTypeAdapter((TypeAdapter<UserVO>) gson.getDelegateAdapter(this, type), UserVO.class);
+		}
+		if(ArticleVO.class == rawType) {
+			return (TypeAdapter<T>) new ObjectTypeAdapter((TypeAdapter<ArticleVO>) gson.getDelegateAdapter(this, type), ArticleVO.class);
+		}
+		if(StyleVO.class == rawType) {
+			return (TypeAdapter<T>) new ObjectTypeAdapter((TypeAdapter<StyleVO>) gson.getDelegateAdapter(this, type), StyleVO.class);
 		}
 		return null;
 	}

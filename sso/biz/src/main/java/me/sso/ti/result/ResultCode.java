@@ -20,6 +20,10 @@ public enum ResultCode {
 
 	Error_Article_Empty					(600L, 		"查询文章结果为空"),
 	Error_Article_NotExist				(601L, 		"文章不存在"),
+	
+	Error_Token							(700L, 		"Token校验失败"),
+	
+	Error_Fav_Article_Empty				(800L, 		"无收藏的文章"),
 	;
 	public final long code;
 	public final String description;

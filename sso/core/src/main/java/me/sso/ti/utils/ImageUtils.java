@@ -29,10 +29,6 @@ import sun.misc.BASE64Encoder;
  */
 public class ImageUtils {
 	
-	public static void main(String[] args) throws IOException {
-		System.out.print(encodeImgageToBase64(new File("/Users/yp/2014-05-24 171646.jpg")));
-	}
-	
 	public static void svgToStream(String svg, OutputStream out) throws IOException, TranscoderException {
 		try {
 			PNGTranscoder transcoder = new PNGTranscoder();

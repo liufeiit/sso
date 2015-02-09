@@ -2,13 +2,19 @@ package me.sso.ti.srv;
 
 import javax.servlet.http.HttpServletRequest;
 
+import me.sso.ti.auth.AuthService;
+import me.sso.ti.auth.request.CheckRequest;
+import me.sso.ti.auth.response.CheckResponse;
 import me.sso.ti.dao.ArticleDAO;
 import me.sso.ti.dao.CategoryDAO;
 import me.sso.ti.dao.FavoriteDAO;
 import me.sso.ti.dao.StyleDAO;
 import me.sso.ti.dao.UserDAO;
+import me.sso.ti.ro.BaseRequest;
 import me.sso.ti.utils.WebUtils;
 
+import org.apache.commons.lang.math.NumberUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
@@ -47,6 +53,22 @@ public class BaseService implements InitializingBean {
 	@Autowired
 	@Qualifier(value = "styleDAO")
 	protected StyleDAO styleDAO;
+	
+	protected Long checkToken(BaseRequest request) {
+		CheckRequest checkRequest = new CheckRequest();
+		checkRequest.setApp_id(request.getApp_id());
+		checkRequest.setOpen_id(request.getOpen_id());
+		checkRequest.setAccess_token(request.getAccess_token());
+		CheckResponse checkResponse = AuthService.check(checkRequest);
+		if (StringUtils.isBlank(checkResponse.getSecret_id())) {
+			return -1L;
+		}
+		Long userId = NumberUtils.toLong(checkResponse.getSecret_id(), 0L);
+		if (userId <= 0L) {
+			return -1L;
+		}
+		return userId;
+	}
 	
 	protected final long getIp() {
         return WebUtils.ipToLng(WebUtils.getIpAddr(request));

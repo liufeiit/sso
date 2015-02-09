@@ -8,6 +8,8 @@ import me.sso.ti.result.Result;
 import me.sso.ti.result.ResultCode;
 import me.sso.ti.srv.AccountService;
 import me.sso.ti.srv.ArticleService;
+import me.sso.ti.srv.FavoriteService;
+import me.sso.ti.srv.StyleService;
 import me.sso.ti.utils.CalendarUtils;
 
 import org.slf4j.Logger;
@@ -39,6 +41,14 @@ public class BaseController {
 	@Autowired
 	@Qualifier(value = "articleService")
 	protected ArticleService articleService;
+	
+	@Autowired
+	@Qualifier(value = "styleService")
+	protected StyleService styleService;
+	
+	@Autowired
+	@Qualifier(value = "favoriteService")
+	protected FavoriteService favoriteService;
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {

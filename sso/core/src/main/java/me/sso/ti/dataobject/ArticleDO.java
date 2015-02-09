@@ -38,6 +38,9 @@ public class ArticleDO extends BaseDO {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
+	
+	@Column(name = "cat_id", nullable = false)
+	private Long catId;
 
 	@Column(name = "title", unique = true, nullable = false, length = 256)
 	private String title;
@@ -71,6 +74,14 @@ public class ArticleDO extends BaseDO {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Long getCatId() {
+		return catId;
+	}
+
+	public void setCatId(Long catId) {
+		this.catId = catId;
 	}
 
 	public String getTitle() {
