@@ -13,8 +13,6 @@ import me.sso.ti.utils.WebUtils;
  */
 public class UserVO {
 
-	private Long id;
-
 	private String name;
 
 	private String fullname;
@@ -36,6 +34,26 @@ public class UserVO {
 	private String last_ip;// 最后一次登录的IP
 
 	private Date gmt_created;
+	
+	/**
+	 * 应用ID
+	 */
+	private String app_id;
+
+	/**
+	 * 用于绑定应用系统用户开放ID
+	 */
+	private String open_id;
+
+	/**
+	 * 访问凭证令牌
+	 */
+	private String access_token;
+
+	/**
+	 * 凭证有效时间，单位：秒
+	 */
+	private Integer expires_in;
 
 	public static UserVO newInstance(UserDO _do) {
 		if(_do == null) {
@@ -50,7 +68,6 @@ public class UserVO {
 		setEmail(_do.getEmail());
 		setFullname(_do.getFullname());
 		setGmt_created(_do.getGmt_created());
-		setId(_do.getId());
 		setLast_ip(WebUtils.lngToIp(_do.getLast_ip()));
 		setLast_login(_do.getLast_login());
 		setMobile(_do.getMobile());
@@ -60,12 +77,36 @@ public class UserVO {
 		return this;
 	}
 
-	public Long getId() {
-		return id;
+	public String getApp_id() {
+		return app_id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setApp_id(String app_id) {
+		this.app_id = app_id;
+	}
+
+	public String getOpen_id() {
+		return open_id;
+	}
+
+	public void setOpen_id(String open_id) {
+		this.open_id = open_id;
+	}
+
+	public String getAccess_token() {
+		return access_token;
+	}
+
+	public void setAccess_token(String access_token) {
+		this.access_token = access_token;
+	}
+
+	public Integer getExpires_in() {
+		return expires_in;
+	}
+
+	public void setExpires_in(Integer expires_in) {
+		this.expires_in = expires_in;
 	}
 
 	public String getName() {

@@ -27,29 +27,28 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service(value = "accountService")
 public class DefaultAccountService extends BaseService implements AccountService {
-	
+
 	@Override
 	@Transactional(value = "transactionManager", rollbackFor = Throwable.class)
 	public Result login(String name, String password) {
 		if (StringUtils.isBlank(name)) {
-			return Result.newError().with(ResultCode.Error_Permission);
+			return Result.newError().with(ResultCode.Error_User_Name);
 		}
 		if (StringUtils.isBlank(password)) {
-			return Result.newError().with(ResultCode.Error_Permission);
+			return Result.newError().with(ResultCode.Error_User_Password);
 		}
-		UserDO user = userDAO.queryNamedForObject("User.getUserByName", new Object[] { name });
+		UserDO user = userDAO.queryNativeForObject("SELECT * FROM user WHERE name = ?", new Object[] { name });
 		if (user == null) {
-			return Result.newError().with(ResultCode.Error_Permission);
+			return Result.newError().with(ResultCode.Error_Login);
 		}
 		if (!StringUtils.equals(CryptoUtils.encrypt(password), user.getPassword())) {
-			return Result.newError().with(ResultCode.Error_Permission);
+			return Result.newError().with(ResultCode.Error_Login);
 		}
 		Date now = new Date();
 		user.setGmt_modified(now);
 		user.setLast_ip(getIp());
 		user.setLast_login(now);
 		userDAO.merge(user);
-		// 安全登录
 		LoginRequest loginRequest = new LoginRequest();
 		loginRequest.setApp_id(AuthService.App_Id);
 		loginRequest.setSecret_id(String.valueOf(user.getId()));
@@ -70,32 +69,33 @@ public class DefaultAccountService extends BaseService implements AccountService
 	public Result register(RegisterRequest request) {
 		String name = request.getName();
 		String password = request.getPassword();
-		String mobile = request.getMobile();
-		String avatar = request.getAvatar();
 		if (StringUtils.isBlank(name)) {
-			return Result.newError().with(ResultCode.Error_Register_Name);
+			return Result.newError().with(ResultCode.Error_User_Name);
 		}
 		if (StringUtils.isBlank(password)) {
-			return Result.newError().with(ResultCode.Error_Register_Passwd);
+			return Result.newError().with(ResultCode.Error_User_Password);
 		}
-		Long uc = userDAO.createNamedQuery("User.existUserByName", Long.class, new Object[] { name }).getSingleResult();
-		if (uc != null && uc > 0L) {
+		java.math.BigInteger c = (java.math.BigInteger) userDAO.createNativeQuery("SELECT COUNT(id) FROM user WHERE name = ?", new Object[] { name }).getSingleResult();
+		if (c != null && c.longValue() > 0L) {
 			return Result.newError().with(ResultCode.Error_Register_User_Exist);
 		}
 		UserDO user = new UserDO();
-		user.setAvatar(avatar);
-		user.setName(name);
-		user.setMobile(mobile);
-		user.setPassword(CryptoUtils.encrypt(password));
-		user.setStatus(UserDO.Available);
+		user.setAvatar(request.getAvatar());
+		user.setContact(request.getContact());
+		user.setEmail(request.getEmail());
+		user.setFullname(request.getFullname());
 		user.setLast_ip(getIp());
+		user.setMobile(request.getMobile());
+		user.setName(request.getName());
+		user.setPassword(CryptoUtils.encrypt(password));
+		user.setProfile(request.getProfile());
+		user.setStatus(UserDO.Available);
 		Date now = new Date();
 		user.setGmt_created(now);
 		user.setGmt_modified(now);
 		user.setLast_login(now);
 		try {
 			userDAO.persist(user);
-			// 安全登录
 			LoginRequest loginRequest = new LoginRequest();
 			loginRequest.setApp_id(AuthService.App_Id);
 			loginRequest.setSecret_id(String.valueOf(user.getId()));
@@ -105,7 +105,6 @@ public class DefaultAccountService extends BaseService implements AccountService
 			vo.setOpen_id(loginResponse.getOpen_id());
 			vo.setAccess_token(loginResponse.getAccess_token());
 			vo.setExpires_in(loginResponse.getExpires_in());
-
 			return Result.newSuccess().with(ResultCode.Success).with("user", vo);
 		} catch (Exception e) {
 			log.error("Account Register Error.", e);

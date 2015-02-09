@@ -7,6 +7,7 @@ import me.sso.ti.http.JSONResponseBody;
 import me.sso.ti.result.Result;
 import me.sso.ti.result.ResultCode;
 import me.sso.ti.srv.AccountService;
+import me.sso.ti.srv.ArticleService;
 import me.sso.ti.utils.CalendarUtils;
 
 import org.slf4j.Logger;
@@ -34,6 +35,10 @@ public class BaseController {
 	@Autowired
 	@Qualifier(value = "accountService")
 	protected AccountService accountService;
+	
+	@Autowired
+	@Qualifier(value = "articleService")
+	protected ArticleService articleService;
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
