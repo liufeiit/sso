@@ -73,6 +73,7 @@ public class DefaultArticleService extends BaseService implements ArticleService
 		if(article == null) {
 			return Result.newError().with(ResultCode.Error_Article_NotExist);
 		}
-		return Result.newSuccess().with(ResultCode.Success).with("article", ArticleVO.newInstance(article, false));
+		ArticleVO vo = ArticleVO.newInstance(article, false);
+		return Result.newSuccess().with(ResultCode.Success).with("article", vo);
 	}
 }

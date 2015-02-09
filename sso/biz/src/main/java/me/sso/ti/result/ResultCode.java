@@ -24,6 +24,10 @@ public enum ResultCode {
 	Error_Token							(700L, 		"Token校验失败"),
 	
 	Error_Fav_Article_Empty				(800L, 		"无收藏的文章"),
+	
+	Error_Image_Upload					(900L, 		"图片上传失败"),
+	
+	Error_Image_NotExist				(901L, 		"图片不存在"),
 	;
 	public final long code;
 	public final String description;

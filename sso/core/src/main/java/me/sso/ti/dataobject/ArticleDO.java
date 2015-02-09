@@ -48,11 +48,11 @@ public class ArticleDO extends BaseDO {
 	@Column(name = "content", length = 2048)
 	private String content;
 
-	@Column(name = "avatar", length = 255)
-	private String avatar;
+	@Column(name = "avatar")
+	private Long avatar;
 
-	@Column(name = "background", length = 255)
-	private String background;
+	@Column(name = "background")
+	private Long background;
 
 	@Column(name = "gzip", length = 255)
 	private String gzip;
@@ -100,19 +100,19 @@ public class ArticleDO extends BaseDO {
 		this.content = content;
 	}
 
-	public String getAvatar() {
+	public Long getAvatar() {
 		return avatar;
 	}
 
-	public void setAvatar(String avatar) {
+	public void setAvatar(Long avatar) {
 		this.avatar = avatar;
 	}
 
-	public String getBackground() {
+	public Long getBackground() {
 		return background;
 	}
 
-	public void setBackground(String background) {
+	public void setBackground(Long background) {
 		this.background = background;
 	}
 

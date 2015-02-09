@@ -1,7 +1,10 @@
 package me.sso.ti.controller;
 
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import javax.servlet.http.HttpServletResponse;
 
 import me.sso.ti.http.JSONResponseBody;
 import me.sso.ti.result.Result;
@@ -9,8 +12,10 @@ import me.sso.ti.result.ResultCode;
 import me.sso.ti.srv.AccountService;
 import me.sso.ti.srv.ArticleService;
 import me.sso.ti.srv.FavoriteService;
+import me.sso.ti.srv.ImageService;
 import me.sso.ti.srv.StyleService;
 import me.sso.ti.utils.CalendarUtils;
+import net.sf.json.JSONObject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,6 +54,10 @@ public class BaseController {
 	@Autowired
 	@Qualifier(value = "favoriteService")
 	protected FavoriteService favoriteService;
+	
+	@Autowired
+	@Qualifier(value = "imageService")
+	protected ImageService imageService;
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -72,5 +81,25 @@ public class BaseController {
 	protected ResponseEntity<String> toResponse(Result result, HttpStatus status) {
 		return JSONResponseBody.newInstance().code(result.getResultCode()).message(result.getMessage())
 				.with(result.getData()).toResponse(status);
+	}
+	
+	protected void out(Result result, HttpServletResponse response) {
+		JSONObject json = new JSONObject();
+		json.accumulate("success", result.isSuccess());
+		json.accumulate("resultCode", result.getResultCode());
+		json.accumulate("message", result.getMessage());
+		json.accumulate("data", result.getData());
+		PrintWriter w = null;
+		try {
+			w = response.getWriter();
+			w.write(json.toString());
+			w.flush();
+		} catch (Exception e) {
+			log.error("Response JSON Error. ", e);
+		} finally {
+			if(w != null) {
+				w.close();
+			}
+		}
 	}
 }

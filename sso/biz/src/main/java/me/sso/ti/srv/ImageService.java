@@ -2,6 +2,10 @@ package me.sso.ti.srv;
 
 import java.io.File;
 
+import me.sso.ti.result.Result;
+
+import org.springframework.web.multipart.MultipartFile;
+
 /**
  * 
  * @author 刘飞 E-mail:liufei_it@126.com
@@ -20,7 +24,7 @@ public interface ImageService {
 		
 		Local_0001("local_0001://", ImageRepository, "本地库0001", true),
 		
-		Local_0002("local_0002://", System.getProperty("user.dir", "..") + ImageRepository, "本地库0002", false),
+		Local_0002("local_0002://", System.getProperty("user.dir", "..") + ImageRepositoryDir, "本地库0002", false),
 		
 		Remote_0101("remote://", "", "远程库0101", false),
 		
@@ -39,11 +43,17 @@ public interface ImageService {
 			this.description = description;
 			this.open = open;
 		}
+		
+		public String getImageURL(String imageName) {
+			return prefix + imageName;
+		}
+		
+		public String getImagePath(String imageName) {
+			return repository + imageName;
+		}
 	}
 	
-	/**
-	 * 获取图片地址
-	 * @return 
-	 */
-	String getImagePath(String imageName);
+	Result upload(MultipartFile image);
+	
+	Result getImage(Long id);
 }

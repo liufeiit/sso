@@ -39,14 +39,14 @@ public class StyleDO extends BaseDO {
 	@Column(name = "description", length = 255)
 	private String description;// 风格描述
 
-	@Column(name = "icon", length = 255)
-	private String icon;// 风格图标
+	@Column(name = "icon")
+	private Long icon;// 风格图标
 
-	@Column(name = "background", length = 255)
-	private String background;// 风格背景图片
+	@Column(name = "background")
+	private Long background;// 风格背景图片
 
-	@Column(name = "floater", length = 255)
-	private String floater;// 风格漂浮物
+	@Column(name = "floater")
+	private Long floater;// 风格漂浮物
 
 	@Column(name = "status", nullable = false)
 	private Byte status;// 状态，1:可用，0:不可用
@@ -83,27 +83,27 @@ public class StyleDO extends BaseDO {
 		this.description = description;
 	}
 
-	public String getIcon() {
+	public Long getIcon() {
 		return icon;
 	}
 
-	public void setIcon(String icon) {
+	public void setIcon(Long icon) {
 		this.icon = icon;
 	}
 
-	public String getBackground() {
+	public Long getBackground() {
 		return background;
 	}
 
-	public void setBackground(String background) {
+	public void setBackground(Long background) {
 		this.background = background;
 	}
 
-	public String getFloater() {
+	public Long getFloater() {
 		return floater;
 	}
 
-	public void setFloater(String floater) {
+	public void setFloater(Long floater) {
 		this.floater = floater;
 	}
 

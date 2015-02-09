@@ -37,6 +37,7 @@ public class DefaultStyleService extends BaseService implements StyleService {
 	@Override
 	public Result getStyle(Long id) {
 		StyleDO style = styleDAO.get(id);
-		return Result.newSuccess().with(ResultCode.Success).with("style", StyleVO.newInstance(style));
+		StyleVO vo = StyleVO.newInstance(style);
+		return Result.newSuccess().with(ResultCode.Success).with("style", vo);
 	}
 }

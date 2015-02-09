@@ -8,6 +8,7 @@ import me.sso.ti.auth.response.CheckResponse;
 import me.sso.ti.dao.ArticleDAO;
 import me.sso.ti.dao.CategoryDAO;
 import me.sso.ti.dao.FavoriteDAO;
+import me.sso.ti.dao.ImageDAO;
 import me.sso.ti.dao.StyleDAO;
 import me.sso.ti.dao.UserDAO;
 import me.sso.ti.ro.BaseRequest;
@@ -53,6 +54,10 @@ public class BaseService implements InitializingBean {
 	@Autowired
 	@Qualifier(value = "styleDAO")
 	protected StyleDAO styleDAO;
+
+	@Autowired
+	@Qualifier(value = "imageDAO")
+	protected ImageDAO imageDAO;
 	
 	protected Long checkToken(BaseRequest request) {
 		CheckRequest checkRequest = new CheckRequest();

@@ -42,8 +42,8 @@ public class UserDO extends BaseDO {
 	@Column(name = "status", nullable = false)
 	private Byte status;// 状态，1:可用，0:不可用
 
-	@Column(name = "avatar", length = 255)
-	private String avatar;// 头像
+	@Column(name = "avatar")
+	private Long avatar;// 头像
 
 	@Column(name = "password", nullable = false, length = 64)
 	private String password;// 密码
@@ -107,11 +107,11 @@ public class UserDO extends BaseDO {
 		this.status = status;
 	}
 
-	public String getAvatar() {
+	public Long getAvatar() {
 		return avatar;
 	}
 
-	public void setAvatar(String avatar) {
+	public void setAvatar(Long avatar) {
 		this.avatar = avatar;
 	}
 

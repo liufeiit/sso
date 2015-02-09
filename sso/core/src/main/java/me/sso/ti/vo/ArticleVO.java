@@ -20,9 +20,9 @@ public class ArticleVO {
 
 	private String content;
 
-	private String avatar;
+	private Long avatar;
 
-	private String background;
+	private Long background;
 
 	private String gzip;
 
@@ -83,19 +83,19 @@ public class ArticleVO {
 		this.content = content;
 	}
 
-	public String getAvatar() {
+	public Long getAvatar() {
 		return avatar;
 	}
 
-	public void setAvatar(String avatar) {
+	public void setAvatar(Long avatar) {
 		this.avatar = avatar;
 	}
 
-	public String getBackground() {
+	public Long getBackground() {
 		return background;
 	}
 
-	public void setBackground(String background) {
+	public void setBackground(Long background) {
 		this.background = background;
 	}
 

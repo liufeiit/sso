@@ -19,7 +19,7 @@ public class UserVO {
 
 	private Byte status;// 状态，1:可用，0:不可用
 
-	private String avatar;// 头像
+	private Long avatar;// 头像
 
 	private String email;// 邮箱
 
@@ -133,11 +133,11 @@ public class UserVO {
 		this.status = status;
 	}
 
-	public String getAvatar() {
+	public Long getAvatar() {
 		return avatar;
 	}
 
-	public void setAvatar(String avatar) {
+	public void setAvatar(Long avatar) {
 		this.avatar = avatar;
 	}
 

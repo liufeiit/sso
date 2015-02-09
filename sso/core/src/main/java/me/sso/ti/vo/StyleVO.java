@@ -16,11 +16,11 @@ public class StyleVO {
 
 	private String description;// 风格描述
 
-	private String icon;// 风格图标
+	private Long icon;// 风格图标
 
-	private String background;// 风格背景图片
+	private Long background;// 风格背景图片
 
-	private String floater;// 风格漂浮物
+	private Long floater;// 风格漂浮物
 
 	public static StyleVO newInstance(StyleDO _do) {
 		if(_do == null) {
@@ -63,27 +63,27 @@ public class StyleVO {
 		this.description = description;
 	}
 
-	public String getIcon() {
+	public Long getIcon() {
 		return icon;
 	}
 
-	public void setIcon(String icon) {
+	public void setIcon(Long icon) {
 		this.icon = icon;
 	}
 
-	public String getBackground() {
+	public Long getBackground() {
 		return background;
 	}
 
-	public void setBackground(String background) {
+	public void setBackground(Long background) {
 		this.background = background;
 	}
 
-	public String getFloater() {
+	public Long getFloater() {
 		return floater;
 	}
 
-	public void setFloater(String floater) {
+	public void setFloater(Long floater) {
 		this.floater = floater;
 	}
 }

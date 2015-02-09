@@ -1,9 +1,21 @@
 package me.sso.ti.srv.impl;
 
-import org.apache.commons.lang3.StringUtils;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Date;
 
+import me.sso.ti.dataobject.ImageDO;
+import me.sso.ti.result.Result;
+import me.sso.ti.result.ResultCode;
 import me.sso.ti.srv.BaseService;
 import me.sso.ti.srv.ImageService;
+import me.sso.ti.utils.GuidUtils;
+
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Service;
+import org.springframework.util.StreamUtils;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * 
@@ -11,22 +23,80 @@ import me.sso.ti.srv.ImageService;
  * @version 1.0.0
  * @since 2015年2月9日 下午11:20:41
  */
+@Service(value = "imageService")
 public class DefaultImageService extends BaseService implements ImageService {
-	
+
 	@Override
-	public String getImagePath(String imageName) {
-		if(StringUtils.isEmpty(imageName)) {
+	public Result upload(MultipartFile image) {
+		ImageRepositoryType type = ImageRepositoryType.Local_0001;
+		String imageName = genImageName(image);
+		FileOutputStream out = null;
+		try {
+			out = new FileOutputStream(type.getImagePath(imageName));
+			StreamUtils.copy(image.getInputStream(), out);
+			ImageDO imageDO = new ImageDO();
+			imageDO.setGmt_created(new Date());
+			imageDO.setUrl(type.getImageURL(imageName));
+			imageDAO.persist(imageDO);
+			return Result.newSuccess().with(ResultCode.Success).with("image_id", imageDO.getId()).with("image_key", imageDO.getUrl());
+		} catch (IOException e) {
+			log.error("Upload Image Error.", e);
+		} finally {
+			if (out != null) {
+				try {
+					out.close();
+				} catch (IOException e) {
+					log.error("Close Image IO Error.", e);
+				}
+			}
+		}
+		return Result.newError().with(ResultCode.Error_Image_Upload);
+	}
+
+	@Override
+	public Result getImage(Long id) {
+		if (id == null || id <= 0L) {
+			return Result.newError().with(ResultCode.Error_Image_NotExist);
+		}
+		ImageDO image = imageDAO.get(id);
+		if (image == null) {
+			return Result.newError().with(ResultCode.Error_Image_NotExist);
+		}
+		File img = new File(getImagePath(image));
+		if (!img.exists() || !img.isFile()) {
+			return Result.newError().with(ResultCode.Error_Image_NotExist);
+		}
+		return Result.newSuccess().with(ResultCode.Success).with("imageFile", img);
+	}
+
+	public static String getImagePath(ImageDO image) {
+		if (image == null) {
 			return DefaultImagePath;
 		}
 		for (ImageRepositoryType type : ImageRepositoryType.values()) {
-			if(!type.open) {
+			if (!type.open) {
 				continue;
 			}
-			if(!StringUtils.startsWith(imageName, type.prefix)) {
+			String url = image.getUrl();
+			if (!StringUtils.startsWith(url, type.prefix)) {
 				continue;
 			}
-			return type.repository + StringUtils.substring(imageName, StringUtils.length(type.prefix), StringUtils.length(imageName));
+			return type.getImagePath(StringUtils.substring(url, StringUtils.length(type.prefix), StringUtils.length(url)));
 		}
 		return DefaultImagePath;
+	}
+
+	private String genImageName(MultipartFile image) {
+		String imageType = getImageType(image.getOriginalFilename());
+		return GuidUtils.guid() + "." + imageType;
+	}
+
+	public static String getImageType(final String fileName) {
+		String fileType = "";
+		int index = fileName.lastIndexOf(".");
+		if (index != -1) {
+			fileType = fileName.substring(index + 1);
+		}
+		return fileType;
 	}
 }
