@@ -25,7 +25,7 @@ import org.apache.commons.logging.LogFactory;
  */
 public class AuthService {
 
-	public static final String App_Id = "S0wLiaXE6fXUflFy8O9urhW7imsi";
+	public static final String App_Id = "w1wLqzQE6fDeFlgh1O5urrj9ilbm";
 
 	private static final Log log = LogFactory.getLog(AuthService.class);
 
@@ -111,7 +111,8 @@ public class AuthService {
 
 	public static CheckResponse check(CheckRequest request) {
 		try {
-			String responseXML = (String) CHECK_METHOD.invoke(AUTH_SERVICE_ADAPTER, new Object[] { XmlUtils.toXML(request, RequestAlias.Check) });
+			String reqXml = XmlUtils.toXML(request, RequestAlias.Check);
+			String responseXML = (String) CHECK_METHOD.invoke(AUTH_SERVICE_ADAPTER, new Object[] { reqXml });
 			if (StringUtils.isEmpty(responseXML)) {
 				return CheckResponse.DEFAULT_RESPONSE;
 			}
