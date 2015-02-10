@@ -96,6 +96,7 @@ public class BaseController {
 		json.accumulate("data", result.getData());
 		PrintWriter w = null;
 		try {
+			response.setContentType("application/json;charset=UTF-8");
 			w = response.getWriter();
 			w.write(json.toString());
 			w.flush();

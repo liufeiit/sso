@@ -36,7 +36,7 @@ public class GzipController extends BaseController {
 		return toResponse(result);
 	}
 
-	@RequestMapping(value = "/{gzipId}", produces = "application/json")
+	@RequestMapping(value = "/{gzipId}")
 	public void style(@PathVariable Long gzipId, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Result result = gzipService.getGzip(gzipId);
 		if (!result.isSuccess()) {
