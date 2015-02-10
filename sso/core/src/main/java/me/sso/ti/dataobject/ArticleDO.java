@@ -42,7 +42,7 @@ public class ArticleDO extends BaseDO {
 	@Column(name = "cat_id", nullable = false)
 	private Long catId;
 
-	@Column(name = "title", unique = true, nullable = false, length = 256)
+	@Column(name = "title", nullable = false, length = 256)
 	private String title;
 
 	@Column(name = "content", length = 2048)
