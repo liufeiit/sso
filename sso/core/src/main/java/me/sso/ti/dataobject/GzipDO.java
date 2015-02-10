@@ -12,7 +12,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
- * 图片库
+ * 文章压缩包库.
  * 
  * @author 刘飞
  * 
@@ -20,8 +20,8 @@ import javax.persistence.TemporalType;
  * @since 2015年2月6日 下午2:38:29
  */
 @Entity
-@Table(name = "image", catalog = "sso")
-public class ImageDO extends BaseDO {
+@Table(name = "gzip", catalog = "sso")
+public class GzipDO extends BaseDO {
 
 	private static final long serialVersionUID = 1L;
 

@@ -28,6 +28,10 @@ public enum ResultCode {
 	Error_Image_Upload					(900L, 		"图片上传失败"),
 	
 	Error_Image_NotExist				(901L, 		"图片不存在"),
+	
+	Error_Gzip_Upload					(1000L, 	"压缩包上传失败"),
+	
+	Error_Gzip_NotExist					(1001L, 	"压缩包不存在"),
 	;
 	public final long code;
 	public final String description;

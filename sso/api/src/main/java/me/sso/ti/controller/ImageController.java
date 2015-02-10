@@ -28,7 +28,7 @@ public class ImageController extends BaseController {
 	
 	@RequestMapping(value = "/upload", produces = "application/json")
 	@ResponseBody
-	public ResponseEntity<String> list(@RequestParam(value = "file", required = true) MultipartFile image) {
+	public ResponseEntity<String> list(@RequestParam(value = "image", required = true) MultipartFile image) {
 		Result result = imageService.upload(image);
 		return toResponse(result);
 	}

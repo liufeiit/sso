@@ -24,7 +24,7 @@ public class ArticleVO {
 
 	private Long background;
 
-	private String gzip;
+	private Long gzip;
 
 	private Byte status;
 
@@ -99,11 +99,11 @@ public class ArticleVO {
 		this.background = background;
 	}
 
-	public String getGzip() {
+	public Long getGzip() {
 		return gzip;
 	}
 
-	public void setGzip(String gzip) {
+	public void setGzip(Long gzip) {
 		this.gzip = gzip;
 	}
 

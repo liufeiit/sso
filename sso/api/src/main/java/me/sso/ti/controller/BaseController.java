@@ -12,6 +12,7 @@ import me.sso.ti.result.ResultCode;
 import me.sso.ti.srv.AccountService;
 import me.sso.ti.srv.ArticleService;
 import me.sso.ti.srv.FavoriteService;
+import me.sso.ti.srv.GzipService;
 import me.sso.ti.srv.ImageService;
 import me.sso.ti.srv.StyleService;
 import me.sso.ti.utils.CalendarUtils;
@@ -58,6 +59,10 @@ public class BaseController {
 	@Autowired
 	@Qualifier(value = "imageService")
 	protected ImageService imageService;
+	
+	@Autowired
+	@Qualifier(value = "gzipService")
+	protected GzipService gzipService;
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {

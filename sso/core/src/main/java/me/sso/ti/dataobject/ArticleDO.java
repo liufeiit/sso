@@ -55,7 +55,7 @@ public class ArticleDO extends BaseDO {
 	private Long background;
 
 	@Column(name = "gzip", length = 255)
-	private String gzip;
+	private Long gzip;
 
 	@Column(name = "status", nullable = false)
 	private Byte status;
@@ -116,11 +116,11 @@ public class ArticleDO extends BaseDO {
 		this.background = background;
 	}
 
-	public String getGzip() {
+	public Long getGzip() {
 		return gzip;
 	}
 
-	public void setGzip(String gzip) {
+	public void setGzip(Long gzip) {
 		this.gzip = gzip;
 	}
 
