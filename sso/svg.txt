@@ -87,3 +87,30 @@
         </dependency>
 <!-- svg 生成png格式图片结束 -->
 
+
+
+{
+    "code": 200,
+    "message": "成功",
+    "data": {
+        "articleList": [
+		  {
+		    "id": 0,//应用风格ID
+		    "name": "",//应用风格名称
+		    "description": "",//应用风格描述
+		    "icon": 0,//风格图标
+		    "background": 0,//风格背景图片ID
+		    "floater": 0//风格漂浮物ID
+		  },
+		  {
+		    "id": 0,
+		    "name": "",
+		    "description": "",
+		    "icon": 0,
+		    "background": 0,
+		    "floater": 0
+		  }
+		]
+	}
+}
+

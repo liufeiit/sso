@@ -90,8 +90,7 @@ public class BaseController {
 	
 	protected void out(Result result, HttpServletResponse response) {
 		JSONObject json = new JSONObject();
-		json.accumulate("success", result.isSuccess());
-		json.accumulate("resultCode", result.getResultCode());
+		json.accumulate("code", result.getResultCode());
 		json.accumulate("message", result.getMessage());
 		json.accumulate("data", result.getData());
 		PrintWriter w = null;
