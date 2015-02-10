@@ -14,6 +14,7 @@ import me.sso.ti.utils.GuidUtils;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -28,6 +29,26 @@ import org.springframework.web.multipart.MultipartFile;
 public class DefaultGzipService extends BaseService implements GzipService {
 
 	@Override
+	protected void init() throws Exception {
+		super.init();
+		for (GzipRepositoryType type : GzipRepositoryType.values()) {
+			try {
+				if (!type.open) {
+					continue;
+				}
+				File repo = new File(type.repository);
+				if(repo.exists()) {
+					continue;
+				}
+				repo.mkdirs();
+			} catch (Exception e) {
+				log.error("Init Gzip Repository Error.", e);
+			}
+		}
+	}
+
+	@Override
+	@Transactional(value = "transactionManager", rollbackFor = Throwable.class)
 	public Result upload(MultipartFile gzip) {
 		GzipRepositoryType type = GzipRepositoryType.Local_0001;
 		String gzipName = genGzipName(gzip);

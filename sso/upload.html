@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>文件上传</title>
+</head>
+<body>
+
+	<div>
+	<form action="http://121.42.44.23/image/upload" method="post" enctype="multipart/form-data">
+		<input name="image" type="file" placeholder="上传图片"/>
+		<button type="submit">上传图片</button>
+	</form>
+	</div>
+	
+	<div>
+	<form action="http://121.42.44.23/gzip/upload" method="post" enctype="multipart/form-data">
+		<input name="gzip" type="file" placeholder="上传压缩包"/>
+		<button type="submit">上传压缩包</button>
+	</form>
+	</div>
+
+</body>
+</html>
