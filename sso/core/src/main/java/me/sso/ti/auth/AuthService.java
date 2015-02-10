@@ -6,10 +6,8 @@ import java.security.PrivilegedAction;
 
 import me.sso.ti.auth.request.CheckRequest;
 import me.sso.ti.auth.request.LoginRequest;
-import me.sso.ti.auth.request.RequestAlias;
 import me.sso.ti.auth.response.CheckResponse;
 import me.sso.ti.auth.response.LoginResponse;
-import me.sso.ti.auth.response.ResponseAlias;
 import me.sso.ti.utils.XmlUtils;
 
 import org.apache.commons.lang3.StringUtils;
@@ -97,12 +95,12 @@ public class AuthService {
 
 	public static LoginResponse login(LoginRequest request) {
 		try {
-			String reqXml = XmlUtils.toXML(request, RequestAlias.Login);
+			String reqXml = XmlUtils.toXML(request, Alias.Login_Request);
 			String responseXML = (String) LOGIN_METHOD.invoke(AUTH_SERVICE_ADAPTER, new Object[] { reqXml });
 			if (StringUtils.isEmpty(responseXML)) {
 				return LoginResponse.DEFAULT_RESPONSE;
 			}
-			return XmlUtils.toObj(LoginResponse.class, responseXML, ResponseAlias.Login);
+			return XmlUtils.toObj(LoginResponse.class, responseXML, Alias.Login_Response);
 		} catch (Exception e) {
 			log.error("Can't invoke Auth Login Method.", e);
 		}
@@ -111,12 +109,12 @@ public class AuthService {
 
 	public static CheckResponse check(CheckRequest request) {
 		try {
-			String reqXml = XmlUtils.toXML(request, RequestAlias.Check);
+			String reqXml = XmlUtils.toXML(request, Alias.Check_Request);
 			String responseXML = (String) CHECK_METHOD.invoke(AUTH_SERVICE_ADAPTER, new Object[] { reqXml });
 			if (StringUtils.isEmpty(responseXML)) {
 				return CheckResponse.DEFAULT_RESPONSE;
 			}
-			return XmlUtils.toObj(CheckResponse.class, responseXML, ResponseAlias.Check);
+			return XmlUtils.toObj(CheckResponse.class, responseXML, Alias.Check_Response);
 		} catch (Exception e) {
 			log.error("Can't invoke Auth Check Method.", e);
 		}
