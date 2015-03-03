@@ -4,7 +4,9 @@ import javax.servlet.http.HttpServletRequest;
 
 import me.sso.ti.auth.AuthService;
 import me.sso.ti.auth.request.CheckRequest;
+import me.sso.ti.auth.request.LoginRequest;
 import me.sso.ti.auth.response.CheckResponse;
+import me.sso.ti.auth.response.LoginResponse;
 import me.sso.ti.dao.ArticleDAO;
 import me.sso.ti.dao.CategoryDAO;
 import me.sso.ti.dao.FavoriteDAO;
@@ -12,7 +14,9 @@ import me.sso.ti.dao.GzipDAO;
 import me.sso.ti.dao.ImageDAO;
 import me.sso.ti.dao.StyleDAO;
 import me.sso.ti.dao.UserDAO;
-import me.sso.ti.ro.BaseRequest;
+import me.sso.ti.result.Result;
+import me.sso.ti.result.ResultCode;
+import me.sso.ti.ro.PrivilegedRequest;
 import me.sso.ti.utils.WebUtils;
 
 import org.apache.commons.lang.math.NumberUtils;
@@ -64,20 +68,34 @@ public class BaseService implements InitializingBean {
 	@Qualifier(value = "gzipDAO")
 	protected GzipDAO gzipDAO;
 	
-	protected Long checkToken(BaseRequest request) {
+	protected Result doPrivileged(PrivilegedRequest request) {
 		CheckRequest checkRequest = new CheckRequest();
-		checkRequest.setApp_id(request.getApp_id());
+		checkRequest.setApp_id(AuthService.App_Id);
 		checkRequest.setOpen_id(request.getOpen_id());
 		checkRequest.setAccess_token(request.getAccess_token());
 		CheckResponse checkResponse = AuthService.check(checkRequest);
 		if (StringUtils.isBlank(checkResponse.getSecret_id())) {
-			return -1L;
+			return Result.newError().with(ResultCode.Error_Token);
 		}
-		Long userId = NumberUtils.toLong(checkResponse.getSecret_id(), 0L);
-		if (userId <= 0L) {
-			return -1L;
+		Long user_id = NumberUtils.toLong(checkResponse.getSecret_id(), 0L);
+		if (user_id <= 0L) {
+			return Result.newError().with(ResultCode.Error_Token);
 		}
-		return userId;
+		return Result.newSuccess().with(ResultCode.Success).response(user_id);
+	}
+	
+	protected Result login(Long userId) {
+		if(userId == null || userId <= 0L) {
+			return Result.newError().with(ResultCode.Error_Login);
+		}
+		LoginRequest loginRequest = new LoginRequest();
+		loginRequest.setApp_id(AuthService.App_Id);
+		loginRequest.setSecret_id(String.valueOf(userId));
+		LoginResponse loginResponse = AuthService.login(loginRequest);
+		if (loginResponse == null || StringUtils.isEmpty(loginResponse.getAccess_token())) {
+			return Result.newError().with(ResultCode.Error_Login);
+		}
+		return Result.newSuccess().with(ResultCode.Success).response(loginResponse);
 	}
 	
 	protected final long getIp() {

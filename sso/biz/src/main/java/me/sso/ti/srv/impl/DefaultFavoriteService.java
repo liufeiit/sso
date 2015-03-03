@@ -33,10 +33,11 @@ public class DefaultFavoriteService extends BaseService implements FavoriteServi
 	@Override
 	@Transactional(value = "transactionManager", rollbackFor = Throwable.class)
 	public Result doFavorite(FavoriteRequest request) {
-		Long userId = checkToken(request);
-		if (userId <= 0L) {
-			return Result.newError().with(ResultCode.Error_Token);
+		Result privileged = doPrivileged(request);
+		if(!privileged.isSuccess()) {
+			return privileged;
 		}
+		Long userId = privileged.getResponse(Long.class);
 		FavoriteDO favorite = new FavoriteDO();
 		favorite.setArticle_id(request.getArticle_id());
 		favorite.setGmt_created(new Date());
@@ -47,10 +48,11 @@ public class DefaultFavoriteService extends BaseService implements FavoriteServi
 
 	@Override
 	public Result favList(PageRequest request) {
-		Long userId = checkToken(request);
-		if (userId <= 0L) {
-			return Result.newError().with(ResultCode.Error_Token);
+		Result privileged = doPrivileged(request);
+		if(!privileged.isSuccess()) {
+			return privileged;
 		}
+		Long userId = privileged.getResponse(Long.class);
 		Map<String, Object> args = new HashMap<String, Object>();
 		args.put("user_id", userId);
 		Integer page = request.getPage();

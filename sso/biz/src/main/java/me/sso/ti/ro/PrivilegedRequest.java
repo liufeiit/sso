@@ -8,12 +8,7 @@ import org.hibernate.validator.constraints.NotEmpty;
  * @version 1.0.0
  * @since 2015年2月7日 上午12:35:55
  */
-public class BaseRequest {
-	/**
-	 * 应用ID
-	 */
-	@NotEmpty
-	private String app_id;
+public class PrivilegedRequest {
 
 	/**
 	 * 用于绑定应用系统用户开放ID
@@ -26,14 +21,6 @@ public class BaseRequest {
 	 */
 	@NotEmpty
 	private String access_token;
-
-	public String getApp_id() {
-		return app_id;
-	}
-
-	public void setApp_id(String app_id) {
-		this.app_id = app_id;
-	}
 
 	public String getOpen_id() {
 		return open_id;

@@ -4,13 +4,12 @@ import javax.validation.Valid;
 
 import me.sso.ti.result.Result;
 import me.sso.ti.result.ResultCode;
-import me.sso.ti.ro.RegisterRequest;
+import me.sso.ti.ro.UserRequest;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -25,7 +24,7 @@ public class AccountController extends BaseController {
 	
 	@RequestMapping(value = "/register", produces = "application/json")
 	@ResponseBody
-	public ResponseEntity<String> register(@Valid RegisterRequest request, BindingResult validResult) {
+	public ResponseEntity<String> register(@Valid UserRequest request, BindingResult validResult) {
 		if (validResult.hasErrors()) {
 			return toResponse(Result.newError().with(ResultCode.Error_Valid_Request));
 		}
@@ -35,8 +34,11 @@ public class AccountController extends BaseController {
 
 	@RequestMapping(value = "/login", produces = "application/json")
 	@ResponseBody
-	public ResponseEntity<String> login(@RequestParam(value = "name", required = true) String name, @RequestParam(value = "password", required = true) String password) {
-		Result result = accountService.login(name, password);
+	public ResponseEntity<String> login(@Valid UserRequest request, BindingResult validResult) {
+		if (validResult.hasErrors()) {
+			return toResponse(Result.newError().with(ResultCode.Error_Valid_Request));
+		}
+		Result result = accountService.login(request);
 		return toResponse(result);
 	}
 }

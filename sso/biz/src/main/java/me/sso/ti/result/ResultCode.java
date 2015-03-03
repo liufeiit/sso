@@ -9,8 +9,6 @@ package me.sso.ti.result;
 public enum ResultCode {
 	Success								(200L, 		"success"),
 	Err_Exception						(300L, 		"System Business Error."),
-	Error_User_Name						(310L, 		"用户名非法"),
-	Error_User_Password					(320L, 		"密码非法"),
 	Error_Valid_Request					(330L, 		"参数校验失败"),
 	
 	Error_Register_User_Exist			(402L, 		"用户名已经注册"),

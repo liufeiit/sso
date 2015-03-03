@@ -25,40 +25,13 @@ public class UserDO extends BaseDO {
 
 	private static final long serialVersionUID = 829998693975891020L;
 
-	public static final byte Available = 1;
-	public static final byte Unavailable = 0;
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
 
-	@Column(name = "name", nullable = false, length = 64, unique = true)
-	private String name;
-
-	@Column(name = "fullname", length = 64)
-	private String fullname;
-
-	@Column(name = "status", nullable = false)
-	private Byte status;// 状态，1:可用，0:不可用
-
-	@Column(name = "avatar")
-	private Long avatar;// 头像
-
-	@Column(name = "password", nullable = false, length = 64)
-	private String password;// 密码
-
-	@Column(name = "email", length = 64, unique = true)
-	private String email;// 邮箱
-
-	@Column(name = "mobile", length = 64, unique = true)
-	private String mobile;// 手机
-
-	@Column(name = "contact", length = 64)
-	private String contact;// 联系方式
-
-	@Column(name = "profile", length = 255)
-	private String profile;// 简介
+	@Column(name = "device_id", nullable = false, length = 128, unique = true)
+	private String deviceId;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "last_login")
@@ -83,76 +56,12 @@ public class UserDO extends BaseDO {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getDeviceId() {
+		return deviceId;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getFullname() {
-		return fullname;
-	}
-
-	public void setFullname(String fullname) {
-		this.fullname = fullname;
-	}
-
-	public Byte getStatus() {
-		return status;
-	}
-
-	public void setStatus(Byte status) {
-		this.status = status;
-	}
-
-	public Long getAvatar() {
-		return avatar;
-	}
-
-	public void setAvatar(Long avatar) {
-		this.avatar = avatar;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getMobile() {
-		return mobile;
-	}
-
-	public void setMobile(String mobile) {
-		this.mobile = mobile;
-	}
-
-	public String getContact() {
-		return contact;
-	}
-
-	public void setContact(String contact) {
-		this.contact = contact;
-	}
-
-	public String getProfile() {
-		return profile;
-	}
-
-	public void setProfile(String profile) {
-		this.profile = profile;
+	public void setDeviceId(String deviceId) {
+		this.deviceId = deviceId;
 	}
 
 	public Date getLast_login() {
@@ -191,20 +100,12 @@ public class UserDO extends BaseDO {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((avatar == null) ? 0 : avatar.hashCode());
-		result = prime * result + ((contact == null) ? 0 : contact.hashCode());
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + ((fullname == null) ? 0 : fullname.hashCode());
+		result = prime * result + ((deviceId == null) ? 0 : deviceId.hashCode());
 		result = prime * result + ((gmt_created == null) ? 0 : gmt_created.hashCode());
 		result = prime * result + ((gmt_modified == null) ? 0 : gmt_modified.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((last_ip == null) ? 0 : last_ip.hashCode());
 		result = prime * result + ((last_login == null) ? 0 : last_login.hashCode());
-		result = prime * result + ((mobile == null) ? 0 : mobile.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + ((profile == null) ? 0 : profile.hashCode());
-		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		return result;
 	}
 
@@ -217,25 +118,10 @@ public class UserDO extends BaseDO {
 		if (getClass() != obj.getClass())
 			return false;
 		UserDO other = (UserDO) obj;
-		if (avatar == null) {
-			if (other.avatar != null)
+		if (deviceId == null) {
+			if (other.deviceId != null)
 				return false;
-		} else if (!avatar.equals(other.avatar))
-			return false;
-		if (contact == null) {
-			if (other.contact != null)
-				return false;
-		} else if (!contact.equals(other.contact))
-			return false;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
-			return false;
-		if (fullname == null) {
-			if (other.fullname != null)
-				return false;
-		} else if (!fullname.equals(other.fullname))
+		} else if (!deviceId.equals(other.deviceId))
 			return false;
 		if (gmt_created == null) {
 			if (other.gmt_created != null)
@@ -261,31 +147,6 @@ public class UserDO extends BaseDO {
 			if (other.last_login != null)
 				return false;
 		} else if (!last_login.equals(other.last_login))
-			return false;
-		if (mobile == null) {
-			if (other.mobile != null)
-				return false;
-		} else if (!mobile.equals(other.mobile))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		if (password == null) {
-			if (other.password != null)
-				return false;
-		} else if (!password.equals(other.password))
-			return false;
-		if (profile == null) {
-			if (other.profile != null)
-				return false;
-		} else if (!profile.equals(other.profile))
-			return false;
-		if (status == null) {
-			if (other.status != null)
-				return false;
-		} else if (!status.equals(other.status))
 			return false;
 		return true;
 	}
