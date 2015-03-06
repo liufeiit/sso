@@ -1,0 +1,38 @@
+public static void main(String[] args) throws Exception {
+		System.out.println(Jsoup
+				.connect("http://www.waduanzi.com/archives/105288?source=yidian")
+				.get()
+				.select("div.item-content")
+				);
+	}
+	
+	public static void main3(String[] args) throws Exception {
+		System.out.println(Jsoup
+				.connect("http://www.pengfu.com/content_1187165_1.html")
+				.get()
+				.select("div.contFont")
+				);
+	}
+	
+	public static void main2(String[] args) throws Exception {
+		System.out.println(Jsoup
+				.connect("http://www.sh250.com/html/201412/1418782768_2.htm")
+				.get()
+				.select("div.dcont")
+				);
+	}
+
+	public static void main1(String[] args) throws Exception {
+		Document document = Jsoup.connect("http://news.51credit.com/hangye/10743391.shtml").get();
+		Elements header = document.select("head");
+		Elements cd_con = document.select("div.cd_con");
+		StringBuilder html = new StringBuilder()
+		.append("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">")
+		.append("<html xmlns=\"http://www.w3.org/1999/xhtml\">")
+		.append(header)
+		.append("<body>")
+		.append(cd_con)
+		.append("</body></html>")
+		;
+		System.out.println(html);
+	}
