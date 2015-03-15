@@ -75,7 +75,7 @@ public class BaseController {
 	@ResponseBody
 	public final ResponseEntity<String> handleException(final Throwable ex) {
 		log.error("Api Request Error.", ex);
-		return toResponse(Result.newError().with(ResultCode.Err_Exception), HttpStatus.INTERNAL_SERVER_ERROR);
+		return toResponse(Result.newError().with(ResultCode.Err_Exception), HttpStatus.OK);
 	}
 
 	protected ResponseEntity<String> toResponse(Result result) {
