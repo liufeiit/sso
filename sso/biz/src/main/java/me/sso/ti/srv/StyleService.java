@@ -1,6 +1,7 @@
 package me.sso.ti.srv;
 
 import me.sso.ti.result.Result;
+import me.sso.ti.ro.CreateStyleRequest;
 
 /**
  * 
@@ -9,6 +10,8 @@ import me.sso.ti.result.Result;
  * @since 2015年2月9日 下午10:05:58
  */
 public interface StyleService {
+	
+	Result createStyle(CreateStyleRequest request);
 
 	Result getStyleList();
 	

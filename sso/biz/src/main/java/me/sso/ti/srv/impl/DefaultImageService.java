@@ -49,6 +49,9 @@ public class DefaultImageService extends BaseService implements ImageService {
 	@Override
 	@Transactional(value = "transactionManager", rollbackFor = Throwable.class)
 	public Result upload(MultipartFile image) {
+		if(image == null) {
+			return Result.newError().with(ResultCode.Error_Image_Upload);
+		}
 		ImageRepositoryType type = ImageRepositoryType.Local_0001;
 		String imageName = genImageName(image);
 		FileOutputStream out = null;

@@ -1,6 +1,7 @@
 package me.sso.ti.srv.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,13 +10,18 @@ import me.sso.ti.dataobject.ArticleDO;
 import me.sso.ti.result.Result;
 import me.sso.ti.result.ResultCode;
 import me.sso.ti.ro.ArticleSearchRequest;
+import me.sso.ti.ro.CreateArticleRequest;
 import me.sso.ti.srv.ArticleService;
 import me.sso.ti.srv.BaseService;
+import me.sso.ti.srv.GzipService;
+import me.sso.ti.srv.ImageService;
 import me.sso.ti.srv.PageQuery;
 import me.sso.ti.vo.ArticleVO;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 /**
@@ -27,10 +33,43 @@ import org.springframework.util.CollectionUtils;
 @Service(value = "articleService")
 public class DefaultArticleService extends BaseService implements ArticleService {
 
+	@Autowired
+	private ImageService imageService;
+	
+	@Autowired
+	private GzipService gzipService;
+	
+	@Override
+	@Transactional(value = "transactionManager", rollbackFor = Throwable.class)
+	public Result createArticle(CreateArticleRequest request) {
+		ArticleDO article = new ArticleDO();
+		article.setContent(request.getContent());
+		article.setCatId(request.getCatId());
+		Date date = new Date();
+		article.setGmt_created(date);
+		article.setGmt_modified(date);
+		article.setTitle(request.getTitle());
+		article.setStatus(ArticleDO.Published);
+		Result uploadAvatar = imageService.upload(request.getAvatar());
+		if(uploadAvatar.isSuccess()) {
+			article.setAvatar((Long) uploadAvatar.get("image_id"));
+		}
+		Result uploadBackground = imageService.upload(request.getBackground());
+		if(uploadBackground.isSuccess()) {
+			article.setBackground((Long) uploadBackground.get("image_id"));
+		}
+		Result uploadGzip = gzipService.upload(request.getGzip());
+		if(uploadGzip.isSuccess()) {
+			article.setGzip((Long) uploadGzip.get("gzip_id"));
+		}
+		articleDAO.persist(article);
+		return Result.newSuccess().with(ResultCode.Success).response(ArticleVO.newInstance(article, false));
+	}
+
 	@Override
 	public Result search(ArticleSearchRequest request) {
 		StringBuilder sb = new StringBuilder();
-		sb.append("SELECT * FROM article a WHERE 1 = 1 ");
+		sb.append("SELECT * FROM article a WHERE status = " + ArticleDO.Published);
 		Map<String, Object> args = new HashMap<String, Object>();
 		Long aid = request.getId();
 		if (aid != null && aid > 0L) {

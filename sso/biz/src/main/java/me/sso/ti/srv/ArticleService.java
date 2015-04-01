@@ -2,6 +2,7 @@ package me.sso.ti.srv;
 
 import me.sso.ti.result.Result;
 import me.sso.ti.ro.ArticleSearchRequest;
+import me.sso.ti.ro.CreateArticleRequest;
 
 /**
  * 
@@ -15,4 +16,6 @@ public interface ArticleService {
 	Result search(ArticleSearchRequest request);
 	
 	Result getArticle(Long id);
+	
+	Result createArticle(CreateArticleRequest request);
 }

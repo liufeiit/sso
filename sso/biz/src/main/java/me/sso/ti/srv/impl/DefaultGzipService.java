@@ -50,6 +50,9 @@ public class DefaultGzipService extends BaseService implements GzipService {
 	@Override
 	@Transactional(value = "transactionManager", rollbackFor = Throwable.class)
 	public Result upload(MultipartFile gzip) {
+		if(gzip == null) {
+			return Result.newError().with(ResultCode.Error_Gzip_Upload);
+		}
 		GzipRepositoryType type = GzipRepositoryType.Local_0001;
 		String gzipName = genGzipName(gzip);
 		FileOutputStream out = null;
