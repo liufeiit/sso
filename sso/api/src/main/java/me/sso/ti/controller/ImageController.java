@@ -34,7 +34,7 @@ public class ImageController extends BaseController {
 	}
 	
 	@RequestMapping(value = "/{imageId}")
-	public void style(@PathVariable Long imageId, HttpServletResponse response) throws Exception {
+	public void image(@PathVariable Long imageId, HttpServletResponse response) throws Exception {
 		Result result = imageService.getImage(imageId);
 		if(!result.isSuccess()) {
 			out(result, response);

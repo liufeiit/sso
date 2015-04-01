@@ -54,7 +54,7 @@ public class ArticleDO extends BaseDO {
 	@Column(name = "background")
 	private Long background;
 
-	@Column(name = "gzip", length = 255)
+	@Column(name = "gzip")
 	private Long gzip;
 
 	@Column(name = "status", nullable = false)
