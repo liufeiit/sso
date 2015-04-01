@@ -1,0 +1,2 @@
+INSERT INTO `sso`.`article` (`cat_id`, `content`, `gmt_created`, `gmt_modified`, `gzip`, `status`, `title`) 
+VALUES ('1', '女人鞋柜里收藏的不只是一双双令她们痴狂的鞋子，而是一个个美丽的故事，一个个用鞋子诠释女人爱情、友情、亲情的故事......', now(), now(), '2', '3', '卷首语');
