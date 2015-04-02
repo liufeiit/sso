@@ -4,7 +4,7 @@
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" threshold="null" debug="null">
 
 	<appender name="PROJECT" class="me.sso.ti.comms.DailyRollingFileAppender">
-		<param name="file" value="${loggingRoot}/sso-mgr.log" />
+		<param name="file" value="${loggingRoot}/sso-api.log" />
 		<param name="append" value="true" />
 		<param name="encoding" value="UTF-8" />
 		<param name="threshold" value="info" />
@@ -15,7 +15,7 @@
 	</appender>
 
 	<appender name="SSO-TI-Appender" class="me.sso.ti.comms.DailyRollingFileAppender">
-		<param name="file" value="${loggingRoot}/sso-mgr-ti.log" />
+		<param name="file" value="${loggingRoot}/sso-api-ti.log" />
 		<param name="append" value="true" />
 		<param name="encoding" value="UTF-8" />
 		<param name="DatePattern" value="'.'yyyy-MM-dd'.log'" />

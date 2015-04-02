@@ -1,7 +1,7 @@
 /**
  * 
- * @author 刘飞 E-mail:liufei_it@126.com
+ * @author john.liu E-mail:fei.liu@yeepay.com
  * @version 1.0.0
- * @since 2014年12月17日 下午10:47:56
+ * @since 2014年12月11日 下午2:48:17
  */
 package test;
