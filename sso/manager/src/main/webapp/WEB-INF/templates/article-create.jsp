@@ -59,7 +59,7 @@
 								</div>
 								<div class="widget-content">
 									<div class="padd">
-										<form class="form-horizontal" role="form" action="/article/create" method="post">
+										<form class="form-horizontal" role="form" action="/article/create" method="post" enctype="multipart/form-data">
 											<input type="hidden" name="enter" value="false"></input>
 											<div class="form-group">
 												<label class="col-lg-5 control-label" for="title">文章标题:</label>
