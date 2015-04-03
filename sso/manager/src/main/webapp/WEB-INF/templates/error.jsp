@@ -10,7 +10,7 @@
 	<meta name="description" content="dap" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta name="author" content="andpay.me" />
-	<title>DAP管理平台--错误提示</title>
+	<title>SSO管理平台--错误提示</title>
 	
 	<link rel="stylesheet" href="${cdn}css/bootstrap.css"></link>
 	<link rel="stylesheet" href="${cdn}css/font-awesome.css"></link>
@@ -22,7 +22,7 @@
 	<script src="${cdn}js/html5shim.js"></script>
 	<![endif]-->
 
-	<link rel="Shortcut Icon" href="http://www.andpay.me/favicon.ico" />
+	<link rel="Shortcut Icon" href="${cdn}image/shoseicon64px.png" />
 
 </head>
 <body>
@@ -36,19 +36,18 @@
 						</div>
 						<div class="widget-content">
 							<div class="padd error">
-								<h1>出错啦!!! 错误码 ${Status}</h1>
-								<p>${Message}</p>
+								<h1>出错啦!!! 错误码 ${status}</h1>
+								<p>${message}</p>
 								<br />
-								<form class="form-inline" action="/report/list" method="get">
+								<form class="form-inline" action="/article/list" method="get">
 									<div class="form-group">
-										<input name="name" type="text" class="form-control" placeholder="报表名称">
+										<input name="title" type="text" class="form-control" placeholder="文章标题">
 									</div>
 									<button type="submit" class="btn btn-default">搜索</button>
 								</form>
 								<br />
 								<div class="horizontal-links">
-									<a href="/home/index">首页</a> | <a href="/report/list">报表列表</a> | <a
-										href="/job/list">任务列表</a>
+									<a href="/article/list">报表列表</a> | <a href="/style/list">任务列表</a>
 								</div>
 							</div>
 							<div class="widget-foot">

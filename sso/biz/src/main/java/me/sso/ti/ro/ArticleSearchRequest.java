@@ -7,7 +7,7 @@ package me.sso.ti.ro;
  * @version 1.0.0
  * @since 2015年2月9日 下午1:40:02
  */
-public class ArticleSearchRequest {
+public class ArticleSearchRequest extends PageQueryRequest {
 	
 	private Long id;
 
@@ -37,5 +37,23 @@ public class ArticleSearchRequest {
 
 	public void setPage(Integer page) {
 		this.page = page;
+	}
+	
+	public ArticleSearchRequest setQueryString() {
+		StringBuilder sb = new StringBuilder();
+		boolean appended = false;
+		if (id != null) {
+			sb.append("id").append("=").append(id);
+			appended = true;
+		}
+		if (title != null) {
+			if (appended) {
+				sb.append("&");
+			}
+			sb.append("title").append("=").append(title);
+			appended = true;
+		}
+		getQuery().setQueryString(sb.toString());
+		return this;
 	}
 }

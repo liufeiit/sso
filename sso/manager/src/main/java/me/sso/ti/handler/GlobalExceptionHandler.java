@@ -20,8 +20,8 @@ public class GlobalExceptionHandler extends WebBase implements HandlerExceptionR
 	public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
 		log.error("Handler : " + handler + " Error.", ex);
 		ModelAndView mv = createModelView("error");
-		mv.addObject("Status", 500);
-		mv.addObject(Message, ex.getLocalizedMessage());
+		mv.addObject("status", 500);
+		mv.addObject(message, ex.getLocalizedMessage());
 		return mv;
 	}
 }

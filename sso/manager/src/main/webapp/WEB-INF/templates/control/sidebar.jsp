@@ -6,34 +6,16 @@
 	</div>
 	<ul id="nav">
 		<li>
-			<a <c:if test="${ViewName == 'index'}"> class="open" </c:if> href="/home/index"><i class="icon-home"></i>首页</a>
-        </li>
-		<li>
-			<a <c:if test="${ViewName == 'report-list'}"> class="open" </c:if> href="/report/list"><i class="icon-bar-chart"></i>报表列表</a>
+			<a <c:if test="${viewname == 'article-list'}"> class="open" </c:if> href="/article/list"><i class="icon-bar-chart"></i>文章列表</a>
 		</li>
         <li>
-			<a <c:if test="${ViewName == 'job-list'}"> class="open" </c:if> href="/job/list"><i class="icon-list-alt"></i>任务列表</a>
+			<a <c:if test="${viewname == 'article-create'}"> class="open" </c:if> href="/article/create"><i class="icon-list-alt"></i>创建文章</a>
         </li>
         <li>
-			<a <c:if test="${ViewName == 'sql-list'}"> class="open" </c:if> href="/sql/list"><i class="icon-magnet"></i>SQL列表</a>
+			<a <c:if test="${viewname == 'style-list'}"> class="open" </c:if> href="/style/list"><i class="icon-magnet"></i>主题列表</a>
         </li>
         <li>
-			<a <c:if test="${ViewName == 'plugin-list'}"> class="open" </c:if> href="/plugin/list"><i class="icon-group"></i>插件列表</a>
+			<a <c:if test="${ViewName == 'style-create'}"> class="open" </c:if> href="/style/create"><i class="icon-group"></i>创建主题</a>
         </li>
-        <li>
-			<a <c:if test="${ViewName == 'script-list'}"> class="open" </c:if> href="/script/list"><i class="icon-list-ul"></i>脚本列表</a>
-        </li>
-		<li>
-			<a <c:if test="${ViewName == 'report-create'}"> class="open" </c:if> href="/report/create"><i class="icon-tasks"></i>新建报表</a>
-		</li>
-        <li>
-			<a <c:if test="${ViewName == 'sql-create'}"> class="open" </c:if> href="/sql/create"><i class="icon-magic"></i>新建SQL</a>
-		</li>
-        <li>
-			<a <c:if test="${ViewName == 'plugin-create'}"> class="open" </c:if> href="/plugin/create"><i class="icon-plus"></i>新建插件</a>
-		</li>
-        <li>
-			<a <c:if test="${ViewName == 'script-create'}"> class="open" </c:if> href="/script/create"><i class="icon-th-large"></i>新建脚本</a>
-		</li>
 	</ul>
 </div>

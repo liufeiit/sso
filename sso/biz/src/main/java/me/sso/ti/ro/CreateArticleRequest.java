@@ -9,8 +9,10 @@ import org.springframework.web.multipart.MultipartFile;
  * @since 2015年4月1日 下午10:37:05
  */
 public class CreateArticleRequest {
+	
+	private Boolean enter = Boolean.TRUE;
 
-	private Long catId;
+	private Long catId = 1L;
 
 	private String title;
 
@@ -22,6 +24,14 @@ public class CreateArticleRequest {
 
 	@NotEmpty
 	private MultipartFile gzip;
+
+	public Boolean getEnter() {
+		return enter;
+	}
+
+	public void setEnter(Boolean enter) {
+		this.enter = enter;
+	}
 
 	public Long getCatId() {
 		return catId;

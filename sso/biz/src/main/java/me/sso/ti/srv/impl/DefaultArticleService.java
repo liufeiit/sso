@@ -90,6 +90,7 @@ public class DefaultArticleService extends BaseService implements ArticleService
 		args.put("size", pageQuery.getSize());
 		List<ArticleDO> articleDOList = articleDAO.queryNative(sb.toString(), args);
 		if (CollectionUtils.isEmpty(articleDOList)) {
+			request.getQuery().reset();
 			return Result.newError().with(ResultCode.Error_Article_Empty);
 		}
 		List<ArticleVO> articleList = new ArrayList<ArticleVO>();

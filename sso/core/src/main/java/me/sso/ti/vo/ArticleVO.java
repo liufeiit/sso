@@ -11,7 +11,7 @@ import me.sso.ti.utils.SSOStringUtils;
  * @version 1.0.0
  * @since 2015年2月9日 下午9:34:58
  */
-public class ArticleVO {
+public class ArticleVO extends BaseObject {
 	private Long id;
 	
 	private Long catId;
@@ -49,6 +49,10 @@ public class ArticleVO {
 		setStatus(_do.getStatus());
 		setTitle(_do.getTitle());
 		return this;
+	}
+	
+	public String getCreated() {
+		return formatDate(gmt_created);
 	}
 
 	public Long getId() {

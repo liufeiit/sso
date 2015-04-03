@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.util.Arrays;
-import java.util.HashSet;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -23,6 +21,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -38,35 +37,39 @@ public class WebBase {
 	@Autowired
 	@Qualifier(value = "accountService")
 	protected AccountService accountService;
-	
+
 	@Autowired
 	@Qualifier(value = "articleService")
 	protected ArticleService articleService;
-	
+
 	@Autowired
 	@Qualifier(value = "styleService")
 	protected StyleService styleService;
-	
+
 	@Autowired
 	@Qualifier(value = "favoriteService")
 	protected FavoriteService favoriteService;
-	
+
 	@Autowired
 	@Qualifier(value = "imageService")
 	protected ImageService imageService;
-	
+
 	@Autowired
 	@Qualifier(value = "gzipService")
 	protected GzipService gzipService;
-	
-	protected static final String Message = "Message";
-	protected static final String ResultCode = "ResultCode";
-	protected static final String ResultData = "ResultData";
-	protected static final String Success = "Success";
-	private static final String ViewName = "ViewName";
-	
+
+	@Autowired
+	@Qualifier(value = "multipartResolver")
+	protected CommonsMultipartResolver multipartResolver;
+
+	protected static final String message = "message";
+	protected static final String resultcode = "resultcode";
+	protected static final String data = "data";
+	protected static final String success = "success";
+	private static final String viewname = "viewname";
+
 	protected String decoder(String val) {
-		if(StringUtils.isBlank(val)) {
+		if (StringUtils.isBlank(val)) {
 			return val;
 		}
 		try {
@@ -77,6 +80,26 @@ public class WebBase {
 		return val;
 	}
 	
+	protected void out(Result result, HttpServletResponse response) {
+		JSONObject json = new JSONObject();
+		json.accumulate("code", result.getResultCode());
+		json.accumulate("message", result.getMessage());
+		json.accumulate("data", result.getData());
+		PrintWriter w = null;
+		try {
+			response.setContentType("application/json;charset=UTF-8");
+			w = response.getWriter();
+			w.write(json.toString());
+			w.flush();
+		} catch (Exception e) {
+			log.error("Response JSON Error. ", e);
+		} finally {
+			if(w != null) {
+				w.close();
+			}
+		}
+	}
+
 	protected void returnJson(HttpServletResponse response, JSONObject json) {
 		PrintWriter out = null;
 		try {
@@ -87,49 +110,42 @@ public class WebBase {
 		} catch (IOException e) {
 			log.error("Return JSON Error.", e);
 		} finally {
-			if(out != null) {
+			if (out != null) {
 				out.close();
 				out = null;
 			}
 		}
 	}
-	
+
 	protected ModelAndView createModelView(String viewName) {
 		ModelAndView mv = new ModelAndView(viewName);
 		commons(mv);
 		return mv;
 	}
-	
+
 	protected ModelAndView createModelView(String viewName, Result result) {
 		ModelAndView mv = new ModelAndView(viewName);
 		commons(mv);
 		mv.addAllObjects(result.getData());
-		mv.addObject(ResultData, result.getResponse());
-		mv.addObject(Message, result.getMessage());
-		mv.addObject(ResultCode, result.getResultCode());
-		mv.addObject(Success, result.isSuccess());
+		mv.addObject(data, result.getResponse());
+		mv.addObject(message, result.getMessage());
+		mv.addObject(resultcode, result.getResultCode());
+		mv.addObject(success, result.isSuccess());
 		return mv;
 	}
-	
+
 	protected ModelAndView merge(ModelAndView mv, Result result) {
 		mv.addAllObjects(result.getData());
-		mv.addObject(ResultData, result.getResponse());
-		mv.addObject(Message, result.getMessage());
-		mv.addObject(ResultCode, result.getResultCode());
-		mv.addObject(Success, result.isSuccess());
+		mv.addObject(data, result.getResponse());
+		mv.addObject(message, result.getMessage());
+		mv.addObject(resultcode, result.getResultCode());
+		mv.addObject(success, result.isSuccess());
 		return mv;
 	}
-	
+
 	private void commons(ModelAndView mv) {
 		mv.addObject("cdn", "/assets/");
 		String name = mv.getViewName();
-		mv.addObject(ViewName, name);
-		
-		QueryJobRequest request = new QueryJobRequest();
-		request.setStatuses(new HashSet<String>(Arrays.asList(JobStatus.EXECUTING)));
-		request.query(2, 1);
-		Result jobResult = reportService.queryJob(request);
-		mv.addObject("TitleJobMonitor", jobResult.getResponse());
-		mv.addObject("TitleJobMonitorSuccess", jobResult.isSuccess());
+		mv.addObject(viewname, name);
 	}
 }

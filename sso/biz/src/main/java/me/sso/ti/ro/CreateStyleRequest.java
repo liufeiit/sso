@@ -9,6 +9,8 @@ import org.springframework.web.multipart.MultipartFile;
  */
 public class CreateStyleRequest {
 	
+	private Boolean enter = Boolean.TRUE;
+	
 	private String name;// 风格名称
 
 	private String description;// 风格描述
@@ -18,6 +20,14 @@ public class CreateStyleRequest {
 	private MultipartFile background;// 风格背景图片
 
 	private MultipartFile floater;// 风格漂浮物
+
+	public Boolean getEnter() {
+		return enter;
+	}
+
+	public void setEnter(Boolean enter) {
+		this.enter = enter;
+	}
 
 	public String getName() {
 		return name;

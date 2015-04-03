@@ -5,9 +5,9 @@
 		<div class="navbar-header">
 			<button class="navbar-toggle btn-navbar" type="button"
 				data-toggle="collapse" data-target=".bs-navbar-collapse">
-				<span>DAP</span>
+				<span>SSO</span>
 			</button>
-			<a href="#" class="navbar-brand hidden-lg">DAP</a>
+			<a href="#" class="navbar-brand hidden-lg">SSO</a>
 		</div>
 		<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
 			<ul class="nav navbar-nav">
@@ -18,42 +18,29 @@
 					</a>
 					<ul class="dropdown-menu">
 						<li>
-							<c:if test="${!TitleJobMonitorSuccess}">
-								<p>
-									<span class="label label-info"><i class="icon-cloud"></i></span>
-									无正在执行的任务
-								</p>
-								<hr/>
-							</c:if>
-							<c:if test="${TitleJobMonitorSuccess}">
-								<c:forEach var="job" items="${TitleJobMonitor}" varStatus="status">
-								<p>
-									<a href="/job/list?job_id=${job.id}">
-									<span class="label label-info"><i class="icon-cloud"></i></span>
-									${job.name}
-									</a>
-								</p>
-								<hr/>
-								</c:forEach>
-							</c:if>
+							<p>
+								<span class="label label-info"><i class="icon-cloud"></i></span>
+								无正在执行的任务
+							</p>
+							<hr/>
 							<div class="drop-foot">
-								<a href="/job/list?statuses=EXECUTING,COMPLETED">查看所有</a>
+								<a href="/article/list">查看所有</a>
 							</div>
 						</li>
 					</ul>
 				</li>
 			</ul>
 
-			<form class="navbar-form navbar-left" role="search" action="/report/list" method="get">
+			<form class="navbar-form navbar-left" role="search" action="/article/list" method="get">
 				<div class="form-group">
-					<input name="id" type="text" class="form-control" placeholder="输入ID搜索报表">
+					<input name="id" type="text" class="form-control" placeholder="输入ID搜索文章">
 				</div>
 			</form>
 			
 			<ul class="nav navbar-nav pull-right">
 				<li class="dropdown pull-right">
 					<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-					<i class="icon-user"></i> fei.liu <b class="caret"></b>
+					<i class="icon-user"></i> 刘飞 <b class="caret"></b>
 					</a>
 					<ul class="dropdown-menu">
 						<li><a href="#"><i class="icon-cogs"></i>设置</a></li>

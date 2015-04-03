@@ -1,5 +1,7 @@
 package me.sso.ti.vo;
 
+import java.util.Date;
+
 import me.sso.ti.dataobject.StyleDO;
 
 /**
@@ -8,7 +10,7 @@ import me.sso.ti.dataobject.StyleDO;
  * @version 1.0.0
  * @since 2015年2月9日 下午10:01:22
  */
-public class StyleVO {
+public class StyleVO extends BaseObject {
 
 	private Long id;
 
@@ -21,6 +23,10 @@ public class StyleVO {
 	private Long background;// 风格背景图片
 
 	private Long floater;// 风格漂浮物
+	
+	private Byte status;// 状态，1:可用，0:不可用
+
+	private Date gmt_created;
 
 	public static StyleVO newInstance(StyleDO _do) {
 		if(_do == null) {
@@ -36,9 +42,31 @@ public class StyleVO {
 		setIcon(_do.getIcon());
 		setId(_do.getId());
 		setName(_do.getName());
+		setStatus(_do.getStatus());
+		setGmt_created(_do.getGmt_created());
 		return this;
 	}
 	
+	public String getCreated() {
+		return formatDate(gmt_created);
+	}
+	
+	public Byte getStatus() {
+		return status;
+	}
+
+	public void setStatus(Byte status) {
+		this.status = status;
+	}
+
+	public Date getGmt_created() {
+		return gmt_created;
+	}
+
+	public void setGmt_created(Date gmt_created) {
+		this.gmt_created = gmt_created;
+	}
+
 	public Long getId() {
 		return id;
 	}
