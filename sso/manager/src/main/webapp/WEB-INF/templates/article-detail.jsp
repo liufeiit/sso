@@ -78,14 +78,14 @@
 											<div class="form-group">
 												<label class="col-lg-5 control-label">文章图片:</label>
 												<div class="col-lg-7">
-												<img alt="${article.title}" src="/image/${article.avatar}">
+												<img alt="${article.title}" src="/image/${article.avatar}"  width="500">
 												</div>
 											</div>
 											
 											<div class="form-group">
 												<label class="col-lg-5 control-label">文章背景图:</label>
 												<div class="col-lg-7">
-												<img alt="${article.title}" src="/image/${article.background}">
+												<img alt="${article.title}" src="/image/${article.background}"  width="500">
 												</div>
 											</div>
 											

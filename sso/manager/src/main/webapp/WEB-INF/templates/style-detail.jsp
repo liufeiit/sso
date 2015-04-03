@@ -76,19 +76,19 @@
 											<div class="form-group">
 												<label class="col-lg-5 control-label">主题图标:</label>
 												<div class="col-lg-7">
-												<img alt="${style.name}" src="/image/${style.icon}">
+												<img alt="${style.name}" src="/image/${style.icon}" width="100">
 												</div>
 											</div>
 											<div class="form-group">
 												<label class="col-lg-5 control-label">主题背景图片:</label>
 												<div class="col-lg-7">
-												<img alt="${style.name}" src="/image/${style.background}">
+												<img alt="${style.name}" src="/image/${style.background}" width="500">
 												</div>
 											</div>
 											<div class="form-group">
 												<label class="col-lg-5 control-label">主题漂浮物:</label>
 												<div class="col-lg-7">
-												<img alt="${style.name}" src="/image/${style.floater}">
+												<img alt="${style.name}" src="/image/${style.floater}" width="500">
 												</div>
 											</div>
 											<hr />
