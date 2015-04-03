@@ -31,6 +31,12 @@ public class ArticleController extends WebBase {
 
 	@RequestMapping("/list")
 	public ModelAndView list(ArticleSearchRequest request) {
+		Integer page = request.getPage();
+		if(page == null) {
+			request.query(1);
+		} else {
+			request.query(page);
+		}
 		Result result = articleService.search(request);
 		ModelAndView mv = createModelView(ARTICLE_LIST_VIEW_NAME, result);
 		request.setQueryString();

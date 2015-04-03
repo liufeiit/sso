@@ -15,8 +15,6 @@
 	<link rel="stylesheet" href="${cdn}css/bootstrap.css"></link>
 	<link rel="stylesheet" href="${cdn}css/font-awesome.css"></link>
 	<link rel="stylesheet" href="${cdn}css/style.css"></link>
-	
-	<link rel="stylesheet" href="${cdn}style/bootstrap-responsive.css"></link>
 
 	<!--[if lt IE 9]>
 	<script src="${cdn}js/html5shim.js"></script>

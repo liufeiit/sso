@@ -1,6 +1,5 @@
 package me.sso.ti.ro;
 
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -21,8 +20,7 @@ public class CreateArticleRequest {
 	private MultipartFile avatar;
 
 	private MultipartFile background;
-
-	@NotEmpty
+	
 	private MultipartFile gzip;
 
 	public Boolean getEnter() {

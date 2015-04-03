@@ -12,22 +12,9 @@
 		<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
 			<ul class="nav navbar-nav">
 				<li class="dropdown dropdown-big">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-					<span class="label label-danger"><i class="icon-refresh"></i></span>
-					任务
-					</a>
-					<ul class="dropdown-menu">
-						<li>
-							<p>
-								<span class="label label-info"><i class="icon-cloud"></i></span>
-								无正在执行的任务
-							</p>
-							<hr/>
-							<div class="drop-foot">
-								<a href="/article/list">查看所有</a>
-							</div>
-						</li>
-					</ul>
+					<i>
+						<img width="30px" height="30px" style="margin-left: 1px;margin-top: 10px" alt="SSO" src="${cdn}image/shoseicon64px.png">
+					</i>
 				</li>
 			</ul>
 
