@@ -52,6 +52,7 @@ public class GzipController extends BaseController {
 			response.setContentType("application/octet-stream;charset=utf-8");
 			response.setHeader("Content-disposition", "attachment; filename=" + gzipFile.getName());
 			response.setHeader("Content-Length", String.valueOf(fileLength));
+			response.setContentLength((int) fileLength);
 			in = new BufferedInputStream(new FileInputStream(gzipFile));
 			out = new BufferedOutputStream(response.getOutputStream());
 			StreamUtils.copy(in, out);
