@@ -2,6 +2,7 @@ package me.sso.ti.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -26,9 +27,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping(value = "/image")
 public class ImageController extends WebBase {
-	
+
 	private static final int CACHE_SECONDS = 7 * 24 * 3600;
-	
+
 	private static final String HEADER_EXPIRES = "Expires";
 
 	private static final String HEADER_CACHE_CONTROL = "Cache-Control";
@@ -47,5 +48,20 @@ public class ImageController extends WebBase {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(mediaType);
 		return new ResponseEntity<byte[]>(StreamUtils.copyToByteArray(new FileInputStream(imageFile)), headers, HttpStatus.CREATED);
+	}
+
+	@RequestMapping(value = "/test.csv")
+	public void getLogAsCSV(final HttpServletResponse response) throws Exception {
+		response.setHeader("Content-Type", "text/comma-separated-values");
+		String csv = "姓名,年龄,分数\n" + "刘飞,28,98\n" + "杨雪,26,97";
+		PrintWriter writer = null;
+		try {
+			writer = response.getWriter();
+			writer.write(csv);
+			writer.flush();
+		} finally {
+			writer.close();
+			writer = null;
+		}
 	}
 }
