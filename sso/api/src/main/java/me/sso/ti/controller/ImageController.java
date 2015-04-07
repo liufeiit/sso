@@ -27,6 +27,12 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 @RequestMapping(value = "/image")
 public class ImageController extends BaseController {
+	
+	private static final int CACHE_SECONDS = 7 * 24 * 3600;
+	
+	private static final String HEADER_EXPIRES = "Expires";
+
+	private static final String HEADER_CACHE_CONTROL = "Cache-Control";
 
 	@RequestMapping(value = "/upload", produces = "application/json")
 	@ResponseBody
@@ -42,6 +48,9 @@ public class ImageController extends BaseController {
 			out(result, response);
 			return null;
 		}
+		response.setDateHeader(HEADER_EXPIRES, System.currentTimeMillis() + CACHE_SECONDS * 1000L);
+		String headerValue = "max-age=" + CACHE_SECONDS + ", must-revalidate";
+		response.setHeader(HEADER_CACHE_CONTROL, headerValue);
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.IMAGE_JPEG);
 		return new ResponseEntity<byte[]>(StreamUtils.copyToByteArray(new FileInputStream(result.getResponse(String.class))), headers, HttpStatus.CREATED);
