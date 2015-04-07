@@ -5,8 +5,10 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 
+import me.sso.ti.mime.ActivationMediaTypeFactory;
 import me.sso.ti.result.Result;
 import me.sso.ti.srv.AccountService;
 import me.sso.ti.srv.ArticleService;
@@ -21,6 +23,9 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.MediaType;
+import org.springframework.util.ClassUtils;
+import org.springframework.web.context.ServletContextAware;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -30,8 +35,10 @@ import org.springframework.web.servlet.ModelAndView;
  * @version 1.0.0
  * @since 2015年3月26日 下午4:07:31
  */
-public class WebBase {
+public class WebBase implements ServletContextAware {
 
+	private static final boolean jafPresent = ClassUtils.isPresent("javax.activation.FileTypeMap", WebBase.class.getClassLoader());
+	
 	protected Log log = LogFactory.getLog(getClass());
 
 	@Autowired
@@ -147,5 +154,31 @@ public class WebBase {
 		mv.addObject("cdn", "/assets/");
 		String name = mv.getViewName();
 		mv.addObject(viewname, name);
+	}
+
+	protected MediaType getMediaType(String fileName) {
+		MediaType mediaType = null;
+		String mimeType = getServletContext().getMimeType(fileName);
+		if (org.springframework.util.StringUtils.hasText(mimeType)) {
+			mediaType = MediaType.parseMediaType(mimeType);
+		}
+		if (jafPresent && (mediaType == null || MediaType.APPLICATION_OCTET_STREAM.equals(mediaType))) {
+			MediaType jafMediaType = ActivationMediaTypeFactory.getMediaType(fileName);
+			if (jafMediaType != null && !MediaType.APPLICATION_OCTET_STREAM.equals(jafMediaType)) {
+				mediaType = jafMediaType;
+			}
+		}
+		return new MediaType(mediaType.getType(), mediaType.getSubtype());
+	}
+
+	private ServletContext servletContext;
+
+	public ServletContext getServletContext() {
+		return servletContext;
+	}
+
+	@Override
+	public void setServletContext(ServletContext servletContext) {
+		this.servletContext = servletContext;
 	}
 }

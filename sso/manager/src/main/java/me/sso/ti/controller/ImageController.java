@@ -1,5 +1,6 @@
 package me.sso.ti.controller;
 
+import java.io.File;
 import java.io.FileInputStream;
 
 import javax.servlet.http.HttpServletResponse;
@@ -38,11 +39,13 @@ public class ImageController extends WebBase {
 		if (!result.isSuccess()) {
 			return null;
 		}
+		File imageFile = result.getResponse(File.class);
+		MediaType mediaType = getMediaType(imageFile.getName());
 		response.setDateHeader(HEADER_EXPIRES, System.currentTimeMillis() + CACHE_SECONDS * 1000L);
 		String headerValue = "max-age=" + CACHE_SECONDS + ", must-revalidate";
 		response.setHeader(HEADER_CACHE_CONTROL, headerValue);
 		HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(MediaType.IMAGE_JPEG);
-		return new ResponseEntity<byte[]>(StreamUtils.copyToByteArray(new FileInputStream(result.getResponse(String.class))), headers, HttpStatus.CREATED);
+		headers.setContentType(mediaType);
+		return new ResponseEntity<byte[]>(StreamUtils.copyToByteArray(new FileInputStream(imageFile)), headers, HttpStatus.CREATED);
 	}
 }

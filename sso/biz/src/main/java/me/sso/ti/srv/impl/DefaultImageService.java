@@ -87,7 +87,14 @@ public class DefaultImageService extends BaseService implements ImageService {
 			return Result.newError().with(ResultCode.Error_Image_NotExist);
 		}
 		String imageURL = getImagePath(image);
-		return Result.newSuccess().with(ResultCode.Success).response(imageURL);
+		if (StringUtils.isEmpty(imageURL)) {
+			return Result.newError().with(ResultCode.Error_Image_NotExist);
+		}
+		File imageFile = new File(imageURL);
+		if(!imageFile.exists()) {
+			return Result.newError().with(ResultCode.Error_Image_NotExist);
+		}
+		return Result.newSuccess().with(ResultCode.Success).response(imageFile);
 	}
 
 	public String getImagePath(ImageDO image) {

@@ -4,9 +4,11 @@ import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 
 import me.sso.ti.http.JSONResponseBody;
+import me.sso.ti.mime.ActivationMediaTypeFactory;
 import me.sso.ti.result.Result;
 import me.sso.ti.result.ResultCode;
 import me.sso.ti.srv.AccountService;
@@ -24,11 +26,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.ClassUtils;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.ServletContextAware;
 
 /**
  * 
@@ -36,8 +41,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @version 1.0.0
  * @since 2014年12月27日 下午2:38:54
  */
-public class BaseController {
+public class BaseController implements ServletContextAware {
 
+	private static final boolean jafPresent = ClassUtils.isPresent("javax.activation.FileTypeMap", BaseController.class.getClassLoader());
+	
 	protected final Logger log = LoggerFactory.getLogger(getClass());
 
 	@Autowired
@@ -106,5 +113,31 @@ public class BaseController {
 				w.close();
 			}
 		}
+	}
+
+	protected MediaType getMediaType(String fileName) {
+		MediaType mediaType = null;
+		String mimeType = getServletContext().getMimeType(fileName);
+		if (org.springframework.util.StringUtils.hasText(mimeType)) {
+			mediaType = MediaType.parseMediaType(mimeType);
+		}
+		if (jafPresent && (mediaType == null || MediaType.APPLICATION_OCTET_STREAM.equals(mediaType))) {
+			MediaType jafMediaType = ActivationMediaTypeFactory.getMediaType(fileName);
+			if (jafMediaType != null && !MediaType.APPLICATION_OCTET_STREAM.equals(jafMediaType)) {
+				mediaType = jafMediaType;
+			}
+		}
+		return new MediaType(mediaType.getType(), mediaType.getSubtype());
+	}
+
+	private ServletContext servletContext;
+
+	public ServletContext getServletContext() {
+		return servletContext;
+	}
+
+	@Override
+	public void setServletContext(ServletContext servletContext) {
+		this.servletContext = servletContext;
 	}
 }

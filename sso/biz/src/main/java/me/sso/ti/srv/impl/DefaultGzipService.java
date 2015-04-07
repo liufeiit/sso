@@ -87,15 +87,15 @@ public class DefaultGzipService extends BaseService implements GzipService {
 		if (gzip == null) {
 			return Result.newError().with(ResultCode.Error_Gzip_NotExist);
 		}
-		String gzipPath = getGzipPath(gzip);
-		if (StringUtils.isEmpty(gzipPath)) {
+		String gzipURL = getGzipPath(gzip);
+		if (StringUtils.isEmpty(gzipURL)) {
 			return Result.newError().with(ResultCode.Error_Gzip_NotExist);
 		}
-		File zip = new File(gzipPath);
-		if (!zip.exists() || !zip.isFile()) {
+		File gzipFile = new File(gzipURL);
+		if(!gzipFile.exists()) {
 			return Result.newError().with(ResultCode.Error_Gzip_NotExist);
 		}
-		return Result.newSuccess().with(ResultCode.Success).with("gzipFile", zip);
+		return Result.newSuccess().with(ResultCode.Success).response(gzipFile);
 	}
 
 	public static String getGzipPath(GzipDO gzip) {

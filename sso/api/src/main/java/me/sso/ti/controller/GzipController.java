@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import me.sso.ti.result.Result;
 
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StreamUtils;
@@ -46,12 +47,13 @@ public class GzipController extends BaseController {
 		BufferedInputStream in = null;
 		BufferedOutputStream out = null;
 		try {
-			File gzipFile = (File) result.get("gzipFile");
-			request.setCharacterEncoding("UTF-8");
+			File gzipFile = result.getResponse(File.class);
 			long fileLength = gzipFile.length();
-			response.setContentType("application/octet-stream;charset=utf-8");
-			response.setHeader("Content-disposition", "attachment; filename=" + gzipFile.getName());
-			response.setHeader("Content-Length", String.valueOf(fileLength));
+			MediaType mediaType = getMediaType(gzipFile.getName());
+			request.setCharacterEncoding("UTF-8");
+			response.setContentType(mediaType.toString() + ";charset=UTF-8");
+			response.setHeader("content-disposition", "attachment;filename=\"" + gzipFile.getName() + "\"");
+			response.setHeader("content-length", String.valueOf(fileLength));
 			response.setContentLength((int) fileLength);
 			in = new BufferedInputStream(new FileInputStream(gzipFile));
 			out = new BufferedOutputStream(response.getOutputStream());
