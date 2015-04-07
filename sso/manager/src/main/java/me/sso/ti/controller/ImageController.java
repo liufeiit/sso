@@ -51,7 +51,7 @@ public class ImageController extends WebBase {
 	}
 
 	@RequestMapping(value = "/test.csv")
-	public void getLogAsCSV(final HttpServletResponse response) throws Exception {
+	public void csv(final HttpServletResponse response) throws Exception {
 		response.setHeader("Content-Type", "text/comma-separated-values");
 		String csv = "姓名,年龄,分数\n" + "刘飞,28,98\n" + "杨雪,26,97";
 		PrintWriter writer = null;
