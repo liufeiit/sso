@@ -45,7 +45,7 @@
 								</form>
 								<br />
 								<div class="horizontal-links">
-									<a href="/article/list">报表列表</a> | <a href="/style/list">任务列表</a>
+									<a href="/article/list">文章列表</a> | <a href="/style/list">主题列表</a>
 								</div>
 							</div>
 							<div class="widget-foot">
