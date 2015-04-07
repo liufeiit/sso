@@ -86,14 +86,11 @@ public class DefaultImageService extends BaseService implements ImageService {
 		if (image == null) {
 			return Result.newError().with(ResultCode.Error_Image_NotExist);
 		}
-		File img = new File(getImagePath(image));
-		if (!img.exists() || !img.isFile()) {
-			return Result.newError().with(ResultCode.Error_Image_NotExist);
-		}
-		return Result.newSuccess().with(ResultCode.Success).with("imageFile", img);
+		String imageURL = getImagePath(image);
+		return Result.newSuccess().with(ResultCode.Success).response(imageURL);
 	}
 
-	public static String getImagePath(ImageDO image) {
+	public String getImagePath(ImageDO image) {
 		if (image == null) {
 			return DefaultImagePath;
 		}
@@ -115,7 +112,7 @@ public class DefaultImageService extends BaseService implements ImageService {
 		return GuidUtils.guid() + "." + imageType;
 	}
 
-	public static String getImageType(final String fileName) {
+	public String getImageType(final String fileName) {
 		String fileType = "";
 		int index = fileName.lastIndexOf(".");
 		if (index != -1) {
