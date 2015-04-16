@@ -24,7 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
  * @version 1.0.0
  * @since 2015年2月9日 下午11:20:41
  */
-@Service(value = "imageService")
+@Service("imageService")
 public class DefaultImageService extends BaseService implements ImageService {
 
 	@Override

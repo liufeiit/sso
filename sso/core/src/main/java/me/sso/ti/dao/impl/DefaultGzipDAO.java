@@ -13,7 +13,7 @@ import me.sso.ti.jpa.DefaultGenericDAO;
  * @version 1.0.0
  * @since 2015年2月10日 上午10:52:00
  */
-@Repository(value = "gzipDAO")
+@Repository("gzipDAO")
 public class DefaultGzipDAO extends DefaultGenericDAO<GzipDO, Long> implements GzipDAO {
 	
 }

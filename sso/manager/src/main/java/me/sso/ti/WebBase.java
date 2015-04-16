@@ -42,31 +42,31 @@ public class WebBase implements ServletContextAware {
 	protected Log log = LogFactory.getLog(getClass());
 
 	@Autowired
-	@Qualifier(value = "accountService")
+	@Qualifier("accountService")
 	protected AccountService accountService;
 
 	@Autowired
-	@Qualifier(value = "articleService")
+	@Qualifier("articleService")
 	protected ArticleService articleService;
 
 	@Autowired
-	@Qualifier(value = "styleService")
+	@Qualifier("styleService")
 	protected StyleService styleService;
 
 	@Autowired
-	@Qualifier(value = "favoriteService")
+	@Qualifier("favoriteService")
 	protected FavoriteService favoriteService;
 
 	@Autowired
-	@Qualifier(value = "imageService")
+	@Qualifier("imageService")
 	protected ImageService imageService;
 
 	@Autowired
-	@Qualifier(value = "gzipService")
+	@Qualifier("gzipService")
 	protected GzipService gzipService;
 
 	@Autowired
-	@Qualifier(value = "multipartResolver")
+	@Qualifier("multipartResolver")
 	protected CommonsMultipartResolver multipartResolver;
 
 	protected static final String message = "message";

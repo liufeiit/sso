@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
  * @version 1.0.0
  * @since 2014年12月19日 上午12:32:18
  */
-@Repository(value = "userDAO")
+@Repository("userDAO")
 public class DefaultUserDAO extends DefaultGenericDAO<UserDO, Long> implements UserDAO {
 
 }

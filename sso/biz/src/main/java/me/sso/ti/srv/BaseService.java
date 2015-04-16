@@ -3,9 +3,9 @@ package me.sso.ti.srv;
 import javax.servlet.http.HttpServletRequest;
 
 import me.sso.ti.auth.AuthService;
-import me.sso.ti.auth.request.CheckRequest;
+import me.sso.ti.auth.request.PrivilegedRequest;
 import me.sso.ti.auth.request.LoginRequest;
-import me.sso.ti.auth.response.CheckResponse;
+import me.sso.ti.auth.response.PrivilegedResponse;
 import me.sso.ti.auth.response.LoginResponse;
 import me.sso.ti.dao.ArticleDAO;
 import me.sso.ti.dao.CategoryDAO;
@@ -16,7 +16,6 @@ import me.sso.ti.dao.StyleDAO;
 import me.sso.ti.dao.UserDAO;
 import me.sso.ti.result.Result;
 import me.sso.ti.result.ResultCode;
-import me.sso.ti.ro.PrivilegedRequest;
 import me.sso.ti.utils.WebUtils;
 
 import org.apache.commons.lang.math.NumberUtils;
@@ -41,39 +40,39 @@ public class BaseService implements InitializingBean {
     protected HttpServletRequest request;
 
 	@Autowired
-	@Qualifier(value = "userDAO")
+	@Qualifier("userDAO")
 	protected UserDAO userDAO;
 
 	@Autowired
-	@Qualifier(value = "articleDAO")
+	@Qualifier("articleDAO")
 	protected ArticleDAO articleDAO;
 
 	@Autowired
-	@Qualifier(value = "categoryDAO")
+	@Qualifier("categoryDAO")
 	protected CategoryDAO categoryDAO;
 
 	@Autowired
-	@Qualifier(value = "favoriteDAO")
+	@Qualifier("favoriteDAO")
 	protected FavoriteDAO favoriteDAO;
 
 	@Autowired
-	@Qualifier(value = "styleDAO")
+	@Qualifier("styleDAO")
 	protected StyleDAO styleDAO;
 
 	@Autowired
-	@Qualifier(value = "imageDAO")
+	@Qualifier("imageDAO")
 	protected ImageDAO imageDAO;
 
 	@Autowired
-	@Qualifier(value = "gzipDAO")
+	@Qualifier("gzipDAO")
 	protected GzipDAO gzipDAO;
 	
-	protected Result doPrivileged(PrivilegedRequest request) {
-		CheckRequest checkRequest = new CheckRequest();
+	protected Result doPrivileged(me.sso.ti.ro.PrivilegedRequest request) {
+		PrivilegedRequest checkRequest = new PrivilegedRequest();
 		checkRequest.setApp_id(AuthService.App_Id);
 		checkRequest.setOpen_id(request.getOpen_id());
 		checkRequest.setAccess_token(request.getAccess_token());
-		CheckResponse checkResponse = AuthService.check(checkRequest);
+		PrivilegedResponse checkResponse = AuthService.doPrivileged(checkRequest);
 		if (StringUtils.isBlank(checkResponse.getSecret_id())) {
 			return Result.newError().with(ResultCode.Error_Token);
 		}
@@ -91,7 +90,7 @@ public class BaseService implements InitializingBean {
 		LoginRequest loginRequest = new LoginRequest();
 		loginRequest.setApp_id(AuthService.App_Id);
 		loginRequest.setSecret_id(String.valueOf(userId));
-		LoginResponse loginResponse = AuthService.login(loginRequest);
+		LoginResponse loginResponse = AuthService.doLogin(loginRequest);
 		if (loginResponse == null || StringUtils.isEmpty(loginResponse.getAccess_token())) {
 			return Result.newError().with(ResultCode.Error_Login);
 		}

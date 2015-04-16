@@ -12,7 +12,7 @@ import me.sso.ti.jpa.DefaultGenericDAO;
  * @version 1.0.0
  * @since 2015年2月9日 上午12:37:06
  */
-@Repository(value = "styleDAO")
+@Repository("styleDAO")
 public class DefaultStyleDAO extends DefaultGenericDAO<StyleDO, Long> implements StyleDAO {
 	
 }

@@ -27,7 +27,7 @@ import org.springframework.util.CollectionUtils;
  * @version 1.0.0
  * @since 2015年2月9日 下午10:25:44
  */
-@Service(value = "favoriteService")
+@Service("favoriteService")
 public class DefaultFavoriteService extends BaseService implements FavoriteService {
 
 	@Override

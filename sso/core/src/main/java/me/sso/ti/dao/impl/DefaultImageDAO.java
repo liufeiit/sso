@@ -11,7 +11,7 @@ import me.sso.ti.jpa.DefaultGenericDAO;
  * @version 1.0.0
  * @since 2015年2月10日 上午12:46:56
  */
-@Repository(value = "imageDAO")
+@Repository("imageDAO")
 public class DefaultImageDAO extends DefaultGenericDAO<ImageDO, Long> implements ImageDAO {
 	
 }

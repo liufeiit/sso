@@ -4,9 +4,9 @@ import java.lang.reflect.Method;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
 
-import me.sso.ti.auth.request.CheckRequest;
+import me.sso.ti.auth.request.PrivilegedRequest;
 import me.sso.ti.auth.request.LoginRequest;
-import me.sso.ti.auth.response.CheckResponse;
+import me.sso.ti.auth.response.PrivilegedResponse;
 import me.sso.ti.auth.response.LoginResponse;
 import me.sso.ti.utils.XmlUtils;
 
@@ -31,9 +31,9 @@ public class AuthService {
 
 	private static Object AUTH_SERVICE_ADAPTER;
 
-	private static Method LOGIN_METHOD;
+	private static Method Login_METHOD;
 
-	private static Method CHECK_METHOD;
+	private static Method Privileged_METHOD;
 
 	static {
 		if (AUTH_SERVICE_ADAPTER_CLASS == null) {
@@ -61,31 +61,31 @@ public class AuthService {
 				}
 			});
 		}
-		if (LOGIN_METHOD == null) {
-			LOGIN_METHOD = AccessController.doPrivileged(new PrivilegedAction<Method>() {
+		if (Login_METHOD == null) {
+			Login_METHOD = AccessController.doPrivileged(new PrivilegedAction<Method>() {
 				@Override
 				public Method run() {
 					try {
-						Method login = AUTH_SERVICE_ADAPTER_CLASS.getDeclaredMethod("login", new Class[] { String.class });
+						Method login = AUTH_SERVICE_ADAPTER_CLASS.getDeclaredMethod("doLogin", new Class[] { String.class });
 						login.setAccessible(true);
 						return login;
 					} catch (Exception e) {
-						log.error("Can't Found Auth login Method.", e);
+						log.error("Can't Found Auth doLogin Method.", e);
 					}
 					return null;
 				}
 			});
 		}
-		if (CHECK_METHOD == null) {
-			CHECK_METHOD = AccessController.doPrivileged(new PrivilegedAction<Method>() {
+		if (Privileged_METHOD == null) {
+			Privileged_METHOD = AccessController.doPrivileged(new PrivilegedAction<Method>() {
 				@Override
 				public Method run() {
 					try {
-						Method check = AUTH_SERVICE_ADAPTER_CLASS.getDeclaredMethod("check", new Class[] { String.class });
+						Method check = AUTH_SERVICE_ADAPTER_CLASS.getDeclaredMethod("doPrivileged", new Class[] { String.class });
 						check.setAccessible(true);
 						return check;
 					} catch (Exception e) {
-						log.error("Can't Found Auth check Method.", e);
+						log.error("Can't Found Auth doPrivileged Method.", e);
 					}
 					return null;
 				}
@@ -93,31 +93,31 @@ public class AuthService {
 		}
 	}
 
-	public static LoginResponse login(LoginRequest request) {
+	public static LoginResponse doLogin(LoginRequest request) {
 		try {
 			String reqXml = XmlUtils.toXML(request, Alias.Login_Request);
-			String responseXML = (String) LOGIN_METHOD.invoke(AUTH_SERVICE_ADAPTER, new Object[] { reqXml });
+			String responseXML = (String) Login_METHOD.invoke(AUTH_SERVICE_ADAPTER, new Object[] { reqXml });
 			if (StringUtils.isEmpty(responseXML)) {
 				return LoginResponse.DEFAULT_RESPONSE;
 			}
 			return XmlUtils.toObj(LoginResponse.class, responseXML, Alias.Login_Response);
 		} catch (Exception e) {
-			log.error("Can't invoke Auth Login Method.", e);
+			log.error("Can't invoke Auth doLogin Method.", e);
 		}
 		return LoginResponse.DEFAULT_RESPONSE;
 	}
 
-	public static CheckResponse check(CheckRequest request) {
+	public static PrivilegedResponse doPrivileged(PrivilegedRequest request) {
 		try {
-			String reqXml = XmlUtils.toXML(request, Alias.Check_Request);
-			String responseXML = (String) CHECK_METHOD.invoke(AUTH_SERVICE_ADAPTER, new Object[] { reqXml });
+			String reqXml = XmlUtils.toXML(request, Alias.Privileged_Request);
+			String responseXML = (String) Privileged_METHOD.invoke(AUTH_SERVICE_ADAPTER, new Object[] { reqXml });
 			if (StringUtils.isEmpty(responseXML)) {
-				return CheckResponse.DEFAULT_RESPONSE;
+				return PrivilegedResponse.DEFAULT_RESPONSE;
 			}
-			return XmlUtils.toObj(CheckResponse.class, responseXML, Alias.Check_Response);
+			return XmlUtils.toObj(PrivilegedResponse.class, responseXML, Alias.Privileged_Response);
 		} catch (Exception e) {
-			log.error("Can't invoke Auth Check Method.", e);
+			log.error("Can't invoke Auth doPrivileged Method.", e);
 		}
-		return CheckResponse.DEFAULT_RESPONSE;
+		return PrivilegedResponse.DEFAULT_RESPONSE;
 	}
 }

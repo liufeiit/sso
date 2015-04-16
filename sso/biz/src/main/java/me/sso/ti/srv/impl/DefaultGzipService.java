@@ -25,7 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
  * @version 1.0.0
  * @since 2015年2月10日 上午10:53:52
  */
-@Service(value = "gzipService")
+@Service("gzipService")
 public class DefaultGzipService extends BaseService implements GzipService {
 
 	@Override

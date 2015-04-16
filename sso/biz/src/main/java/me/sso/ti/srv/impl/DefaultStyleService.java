@@ -22,7 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @version 1.0.0
  * @since 2015年2月9日 下午10:06:23
  */
-@Service(value = "styleService")
+@Service("styleService")
 public class DefaultStyleService extends BaseService implements StyleService {
 
 	@Autowired

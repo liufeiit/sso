@@ -12,7 +12,7 @@ import me.sso.ti.jpa.DefaultGenericDAO;
  * @version 1.0.0
  * @since 2015年2月9日 上午12:35:25
  */
-@Repository(value = "favoriteDAO")
+@Repository("favoriteDAO")
 public class DefaultFavoriteDAO extends DefaultGenericDAO<FavoriteDO, Long> implements FavoriteDAO {
 	
 }

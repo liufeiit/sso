@@ -12,7 +12,7 @@ import me.sso.ti.jpa.DefaultGenericDAO;
  * @version 1.0.0
  * @since 2015年2月9日 上午12:30:51
  */
-@Repository(value = "articleDAO")
+@Repository("articleDAO")
 public class DefaultArticleDAO extends DefaultGenericDAO<ArticleDO, Long> implements ArticleDAO {
 	
 }
