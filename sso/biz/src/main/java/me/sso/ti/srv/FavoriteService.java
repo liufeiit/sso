@@ -14,5 +14,7 @@ public interface FavoriteService {
 
 	Result doFavorite(FavoriteRequest request);
 	
+	Result doCancel(FavoriteRequest request);
+	
 	Result favList(PageRequest request);
 }

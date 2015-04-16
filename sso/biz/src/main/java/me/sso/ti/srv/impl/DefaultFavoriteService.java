@@ -38,11 +38,31 @@ public class DefaultFavoriteService extends BaseService implements FavoriteServi
 			return privileged;
 		}
 		Long userId = privileged.getResponse(Long.class);
+		Object[] args = new Object[] { userId, request.getArticle_id() };
+		String sql = "SELECT COUNT(id) FROM favorite WHERE user_id = ? AND article_id = ?";
+		java.math.BigInteger c = (java.math.BigInteger) favoriteDAO.createNativeQuery(sql, args).getSingleResult();
+		if (c != null && c.longValue() > 0L) {
+			return Result.newSuccess().with(ResultCode.Error_Fav_Article);
+		}
 		FavoriteDO favorite = new FavoriteDO();
 		favorite.setArticle_id(request.getArticle_id());
 		favorite.setGmt_created(new Date());
 		favorite.setUser_id(userId);
 		favoriteDAO.persist(favorite);
+		return Result.newSuccess().with(ResultCode.Success);
+	}
+
+	@Override
+	@Transactional(value = "transactionManager", rollbackFor = Throwable.class)
+	public Result doCancel(FavoriteRequest request) {
+		Result privileged = doPrivileged(request);
+		if(!privileged.isSuccess()) {
+			return privileged;
+		}
+		Long userId = privileged.getResponse(Long.class);
+		Object[] args = new Object[] { userId, request.getArticle_id() };
+		String query = "DELETE FROM favorite WHERE user_id = ? AND article_id = ?";
+		favoriteDAO.queryNativeUpdate(query, args);
 		return Result.newSuccess().with(ResultCode.Success);
 	}
 

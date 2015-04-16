@@ -9,6 +9,7 @@ import org.hibernate.validator.constraints.NotEmpty;
  * @since 2015年2月9日 下午10:19:29
  */
 public class FavoriteRequest extends PrivilegedRequest {
+	
 	@NotEmpty
 	private Long article_id;// 被收藏的文章ID
 

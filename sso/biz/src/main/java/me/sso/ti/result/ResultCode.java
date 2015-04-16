@@ -23,6 +23,8 @@ public enum ResultCode {
 	
 	Error_Fav_Article_Empty				(800L, 		"无收藏的文章"),
 	
+	Error_Fav_Article					(801L, 		"已经收藏了该文章"),
+	
 	Error_Image_Upload					(900L, 		"图片上传失败"),
 	
 	Error_Image_NotExist				(901L, 		"图片不存在"),
