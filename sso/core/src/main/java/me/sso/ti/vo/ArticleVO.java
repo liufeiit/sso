@@ -30,6 +30,8 @@ public class ArticleVO extends BaseObject {
 
 	private Date gmt_created;
 	
+	private boolean favorite = false;
+	
 	public static ArticleVO newInstance(ArticleDO _do, boolean simple) {
 		if(_do == null) {
 			return null;
@@ -51,6 +53,14 @@ public class ArticleVO extends BaseObject {
 		return this;
 	}
 	
+	public boolean isFavorite() {
+		return favorite;
+	}
+
+	public void setFavorite(boolean favorite) {
+		this.favorite = favorite;
+	}
+
 	public String getCreated() {
 		return formatDate(gmt_created);
 	}

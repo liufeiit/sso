@@ -3,21 +3,22 @@ package me.sso.ti.ro;
 import me.sso.ti.comms.PageQuery;
 
 /**
+ * 
  * @author 刘飞
  * 
  * @version 1.0.0
- * @since 2015年3月30日 上午10:25:48
+ * @since 2015年4月16日 下午5:28:54
  */
-public class PageQueryRequest {
+public class NonPrivilegedPageQueryRequest extends NonPrivilegedPageRequest {
 
 	private PageQuery query;
 
-	public PageQueryRequest query(int page) {
+	public NonPrivilegedPageQueryRequest query(int page) {
 		query = new PageQuery(page);
 		return this;
 	}
 
-	public PageQueryRequest query(int page_size, int page) {
+	public NonPrivilegedPageQueryRequest query(int page_size, int page) {
 		query = new PageQuery(page_size, page);
 		return this;
 	}
@@ -30,7 +31,7 @@ public class PageQueryRequest {
 		this.query = query;
 	}
 	
-	public PageQueryRequest setQueryString(String queryString) {
+	public NonPrivilegedPageQueryRequest setQueryString(String queryString) {
 		query.setQueryString(queryString);
 		return this;
 	}

@@ -7,13 +7,11 @@ package me.sso.ti.ro;
  * @version 1.0.0
  * @since 2015年2月9日 下午1:40:02
  */
-public class ArticleSearchRequest extends PageQueryRequest {
+public class ArticleSearchRequest extends PrivilegedPageQueryRequest {
 	
 	private Long id;
 
 	private String title;
-	
-	private Integer page;
 
 	public Long getId() {
 		return id;
@@ -29,14 +27,6 @@ public class ArticleSearchRequest extends PageQueryRequest {
 
 	public void setTitle(String title) {
 		this.title = title;
-	}
-
-	public Integer getPage() {
-		return page;
-	}
-
-	public void setPage(Integer page) {
-		this.page = page;
 	}
 	
 	public ArticleSearchRequest setQueryString() {

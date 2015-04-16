@@ -38,10 +38,7 @@ public class DefaultFavoriteService extends BaseService implements FavoriteServi
 			return privileged;
 		}
 		Long userId = privileged.getResponse(Long.class);
-		Object[] args = new Object[] { userId, request.getArticle_id() };
-		String sql = "SELECT COUNT(id) FROM favorite WHERE user_id = ? AND article_id = ?";
-		java.math.BigInteger c = (java.math.BigInteger) favoriteDAO.createNativeQuery(sql, args).getSingleResult();
-		if (c != null && c.longValue() > 0L) {
+		if (isFavorite(userId, request.getArticle_id())) {
 			return Result.newSuccess().with(ResultCode.Error_Fav_Article);
 		}
 		FavoriteDO favorite = new FavoriteDO();

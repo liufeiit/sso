@@ -67,6 +67,16 @@ public class BaseService implements InitializingBean {
 	@Qualifier("gzipDAO")
 	protected GzipDAO gzipDAO;
 	
+	protected boolean isFavorite(Long userId, Long articleId) {
+		Object[] args = new Object[] { userId, articleId };
+		String sql = "SELECT COUNT(id) FROM favorite WHERE user_id = ? AND article_id = ?";
+		java.math.BigInteger c = (java.math.BigInteger) favoriteDAO.createNativeQuery(sql, args).getSingleResult();
+		if(c != null && c.longValue() > 0L) {
+			return true;
+		}
+		return false;
+	}
+	
 	protected Result doPrivileged(me.sso.ti.ro.PrivilegedRequest request) {
 		PrivilegedRequest checkRequest = new PrivilegedRequest();
 		checkRequest.setApp_id(AuthService.App_Id);
@@ -83,7 +93,7 @@ public class BaseService implements InitializingBean {
 		return Result.newSuccess().with(ResultCode.Success).response(user_id);
 	}
 	
-	protected Result login(Long userId) {
+	protected Result doLogin(Long userId) {
 		if(userId == null || userId <= 0L) {
 			return Result.newError().with(ResultCode.Error_Login);
 		}

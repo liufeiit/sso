@@ -36,7 +36,7 @@ public class DefaultAccountService extends BaseService implements AccountService
 		user.setLast_ip(getIp());
 		user.setLast_login(now);
 		userDAO.merge(user);
-		Result login = login(user.getId());
+		Result login = doLogin(user.getId());
 		if (!login.isSuccess()) {
 			return login;
 		}
@@ -63,7 +63,7 @@ public class DefaultAccountService extends BaseService implements AccountService
 		user.setDeviceId(request.getDeviceId());
 		try {
 			userDAO.persist(user);
-			Result login = login(user.getId());
+			Result login = doLogin(user.getId());
 			if (!login.isSuccess()) {
 				return login;
 			}

@@ -9,6 +9,7 @@ import java.util.Map;
 import me.sso.ti.dataobject.ArticleDO;
 import me.sso.ti.result.Result;
 import me.sso.ti.result.ResultCode;
+import me.sso.ti.ro.ArticleDetailRequest;
 import me.sso.ti.ro.ArticleSearchRequest;
 import me.sso.ti.ro.CreateArticleRequest;
 import me.sso.ti.srv.ArticleService;
@@ -94,10 +95,20 @@ public class DefaultArticleService extends BaseService implements ArticleService
 			return Result.newError().with(ResultCode.Error_Article_Empty);
 		}
 		List<ArticleVO> articleList = new ArrayList<ArticleVO>();
+		Long userId = -1L;
+		if(StringUtils.isNotBlank(request.getOpen_id())) {
+			Result doPrivileged = doPrivileged(request);
+			if(doPrivileged.isSuccess()) {
+				userId = doPrivileged.getResponse(Long.class);
+			}
+		}
 		for (ArticleDO article : articleDOList) {
 			ArticleVO vo = ArticleVO.newInstance(article, true);
 			if(vo == null) {
 				continue;
+			}
+			if(userId > 0L) {
+				vo.setFavorite(isFavorite(userId, article.getId()));
 			}
 			articleList.add(vo);
 		}
@@ -105,7 +116,7 @@ public class DefaultArticleService extends BaseService implements ArticleService
 	}
 
 	@Override
-	public Result getArticle(Long id) {
+	public Result getArticle(Long id, ArticleDetailRequest request) {
 		if(id == null || id <= 0L) {
 			return Result.newError().with(ResultCode.Error_Article_NotExist);
 		}
@@ -114,6 +125,14 @@ public class DefaultArticleService extends BaseService implements ArticleService
 			return Result.newError().with(ResultCode.Error_Article_NotExist);
 		}
 		ArticleVO vo = ArticleVO.newInstance(article, false);
+		Long userId = -1L;
+		if(StringUtils.isNotBlank(request.getOpen_id())) {
+			Result doPrivileged = doPrivileged(request);
+			if(doPrivileged.isSuccess()) {
+				userId = doPrivileged.getResponse(Long.class);
+				vo.setFavorite(isFavorite(userId, article.getId()));
+			}
+		}
 		return Result.newSuccess().with(ResultCode.Success).with("article", vo);
 	}
 }

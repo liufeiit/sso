@@ -1,6 +1,5 @@
 package me.sso.ti.ro;
 
-import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * 
@@ -13,13 +12,11 @@ public class PrivilegedRequest {
 	/**
 	 * 用于绑定应用系统用户开放ID
 	 */
-	@NotEmpty
 	private String open_id;
 
 	/**
 	 * 访问凭证令牌
 	 */
-	@NotEmpty
 	private String access_token;
 
 	public String getOpen_id() {

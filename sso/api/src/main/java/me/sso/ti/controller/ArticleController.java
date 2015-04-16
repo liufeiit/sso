@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import me.sso.ti.result.Result;
 import me.sso.ti.result.ResultCode;
+import me.sso.ti.ro.ArticleDetailRequest;
 import me.sso.ti.ro.ArticleSearchRequest;
 
 import org.springframework.http.ResponseEntity;
@@ -35,8 +36,11 @@ public class ArticleController extends BaseController {
 	
 	@RequestMapping(value = "/{articleId}", produces = "application/json")
 	@ResponseBody
-	public ResponseEntity<String> item(@PathVariable Long articleId) {
-		Result result = articleService.getArticle(articleId);
+	public ResponseEntity<String> item(@PathVariable Long articleId, @Valid ArticleDetailRequest request, BindingResult validResult) {
+		if (validResult.hasErrors()) {
+			return toResponse(Result.newError().with(ResultCode.Error_Valid_Request));
+		}
+		Result result = articleService.getArticle(articleId, request);
 		return toResponse(result);
 	}
 }
