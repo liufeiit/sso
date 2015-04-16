@@ -33,7 +33,7 @@ public class FavoriteController extends BaseController {
 		return toResponse(result);
 	}
 	
-	@RequestMapping(value = "/cancel", produces = "application/json")
+	@RequestMapping(value = "/fav/cancel", produces = "application/json")
 	@ResponseBody
 	public ResponseEntity<String> do_cancel_fav(@Valid FavoriteRequest request, BindingResult validResult) {
 		if (validResult.hasErrors()) {
