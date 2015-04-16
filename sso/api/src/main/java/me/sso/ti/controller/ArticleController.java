@@ -36,10 +36,7 @@ public class ArticleController extends BaseController {
 	
 	@RequestMapping(value = "/{articleId}", produces = "application/json")
 	@ResponseBody
-	public ResponseEntity<String> item(@PathVariable Long articleId, @Valid ArticleDetailRequest request, BindingResult validResult) {
-		if (validResult.hasErrors()) {
-			return toResponse(Result.newError().with(ResultCode.Error_Valid_Request));
-		}
+	public ResponseEntity<String> item(@PathVariable Long articleId, ArticleDetailRequest request) {
 		Result result = articleService.getArticle(articleId, request);
 		return toResponse(result);
 	}

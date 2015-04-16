@@ -69,7 +69,7 @@ public class ArticleController extends WebBase {
 
 	@RequestMapping("/detail/{article_id}")
 	public ModelAndView detail(@PathVariable Long article_id) {
-		Result result = articleService.getArticle(article_id);
+		Result result = articleService.getArticle(article_id, null);
 		ModelAndView mv = createModelView(ARTICLE_DETAIL_VIEW_NAME, result);
 		return mv;
 	}

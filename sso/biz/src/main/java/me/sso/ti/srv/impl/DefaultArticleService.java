@@ -125,12 +125,13 @@ public class DefaultArticleService extends BaseService implements ArticleService
 			return Result.newError().with(ResultCode.Error_Article_NotExist);
 		}
 		ArticleVO vo = ArticleVO.newInstance(article, false);
-		Long userId = -1L;
-		if(StringUtils.isNotBlank(request.getOpen_id())) {
-			Result doPrivileged = doPrivileged(request);
-			if(doPrivileged.isSuccess()) {
-				userId = doPrivileged.getResponse(Long.class);
-				vo.setFavorite(isFavorite(userId, article.getId()));
+		if(request != null) {
+			if(StringUtils.isNotBlank(request.getOpen_id())) {
+				Result doPrivileged = doPrivileged(request);
+				if(doPrivileged.isSuccess()) {
+					Long userId = doPrivileged.getResponse(Long.class);
+					vo.setFavorite(isFavorite(userId, article.getId()));
+				}
 			}
 		}
 		return Result.newSuccess().with(ResultCode.Success).with("article", vo);

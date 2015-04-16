@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><meta name="exporter-version" content="Evernote Mac 6.0.6 (451290)"/><meta name="altitude" content="14"/><meta name="author" content="liufei_it@126.com"/><meta name="created" content="2015-02-10 04:01:32 +0000"/><meta name="latitude" content="31.19956746893569"/><meta name="longitude" content="121.5799449650055"/><meta name="source" content="desktop.mac"/><meta name="updated" content="2015-04-16 08:57:12 +0000"/><title>鞋子物语客户端API接口文档</title></head><body>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><meta name="exporter-version" content="Evernote Mac 6.0.6 (451290)"/><meta name="altitude" content="14"/><meta name="author" content="liufei_it@126.com"/><meta name="created" content="2015-02-10 04:01:32 +0000"/><meta name="latitude" content="31.19956746893569"/><meta name="longitude" content="121.5799449650055"/><meta name="source" content="desktop.mac"/><meta name="updated" content="2015-04-16 09:52:37 +0000"/><title>鞋子物语客户端API接口文档</title></head><body>
 <div><span style="font-size: 18px;"><b>接口统一规范</b></span></div>
 <div><b><span style="font-size: 18px;"><br/></span></b></div>
 <div>https://domain/XX/XX</div>
@@ -125,6 +125,10 @@
 <div><span style="font: 16.0px 'Courier New'; color: #0326cc">title</span><span style="font: 16.0px 'Courier New'; color: #0326cc">：文章标题（模糊匹配）</span></div>
 <div><span style="font: 16.0px 'Courier New'; color: #0326cc">page</span><span style="font: 16.0px 'Courier New'; color: #0326cc">：页码</span></div>
 <div><br/></div>
+<div><span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: 'Courier New';">open_id</span><span style="font-size: 16px; font-family: 'Courier New';">：OpenID</span></span> <span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: 'Courier New';">登录之后带上 不登录无需传给服务器</span></span></div>
+<div><span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: 'Courier New';">access_token</span><span style="font-size: 16px; font-family: 'Courier New';">：访问凭证</span></span> <span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: 'Courier New';">登录之后带上 不登录无需传给服务器</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';"><span style="color: rgb(206, 91, 138);"><br/></span></span></span></div>
+<div><br/></div>
 <div>
 <div>返回数据</div>
 </div>
@@ -168,10 +172,10 @@
 <div><br/></div>
 <div><b>4、文章详情</b></div>
 <div>接口地址： <span style="font: 16.0px 'Courier New'; color: #3933ff">/</span><span style="font: 16.0px 'Courier New'; color: #3933ff">article</span><span style="font: 16.0px 'Courier New'; color: #3933ff">/</span><span style="font: 16.0px 'Courier New'; color: #3933ff">{articleId}</span> <span style="font: 16.0px 'Courier New'; color: #3933ff">(如：</span>https://121.42.44.23<span style="font: 16.0px 'Courier New'; color: #3933ff">/</span><span style="font: 16.0px 'Courier New'; color: #3933ff">article</span><span style="font: 16.0px 'Courier New'; color: #3933ff">/</span><span style="font: 16.0px 'Courier New'; color: #3933ff">5</span><span style="font: 16.0px 'Courier New'; color: #3933ff">)</span></div>
-<div>
 <div>参数列表</div>
-</div>
-<div>无</div>
+<div><span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: 'Courier New';">open_id</span><span style="font-size: 16px; font-family: 'Courier New';">：OpenID 登录之后带上 不登录无需传给服务器</span></span></div>
+<div><span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: 'Courier New';">access_token</span><span style="font-size: 16px; font-family: 'Courier New';">：访问凭证</span></span> <span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: 'Courier New';">登录之后带上 不登录无需传给服务器</span></span></div>
+<div><br/></div>
 <div>
 <div>返回数据</div>
 </div>

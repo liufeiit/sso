@@ -68,11 +68,15 @@ public class BaseService implements InitializingBean {
 	protected GzipDAO gzipDAO;
 	
 	protected boolean isFavorite(Long userId, Long articleId) {
-		Object[] args = new Object[] { userId, articleId };
-		String sql = "SELECT COUNT(id) FROM favorite WHERE user_id = ? AND article_id = ?";
-		java.math.BigInteger c = (java.math.BigInteger) favoriteDAO.createNativeQuery(sql, args).getSingleResult();
-		if(c != null && c.longValue() > 0L) {
-			return true;
+		try {
+			Object[] args = new Object[] { userId, articleId };
+			String sql = "SELECT COUNT(id) FROM favorite WHERE user_id = ? AND article_id = ?";
+			java.math.BigInteger c = (java.math.BigInteger) favoriteDAO.createNativeQuery(sql, args).getSingleResult();
+			if(c != null && c.longValue() > 0L) {
+				return true;
+			}
+		} catch (Exception e) {
+			log.error("Check isFavorite Error.", e);
 		}
 		return false;
 	}
