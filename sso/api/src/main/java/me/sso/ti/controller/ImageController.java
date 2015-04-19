@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import javax.servlet.http.HttpServletResponse;
 
 import me.sso.ti.result.Result;
+import me.sso.ti.utils.ImageEncoder;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -43,19 +44,22 @@ public class ImageController extends BaseController {
 	}
 
 	@RequestMapping(value = "/{imageId}")
-	public ResponseEntity<byte[]> image(@PathVariable Long imageId, HttpServletResponse response) throws Exception {
+	public /*ResponseEntity<byte[]>*/void image(@PathVariable Long imageId, HttpServletResponse response) throws Exception {
 		Result result = imageService.getImage(imageId);
 		if (!result.isSuccess()) {
 			out(result, response);
-			return null;
+//			return null;
 		}
 		File imageFile = result.getResponse(File.class);
-		MediaType mediaType = getMediaType(imageFile.getName());
-		response.setDateHeader(HEADER_EXPIRES, System.currentTimeMillis() + CACHE_SECONDS * 1000L);
-		String headerValue = "max-age=" + CACHE_SECONDS + ", must-revalidate";
-		response.setHeader(HEADER_CACHE_CONTROL, headerValue);
-		HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(mediaType);
-		return new ResponseEntity<byte[]>(StreamUtils.copyToByteArray(new FileInputStream(imageFile)), headers, HttpStatus.CREATED);
+//		MediaType mediaType = getMediaType(imageFile.getName());
+//		response.setDateHeader(HEADER_EXPIRES, System.currentTimeMillis() + CACHE_SECONDS * 1000L);
+//		String headerValue = "max-age=" + CACHE_SECONDS + ", must-revalidate";
+//		response.setHeader(HEADER_CACHE_CONTROL, headerValue);
+//		HttpHeaders headers = new HttpHeaders();
+//		headers.setContentType(mediaType);
+//		return new ResponseEntity<byte[]>(StreamUtils.copyToByteArray(new FileInputStream(imageFile)), headers, HttpStatus.CREATED);
+		
+		ImageEncoder.encode(new FileInputStream(imageFile), response);
+		
 	}
 }
