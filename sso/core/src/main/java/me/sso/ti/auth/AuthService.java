@@ -40,7 +40,7 @@ public class AuthService {
 			AUTH_SERVICE_ADAPTER_CLASS = AccessController.doPrivileged(new PrivilegedAction<Class<?>>() {
 				public Class<?> run() {
 					try {
-						return Class.forName("me.jetty.ti.auth.RedisAuthorizationServiceAdapter");
+						return Class.forName("me.jetty.ti.auth.XmlRedisAuthenticationProvider");
 					} catch (Exception e) {
 						log.error("Can't Found Auth Adapter Class.", e);
 					}
