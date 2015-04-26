@@ -40,7 +40,7 @@
 			<div class="page-head">
 				<h2 class="pull-left">主题列表</h2>
 				<div class="bread-crumb pull-right">
-					<a href="/article/list"><i class="icon-home"></i>首页</a><span class="divider">/</span>主题列表
+					<a href="/sso/article/list"><i class="icon-home"></i>首页</a><span class="divider">/</span>主题列表
 				</div>
 				<div class="clearfix"></div>
 			</div>
