@@ -27,24 +27,34 @@ public class DefaultAccountService extends BaseService implements AccountService
 	@Override
 	@Transactional(value = "transactionManager", rollbackFor = Throwable.class)
 	public Result login(UserRequest request) {
-		UserDO user = userDAO.queryNativeForObject("SELECT * FROM user WHERE device_id = ?", new Object[] { request.getDeviceId() });
+		UserDO user = null;
+		try {
+			user = userDAO.queryNativeForObject("SELECT * FROM user WHERE device_id = ?", new Object[] { request.getDeviceId() });
+		} catch (Exception e) {
+			log.error("Query User Error.", e);
+		}
 		if (user == null) {
 			return Result.newError().with(ResultCode.Error_Login);
 		}
-		Date now = new Date();
-		user.setGmt_modified(now);
-		user.setLast_ip(getIp());
-		user.setLast_login(now);
-		userDAO.merge(user);
-		Result login = doLogin(user.getId());
-		if (!login.isSuccess()) {
-			return login;
+		try {
+			Date now = new Date();
+			user.setGmt_modified(now);
+			user.setLast_ip(getIp());
+			user.setLast_login(now);
+			userDAO.merge(user);
+			Result login = doLogin(user.getId());
+			if (!login.isSuccess()) {
+				return login;
+			}
+			LoginResponse loginResponse = login.getResponse(LoginResponse.class);
+			UserVO vo = new UserVO();
+			vo.setOpen_id(loginResponse.getOpen_id());
+			vo.setAccess_token(loginResponse.getAccess_token());
+			return Result.newSuccess().with(ResultCode.Success).with("user", vo);
+		} catch (Exception e) {
+			log.error("User Login Error.", e);
 		}
-		LoginResponse loginResponse = login.getResponse(LoginResponse.class);
-		UserVO vo = new UserVO();
-		vo.setOpen_id(loginResponse.getOpen_id());
-		vo.setAccess_token(loginResponse.getAccess_token());
-		return Result.newSuccess().with(ResultCode.Success).with("user", vo);
+		return Result.newError().with(ResultCode.Error_Login);
 	}
 
 	@Override
