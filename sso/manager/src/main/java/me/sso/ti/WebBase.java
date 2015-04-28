@@ -151,7 +151,7 @@ public class WebBase implements ServletContextAware {
 	}
 
 	private void commons(ModelAndView mv) {
-		mv.addObject("cdn", "/sso/assets/");
+		mv.addObject("cdn", "/assets/");
 		String name = mv.getViewName();
 		mv.addObject(viewname, name);
 	}
