@@ -40,7 +40,7 @@
 			<div class="page-head">
 				<h2 class="pull-left">文章详情</h2>
 				<div class="bread-crumb pull-right">
-					<a href="/sso/article/list"><i class="icon-home"></i>首页</a><span class="divider">/</span>文章详情
+					<a href="/article/list"><i class="icon-home"></i>首页</a><span class="divider">/</span>文章详情
 				</div>
 				<div class="clearfix"></div>
 			</div>
@@ -78,14 +78,14 @@
 											<div class="form-group">
 												<label class="col-lg-5 control-label">文章图片:</label>
 												<div class="col-lg-7">
-												<img alt="${article.title}" src="/sso/image/${article.avatar}"  width="500">
+												<img alt="${article.title}" src="/image/${article.avatar}"  width="500">
 												</div>
 											</div>
 											
 											<div class="form-group">
 												<label class="col-lg-5 control-label">文章背景图:</label>
 												<div class="col-lg-7">
-												<img alt="${article.title}" src="/sso/image/${article.background}"  width="500">
+												<img alt="${article.title}" src="/image/${article.background}"  width="500">
 												</div>
 											</div>
 											
@@ -93,7 +93,7 @@
 											
 											<div class="form-group">
 												<div class="col-lg-offset-1 col-lg-9">
-													<a class="btn btn-default btn-sm" href="/sso/article/list">返回</a>
+													<a class="btn btn-default btn-sm" href="/article/list">返回</a>
 												</div>
 											</div>
 										</c:if>

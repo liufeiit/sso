@@ -18,7 +18,7 @@
 				</li>
 			</ul>
 
-			<form class="navbar-form navbar-left" role="search" action="/sso/article/list" method="get">
+			<form class="navbar-form navbar-left" role="search" action="/article/list" method="get">
 				<div class="form-group">
 					<input name="id" type="text" class="form-control" placeholder="输入ID搜索文章">
 				</div>

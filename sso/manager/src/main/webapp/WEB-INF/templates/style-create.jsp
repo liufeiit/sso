@@ -40,7 +40,7 @@
 			<div class="page-head">
 				<h2 class="pull-left">新建主题</h2>
 				<div class="bread-crumb pull-right">
-					<a href="/sso/article/list"><i class="icon-home"></i>首页</a><span class="divider">/</span>新建主题
+					<a href="/article/list"><i class="icon-home"></i>首页</a><span class="divider">/</span>新建主题
 				</div>
 				<div class="clearfix"></div>
 			</div>
@@ -59,7 +59,7 @@
 								</div>
 								<div class="widget-content">
 									<div class="padd">
-										<form class="form-horizontal" role="form" action="/sso/style/create" method="post" enctype="multipart/form-data">
+										<form class="form-horizontal" role="form" action="/style/create" method="post" enctype="multipart/form-data">
 											<input type="hidden" name="enter" value="false"></input>
 											<div class="form-group">
 												<label class="col-lg-5 control-label" for="name">主题名称:</label>

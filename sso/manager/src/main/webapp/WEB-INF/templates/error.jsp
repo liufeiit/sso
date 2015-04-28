@@ -37,7 +37,7 @@
 								<h1>出错啦!!! 错误码 ${status}</h1>
 								<p>${message}</p>
 								<br />
-								<form class="form-inline" action="/sso/article/list" method="get">
+								<form class="form-inline" action="/article/list" method="get">
 									<div class="form-group">
 										<input name="title" type="text" class="form-control" placeholder="文章标题">
 									</div>
@@ -45,7 +45,7 @@
 								</form>
 								<br />
 								<div class="horizontal-links">
-									<a href="/sso/article/list">文章列表</a> | <a href="/sso/style/list">主题列表</a>
+									<a href="/article/list">文章列表</a> | <a href="/style/list">主题列表</a>
 								</div>
 							</div>
 							<div class="widget-foot">

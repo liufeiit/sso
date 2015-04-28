@@ -40,7 +40,7 @@
 			<div class="page-head">
 				<h2 class="pull-left">主题详情</h2>
 				<div class="bread-crumb pull-right">
-					<a href="/sso/article/list"><i class="icon-home"></i>首页</a><span class="divider">/</span>主题详情
+					<a href="/article/list"><i class="icon-home"></i>首页</a><span class="divider">/</span>主题详情
 				</div>
 				<div class="clearfix"></div>
 			</div>
@@ -76,25 +76,25 @@
 											<div class="form-group">
 												<label class="col-lg-5 control-label">主题图标:</label>
 												<div class="col-lg-7">
-												<img alt="${style.name}" src="/sso/image/${style.icon}" width="100">
+												<img alt="${style.name}" src="/image/${style.icon}" width="100">
 												</div>
 											</div>
 											<div class="form-group">
 												<label class="col-lg-5 control-label">主题背景图片:</label>
 												<div class="col-lg-7">
-												<img alt="${style.name}" src="/sso/image/${style.background}" width="500">
+												<img alt="${style.name}" src="/image/${style.background}" width="500">
 												</div>
 											</div>
 											<div class="form-group">
 												<label class="col-lg-5 control-label">主题漂浮物:</label>
 												<div class="col-lg-7">
-												<img alt="${style.name}" src="/sso/image/${style.floater}" width="500">
+												<img alt="${style.name}" src="/image/${style.floater}" width="500">
 												</div>
 											</div>
 											<hr />
 											<div class="form-group">
 												<div class="col-lg-offset-1 col-lg-9">
-													<a class="btn btn-default btn-sm" href="/sso/style/list">返回</a>
+													<a class="btn btn-default btn-sm" href="/style/list">返回</a>
 												</div>
 											</div>
 										</c:if>
