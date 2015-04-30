@@ -15,7 +15,7 @@ import javax.persistence.Table;
  * @since 2015年4月12日 下午5:20:27
  */
 @Entity
-@Table(name = "sequence", catalog = "scape")
+@Table(name = "sequence", catalog = "sso")
 public class SequenceDO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
