@@ -5,6 +5,7 @@
   <projects>
     <project>sso-biz</project>
     <project>sso-core</project>
+    <project>ocs-apns</project>
     <project>ocs-commons</project>
     <project>ocs-oauth</project>
     <project>ocs-oss</project>

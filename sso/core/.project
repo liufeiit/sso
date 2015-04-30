@@ -3,6 +3,7 @@
   <name>sso-core</name>
   <comment>Shoes Story One CORE. NO_M2ECLIPSE_SUPPORT: Project files created with the maven-eclipse-plugin are not supported in M2Eclipse.</comment>
   <projects>
+    <project>ocs-apns</project>
     <project>ocs-commons</project>
     <project>ocs-oauth</project>
     <project>ocs-oss</project>
