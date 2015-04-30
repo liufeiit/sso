@@ -1,6 +1,7 @@
 package me.sso.ti.srv;
 
 import me.sso.ti.result.Result;
+import me.sso.ti.ro.PushTokenRequest;
 import me.sso.ti.ro.UserRequest;
 
 /**
@@ -14,4 +15,5 @@ public interface AccountService {
 
 	Result register(UserRequest request);
 
+	Result token(PushTokenRequest request);
 }

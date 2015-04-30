@@ -36,6 +36,9 @@ public class UserDO extends BaseDO {
 	@Column(name = "device_id", nullable = false, length = 128, unique = true)
 	private String deviceId;
 
+	@Column(name = "token", nullable = true, length = 128, unique = true)
+	private String token;
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "last_login")
 	private Date last_login;// 最后一次登录的时间
@@ -59,12 +62,28 @@ public class UserDO extends BaseDO {
 		this.id = id;
 	}
 
+	public String getGuid() {
+		return guid;
+	}
+
+	public void setGuid(String guid) {
+		this.guid = guid;
+	}
+
 	public String getDeviceId() {
 		return deviceId;
 	}
 
 	public void setDeviceId(String deviceId) {
 		this.deviceId = deviceId;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
 	}
 
 	public Date getLast_login() {
@@ -99,14 +118,6 @@ public class UserDO extends BaseDO {
 		this.gmt_modified = gmt_modified;
 	}
 
-	public String getGuid() {
-		return guid;
-	}
-
-	public void setGuid(String guid) {
-		this.guid = guid;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -118,6 +129,7 @@ public class UserDO extends BaseDO {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((last_ip == null) ? 0 : last_ip.hashCode());
 		result = prime * result + ((last_login == null) ? 0 : last_login.hashCode());
+		result = prime * result + ((token == null) ? 0 : token.hashCode());
 		return result;
 	}
 
@@ -164,6 +176,11 @@ public class UserDO extends BaseDO {
 			if (other.last_login != null)
 				return false;
 		} else if (!last_login.equals(other.last_login))
+			return false;
+		if (token == null) {
+			if (other.token != null)
+				return false;
+		} else if (!token.equals(other.token))
 			return false;
 		return true;
 	}

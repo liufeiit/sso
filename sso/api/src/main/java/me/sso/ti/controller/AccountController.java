@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import me.sso.ti.result.Result;
 import me.sso.ti.result.ResultCode;
+import me.sso.ti.ro.PushTokenRequest;
 import me.sso.ti.ro.UserRequest;
 
 import org.springframework.http.ResponseEntity;
@@ -29,6 +30,16 @@ public class AccountController extends BaseController {
 			return toResponse(Result.newError().with(ResultCode.Error_Valid_Request));
 		}
 		Result result = accountService.register(request);
+		return toResponse(result);
+	}
+	
+	@RequestMapping(value = "/token", produces = "application/json")
+	@ResponseBody
+	public ResponseEntity<String> token(@Valid PushTokenRequest request, BindingResult validResult) {
+		if (validResult.hasErrors()) {
+			return toResponse(Result.newError().with(ResultCode.Error_Valid_Request));
+		}
+		Result result = accountService.token(request);
 		return toResponse(result);
 	}
 

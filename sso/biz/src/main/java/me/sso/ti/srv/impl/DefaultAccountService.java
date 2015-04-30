@@ -7,6 +7,7 @@ import me.sso.ti.comms.SequenceType;
 import me.sso.ti.dataobject.UserDO;
 import me.sso.ti.result.Result;
 import me.sso.ti.result.ResultCode;
+import me.sso.ti.ro.PushTokenRequest;
 import me.sso.ti.ro.UserRequest;
 import me.sso.ti.srv.AccountService;
 import me.sso.ti.srv.BaseService;
@@ -24,6 +25,24 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service("accountService")
 public class DefaultAccountService extends BaseService implements AccountService {
+
+	@Override
+	@Transactional(value = "transactionManager", rollbackFor = Throwable.class)
+	public Result token(PushTokenRequest request) {
+		Result privileged = doPrivileged(request);
+		if(!privileged.isSuccess()) {
+			return privileged;
+		}
+		Long userId = privileged.getResponse(Long.class);
+		UserDO user = userDAO.get(userId);
+		user.setToken(request.getToken());
+		Date now = new Date();
+		user.setGmt_modified(now);
+		user.setLast_ip(getIp());
+		user.setLast_login(now);
+		userDAO.merge(user);
+		return Result.newSuccess().with(ResultCode.Success);
+	}
 
 	@Override
 	@Transactional(value = "transactionManager", rollbackFor = Throwable.class)
