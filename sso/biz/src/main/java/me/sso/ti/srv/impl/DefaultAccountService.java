@@ -67,7 +67,7 @@ public class DefaultAccountService extends BaseService implements AccountService
 			return Result.newError().with(ResultCode.Error_Register_User_Exist);
 		}
 		UserDO user = new UserDO();
-		user.setGuid(sequenceService.nextValueAsString(SequenceType.USER_GUID_SEQUENCE, 25));
+		user.setGuid(sequenceService.nextValueAsStringWithCreate(SequenceType.USER_GUID_SEQUENCE, 25, 1L));
 		user.setLast_ip(getIp());
 		Date now = new Date();
 		user.setGmt_created(now);
