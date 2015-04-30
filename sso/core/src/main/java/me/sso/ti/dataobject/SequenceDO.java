@@ -24,7 +24,7 @@ public class SequenceDO implements Serializable {
 	 * 序号类型
 	 */
 	@Id
-	@Column(name = "id", nullable = false)
+	@Column(name = "id", nullable = false, length = 64, unique = true)
 	private String sequenceType;
 
 	/**
