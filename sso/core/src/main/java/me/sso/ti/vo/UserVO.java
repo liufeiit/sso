@@ -7,6 +7,8 @@ package me.sso.ti.vo;
  * @since 2014年12月27日 下午7:21:05
  */
 public class UserVO {
+	
+	private String guid;
 
 	/**
 	 * 用于绑定应用系统用户开放ID
@@ -17,6 +19,14 @@ public class UserVO {
 	 * 访问凭证令牌
 	 */
 	private String access_token;
+
+	public String getGuid() {
+		return guid;
+	}
+
+	public void setGuid(String guid) {
+		this.guid = guid;
+	}
 
 	public String getOpen_id() {
 		return open_id;

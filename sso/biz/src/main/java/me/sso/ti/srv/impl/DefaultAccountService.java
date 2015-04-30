@@ -2,7 +2,8 @@ package me.sso.ti.srv.impl;
 
 import java.util.Date;
 
-import me.sso.ti.auth.response.LoginResponse;
+import me.ocs.oauth.token.response.LoginResponse;
+import me.sso.ti.comms.SequenceType;
 import me.sso.ti.dataobject.UserDO;
 import me.sso.ti.result.Result;
 import me.sso.ti.result.ResultCode;
@@ -48,6 +49,7 @@ public class DefaultAccountService extends BaseService implements AccountService
 			}
 			LoginResponse loginResponse = login.getResponse(LoginResponse.class);
 			UserVO vo = new UserVO();
+			vo.setGuid(user.getGuid());
 			vo.setOpen_id(loginResponse.getOpen_id());
 			vo.setAccess_token(loginResponse.getAccess_token());
 			return Result.newSuccess().with(ResultCode.Success).with("user", vo);
@@ -65,6 +67,7 @@ public class DefaultAccountService extends BaseService implements AccountService
 			return Result.newError().with(ResultCode.Error_Register_User_Exist);
 		}
 		UserDO user = new UserDO();
+		user.setGuid(sequenceService.nextValueAsString(SequenceType.USER_GUID_SEQUENCE, 25));
 		user.setLast_ip(getIp());
 		Date now = new Date();
 		user.setGmt_created(now);
@@ -79,6 +82,7 @@ public class DefaultAccountService extends BaseService implements AccountService
 			}
 			LoginResponse loginResponse = login.getResponse(LoginResponse.class);
 			UserVO vo = new UserVO();
+			vo.setGuid(user.getGuid());
 			vo.setOpen_id(loginResponse.getOpen_id());
 			vo.setAccess_token(loginResponse.getAccess_token());
 			return Result.newSuccess().with(ResultCode.Success).with("user", vo);

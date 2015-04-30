@@ -2,7 +2,7 @@ package me.sso.ti.utils;
 
 import java.io.File;
 
-import me.sso.ti.http.JSONResponseBody;
+import me.ocs.commons.response.json.JSONResponseBody;
 
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.util.LinkedMultiValueMap;

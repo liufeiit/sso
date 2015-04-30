@@ -1,7 +1,7 @@
 package me.sso.ti.dao;
 
+import me.ocs.commons.jpa.GenericDAO;
 import me.sso.ti.dataobject.StyleDO;
-import me.sso.ti.jpa.GenericDAO;
 
 /**
  * 

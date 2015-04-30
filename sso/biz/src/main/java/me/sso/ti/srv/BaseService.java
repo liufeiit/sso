@@ -2,11 +2,14 @@ package me.sso.ti.srv;
 
 import javax.servlet.http.HttpServletRequest;
 
-import me.sso.ti.auth.AuthService;
-import me.sso.ti.auth.request.PrivilegedRequest;
-import me.sso.ti.auth.request.LoginRequest;
-import me.sso.ti.auth.response.PrivilegedResponse;
-import me.sso.ti.auth.response.LoginResponse;
+import me.ocs.commons.redis.RedisTemplate;
+import me.ocs.commons.sequence.SequenceService;
+import me.ocs.oauth.security.SecurityService;
+import me.ocs.oauth.token.AuthenticationProvider;
+import me.ocs.oauth.token.request.LoginRequest;
+import me.ocs.oauth.token.request.PrivilegedRequest;
+import me.ocs.oauth.token.response.LoginResponse;
+import me.ocs.oauth.token.response.PrivilegedResponse;
 import me.sso.ti.dao.ArticleDAO;
 import me.sso.ti.dao.CategoryDAO;
 import me.sso.ti.dao.FavoriteDAO;
@@ -33,6 +36,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
  * @since 2014年12月27日 下午4:21:29
  */
 public class BaseService implements InitializingBean {
+	
+	public static final String APP_ID = "w1wLqzQE6fDeFlgh1O5urrj9ilbm";
 
 	protected Logger log = LoggerFactory.getLogger(getClass());
 
@@ -66,6 +71,22 @@ public class BaseService implements InitializingBean {
 	@Autowired
 	@Qualifier("gzipDAO")
 	protected GzipDAO gzipDAO;
+
+	@Autowired
+	@Qualifier("redisTemplate")
+	protected RedisTemplate redisTemplate;
+
+	@Autowired
+	@Qualifier("securityService")
+	protected SecurityService securityService;
+
+	@Autowired
+	@Qualifier("redisAuthenticationProvider")
+	protected AuthenticationProvider authenticationProvider;
+
+	@Autowired
+	@Qualifier("sequenceService")
+	protected SequenceService sequenceService;
 	
 	protected boolean isFavorite(Long userId, Long articleId) {
 		try {
@@ -83,10 +104,10 @@ public class BaseService implements InitializingBean {
 	
 	protected Result doPrivileged(me.sso.ti.ro.PrivilegedRequest request) {
 		PrivilegedRequest checkRequest = new PrivilegedRequest();
-		checkRequest.setApp_id(AuthService.App_Id);
+		checkRequest.setApp_id(APP_ID);
 		checkRequest.setOpen_id(request.getOpen_id());
 		checkRequest.setAccess_token(request.getAccess_token());
-		PrivilegedResponse checkResponse = AuthService.doPrivileged(checkRequest);
+		PrivilegedResponse checkResponse = authenticationProvider.doPrivileged(checkRequest);
 		if (StringUtils.isBlank(checkResponse.getSecret_id())) {
 			return Result.newError().with(ResultCode.Error_Token);
 		}
@@ -102,9 +123,9 @@ public class BaseService implements InitializingBean {
 			return Result.newError().with(ResultCode.Error_Login);
 		}
 		LoginRequest loginRequest = new LoginRequest();
-		loginRequest.setApp_id(AuthService.App_Id);
+		loginRequest.setApp_id(APP_ID);
 		loginRequest.setSecret_id(String.valueOf(userId));
-		LoginResponse loginResponse = AuthService.doLogin(loginRequest);
+		LoginResponse loginResponse = authenticationProvider.doLogin(loginRequest);
 		if (loginResponse == null || StringUtils.isEmpty(loginResponse.getAccess_token())) {
 			return Result.newError().with(ResultCode.Error_Login);
 		}

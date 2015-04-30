@@ -29,6 +29,9 @@ public class UserDO extends BaseDO {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
+	
+	@Column(name = "guid", nullable = false, length = 30, unique = true)
+	private String guid;
 
 	@Column(name = "device_id", nullable = false, length = 128, unique = true)
 	private String deviceId;
@@ -96,6 +99,14 @@ public class UserDO extends BaseDO {
 		this.gmt_modified = gmt_modified;
 	}
 
+	public String getGuid() {
+		return guid;
+	}
+
+	public void setGuid(String guid) {
+		this.guid = guid;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -103,6 +114,7 @@ public class UserDO extends BaseDO {
 		result = prime * result + ((deviceId == null) ? 0 : deviceId.hashCode());
 		result = prime * result + ((gmt_created == null) ? 0 : gmt_created.hashCode());
 		result = prime * result + ((gmt_modified == null) ? 0 : gmt_modified.hashCode());
+		result = prime * result + ((guid == null) ? 0 : guid.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((last_ip == null) ? 0 : last_ip.hashCode());
 		result = prime * result + ((last_login == null) ? 0 : last_login.hashCode());
@@ -132,6 +144,11 @@ public class UserDO extends BaseDO {
 			if (other.gmt_modified != null)
 				return false;
 		} else if (!gmt_modified.equals(other.gmt_modified))
+			return false;
+		if (guid == null) {
+			if (other.guid != null)
+				return false;
+		} else if (!guid.equals(other.guid))
 			return false;
 		if (id == null) {
 			if (other.id != null)

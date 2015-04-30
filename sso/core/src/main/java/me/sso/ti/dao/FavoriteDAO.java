@@ -1,7 +1,7 @@
 package me.sso.ti.dao;
 
+import me.ocs.commons.jpa.GenericDAO;
 import me.sso.ti.dataobject.FavoriteDO;
-import me.sso.ti.jpa.GenericDAO;
 
 /**
  * 

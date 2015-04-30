@@ -7,7 +7,7 @@ import java.util.Date;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 
-import me.sso.ti.http.JSONResponseBody;
+import me.ocs.commons.response.json.JSONResponseBody;
 import me.sso.ti.mime.ActivationMediaTypeFactory;
 import me.sso.ti.result.Result;
 import me.sso.ti.result.ResultCode;
