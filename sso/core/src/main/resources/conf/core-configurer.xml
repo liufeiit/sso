@@ -27,7 +27,7 @@
 	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
 
 	<bean id="redisConnectionFactory" class="me.ocs.commons.redis.DefaultRedisConnectionFactory">
-		<property name="host" value="127.0.0.1" />
+		<property name="host" value="${redis.host}" />
 	</bean>
 
 	<bean id="redisTemplate" class="me.ocs.commons.redis.DefaultRedisTemplate">
@@ -35,7 +35,7 @@
 	</bean>
 
 	<bean id="securityService" class="me.ocs.oauth.security.DefaultSecurityService">
-		<property name="secretKey" value="H8cO8RaYmxo=" />
+		<property name="secretKey" value="${security.secret.key}" />
 	</bean>
 
 	<bean id="redisAuthenticationProvider" class="me.ocs.oauth.token.RedisAuthenticationProvider">
@@ -58,8 +58,8 @@
 	
 	<bean id="mailMessageProvider" class="me.ocs.oss.mss.providers.MailMessageProvider">
 		<property name="securityService" ref="securityService"/>
-		<property name="secretUsername" value="Az3DhzNbUOPZEv09OJVuBJT1Ovs3gS6g"/>
-		<property name="secretPassword" value="HxtOymFsRwwcasYzSUVzyw=="/>
+		<property name="secretUsername" value="${message.mail.username}"/>
+		<property name="secretPassword" value="${message.mail.password}"/>
 	</bean>
 	
 	<bean id="iosMessageProvider" class="me.ocs.oss.mss.providers.IosMessageProvider">
@@ -69,5 +69,4 @@
 		<property name="certificate" value="${apns.certificate}"/>
 		<property name="password" value="${apns.password}"/>
 	</bean>
-	
 </beans>
