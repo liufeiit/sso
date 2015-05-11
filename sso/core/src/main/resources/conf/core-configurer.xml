@@ -46,4 +46,17 @@
 	</bean>
 
 	<bean id="sequenceService" class="me.sso.ti.sequence.DefaultSequenceService" />
+	
+	<bean id="messageService" class="me.ocs.oss.mss.DefaultMessageService">
+		<property name="messageProviders">
+			<list>
+				<ref bean="mailMessageProvider"/>
+				<ref bean="iosMessageProvider"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="mailMessageProvider" class="me.ocs.oss.mss.providers.MailMessageProvider"/>
+	<bean id="iosMessageProvider" class="me.ocs.oss.mss.providers.IosMessageProvider"/>
+	
 </beans>
