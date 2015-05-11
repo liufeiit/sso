@@ -56,7 +56,12 @@
 		</property>
 	</bean>
 	
-	<bean id="mailMessageProvider" class="me.ocs.oss.mss.providers.MailMessageProvider"/>
+	<bean id="mailMessageProvider" class="me.ocs.oss.mss.providers.MailMessageProvider">
+		<property name="securityService" ref="securityService"/>
+		<property name="secretUsername" value="Az3DhzNbUOPZEv09OJVuBJT1Ovs3gS6g"/>
+		<property name="secretPassword" value="HxtOymFsRwwcasYzSUVzyw=="/>
+	</bean>
+	
 	<bean id="iosMessageProvider" class="me.ocs.oss.mss.providers.IosMessageProvider"/>
 	
 </beans>
