@@ -62,6 +62,12 @@
 		<property name="secretPassword" value="HxtOymFsRwwcasYzSUVzyw=="/>
 	</bean>
 	
-	<bean id="iosMessageProvider" class="me.ocs.oss.mss.providers.IosMessageProvider"/>
+	<bean id="iosMessageProvider" class="me.ocs.oss.mss.providers.IosMessageProvider">
+		<property name="production" value="true"/>
+		<property name="autoAdjustCacheLength" value="true"/>
+		<property name="readTimeout" value="10000"/>
+		<property name="certificate" value="${apns.certificate}"/>
+		<property name="password" value="${apns.password}"/>
+	</bean>
 	
 </beans>
