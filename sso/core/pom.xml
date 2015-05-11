@@ -36,6 +36,19 @@
 			</resource>
 		</resources>
 		<plugins>
+			<!--
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<compilerArgs>
+						<arg>-verbose</arg>
+						<arg>-Xlint:all,-options,-path</arg>
+					</compilerArgs>
+				</configuration>
+			</plugin>
+			-->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -46,10 +59,8 @@
 					<encoding>${project.build.sourceEncoding}</encoding>
 					<compilerArguments>
 						<verbose />
-						<bootclasspath>${java.home}/lib/rt.jar:${java.home}/lib/jce.jar</bootclasspath>
+						<bootclasspath>${java.home}/lib/rt.jar${path.separator}${java.home}/lib/jce.jar</bootclasspath>
 					</compilerArguments>
-					<!--
-					-->
 				</configuration>
 			</plugin>
 			<plugin>
