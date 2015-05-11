@@ -3,6 +3,7 @@ package me.sso.ti.srv.impl;
 import java.util.Date;
 
 import me.ocs.oauth.token.response.LoginResponse;
+import me.ocs.oss.mss.message.IosMessage;
 import me.sso.ti.comms.SequenceType;
 import me.sso.ti.dataobject.UserDO;
 import me.sso.ti.result.Result;
@@ -13,6 +14,7 @@ import me.sso.ti.srv.AccountService;
 import me.sso.ti.srv.BaseService;
 import me.sso.ti.vo.UserVO;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -41,6 +43,13 @@ public class DefaultAccountService extends BaseService implements AccountService
 		user.setLast_ip(getIp());
 		user.setLast_login(now);
 		userDAO.merge(user);
+		if(StringUtils.isNotBlank(user.getToken())) {
+			IosMessage iosMessage = new IosMessage();
+			iosMessage.setTitle("系统消息");
+			iosMessage.setBody("欢迎来到鞋子物语!开启你的浪漫之旅!");
+			iosMessage.setTarget(user.getToken());
+			send(iosMessage);
+		}
 		return Result.newSuccess().with(ResultCode.Success);
 	}
 
@@ -71,6 +80,13 @@ public class DefaultAccountService extends BaseService implements AccountService
 			vo.setGuid(user.getGuid());
 			vo.setOpen_id(loginResponse.getOpen_id());
 			vo.setAccess_token(loginResponse.getAccess_token());
+			if(StringUtils.isNotBlank(user.getToken())) {
+				IosMessage iosMessage = new IosMessage();
+				iosMessage.setTitle("系统消息");
+				iosMessage.setBody("欢迎来到鞋子物语!开启你的浪漫之旅!");
+				iosMessage.setTarget(user.getToken());
+				send(iosMessage);
+			}
 			return Result.newSuccess().with(ResultCode.Success).with("user", vo);
 		} catch (Exception e) {
 			log.error("User Login Error.", e);
@@ -93,6 +109,7 @@ public class DefaultAccountService extends BaseService implements AccountService
 		user.setGmt_modified(now);
 		user.setLast_login(now);
 		user.setDeviceId(request.getDeviceId());
+		user.setToken(request.getToken());
 		try {
 			userDAO.persist(user);
 			Result login = doLogin(user.getId());
@@ -104,6 +121,13 @@ public class DefaultAccountService extends BaseService implements AccountService
 			vo.setGuid(user.getGuid());
 			vo.setOpen_id(loginResponse.getOpen_id());
 			vo.setAccess_token(loginResponse.getAccess_token());
+			if(StringUtils.isNotBlank(user.getToken())) {
+				IosMessage iosMessage = new IosMessage();
+				iosMessage.setTitle("系统消息");
+				iosMessage.setBody("欢迎来到鞋子物语!开启你的浪漫之旅!");
+				iosMessage.setTarget(user.getToken());
+				send(iosMessage);
+			}
 			return Result.newSuccess().with(ResultCode.Success).with("user", vo);
 		} catch (Exception e) {
 			log.error("Account Register Error.", e);
