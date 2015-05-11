@@ -16,7 +16,7 @@ import me.ocs.commons.jpa.DefaultGenericDAO;
  */
 public class EntityManagerSupportGenericDAO<T, PK extends Serializable> extends DefaultGenericDAO<T, PK> {
 	
-	@PersistenceContext(name = "sso")
+	@PersistenceContext(unitName = "sso")
 	protected EntityManager entityManager;
 	
 	@Override

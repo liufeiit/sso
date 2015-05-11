@@ -46,4 +46,28 @@
 	</bean>
 
 	<bean id="sequenceService" class="me.sso.ti.sequence.DefaultSequenceService" />
+	
+	<bean id="messageService" class="me.ocs.oss.mss.DefaultMessageService">
+		<property name="messageProviders">
+			<list>
+				<ref bean="mailMessageProvider"/>
+				<ref bean="iosMessageProvider"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="mailMessageProvider" class="me.ocs.oss.mss.providers.MailMessageProvider">
+		<property name="securityService" ref="securityService"/>
+		<property name="secretUsername" value="Az3DhzNbUOPZEv09OJVuBJT1Ovs3gS6g"/>
+		<property name="secretPassword" value="HxtOymFsRwwcasYzSUVzyw=="/>
+	</bean>
+	
+	<bean id="iosMessageProvider" class="me.ocs.oss.mss.providers.IosMessageProvider">
+		<property name="production" value="true"/>
+		<property name="autoAdjustCacheLength" value="true"/>
+		<property name="readTimeout" value="10000"/>
+		<property name="certificate" value="${apns.certificate}"/>
+		<property name="password" value="${apns.password}"/>
+	</bean>
+	
 </beans>

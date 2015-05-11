@@ -10,6 +10,10 @@ import me.ocs.oauth.token.request.LoginRequest;
 import me.ocs.oauth.token.request.PrivilegedRequest;
 import me.ocs.oauth.token.response.LoginResponse;
 import me.ocs.oauth.token.response.PrivilegedResponse;
+import me.ocs.oss.mss.Message;
+import me.ocs.oss.mss.MessageException;
+import me.ocs.oss.mss.MessageNotification;
+import me.ocs.oss.mss.MessageService;
 import me.sso.ti.dao.ArticleDAO;
 import me.sso.ti.dao.CategoryDAO;
 import me.sso.ti.dao.FavoriteDAO;
@@ -87,6 +91,19 @@ public class BaseService implements InitializingBean {
 	@Autowired
 	@Qualifier("sequenceService")
 	protected SequenceService sequenceService;
+
+	@Autowired
+	@Qualifier("messageService")
+	protected MessageService messageService;
+	
+	protected MessageNotification send(Message message) {
+		try {
+			return messageService.send(message);
+		} catch (MessageException e) {
+			log.error("Send Message Error.", e);
+		}
+		return null;
+	}
 	
 	protected boolean isFavorite(Long userId, Long articleId) {
 		try {
