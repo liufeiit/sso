@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><meta name="exporter-version" content="Evernote Mac 6.0.6 (451290)"/><meta name="altitude" content="14"/><meta name="author" content="liufei_it@126.com"/><meta name="created" content="2015-02-10 04:01:32 +0000"/><meta name="latitude" content="31.19956746893569"/><meta name="longitude" content="121.5799449650055"/><meta name="source" content="desktop.mac"/><meta name="updated" content="2015-04-16 09:52:37 +0000"/><title>鞋子物语客户端API接口文档</title></head><body>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><meta name="exporter-version" content="Evernote Mac 6.0.6 (451290)"/><meta name="altitude" content="14"/><meta name="author" content="liufei_it@126.com"/><meta name="created" content="2015-02-10 04:01:32 +0000"/><meta name="latitude" content="31.19956746893569"/><meta name="longitude" content="121.5799449650055"/><meta name="source" content="desktop.mac"/><meta name="updated" content="2015-05-11 10:52:53 +0000"/><title>鞋子物语客户端API接口文档</title></head><body style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;">
 <div><span style="font-size: 18px;"><b>接口统一规范</b></span></div>
+<div><b><span style="font-size: 18px;"><br/></span></b></div>
+<div><a href="http://121.42.44.23:8080/">http://121.42.44.23:8080/</a></div>
+<div><a href="http://121.42.44.23:8080/sso/article/list">http://121.42.44.23:8080/sso/article/list</a></div>
+<div><a href="http://121.42.44.23:8080/res/api.html">http://121.42.44.23:8080/res/api.html</a></div>
+<div><br/></div>
 <div><b><span style="font-size: 18px;"><br/></span></b></div>
 <div>https://domain/XX/XX</div>
 <div><br/></div>
@@ -14,129 +19,125 @@
 <div><span style="font-size: 18px;"><b>服务器返回的数据结构规范如下</b></span></div>
 <div><br/></div>
 <table style="-evernote-table:true;border-collapse:collapse;width:100%;table-layout:fixed;margin-left:0px;">
+<tbody>
 <tr>
 <td style="border-style:solid;border-width:1px;border-color:rgb(219,219,219);padding:10px;width:100%;">
 <div><span style="font-family: &amp;apos;Courier New&amp;apos;; font-size: large;"><span style="font-size: 16pt;">{</span></span></div>
 <div><span style="color: #2a00ff; font-family: &amp;apos;Courier New&amp;apos;; font-size: large;"><span style="font-size: 16pt;">    "code"</span></span><span style="font-family: &amp;apos;Courier New&amp;apos;; font-size: large;"><span style="font-size: 16pt;">:200,//返回结果状态码</span></span></div>
-<div>
 <div><span style="font-family: &amp;apos;Courier New&amp;apos;; font-size: large;"><span style="font-size: 16pt;">    </span></span><span style="color: #2a00ff; font-family: &amp;apos;Courier New&amp;apos;; font-size: large;"><span style="font-size: 16pt;">"message"</span></span><span style="font-family: &amp;apos;Courier New&amp;apos;; font-size: large;"><span style="font-size: 16pt;">:</span></span> <span style="color: #2a00ff; font-family: &amp;apos;Courier New&amp;apos;; font-size: large;"><span style="font-size: 16pt;">"成功"</span></span><span style="font-family: &amp;apos;Courier New&amp;apos;; font-size: large;"><span style="font-size: 16pt;">,</span></span><span style="font-family: &amp;apos; courier new&amp;apos;; font-size: 21px;">//返回结果说明信息</span></div>
 <div><span style="font-family: &amp;apos;Courier New&amp;apos;; font-size: large;"><span style="font-size: 16pt;">    </span></span><span style="color: #2a00ff; font-family: &amp;apos;Courier New&amp;apos;; font-size: large;"><span style="font-size: 16pt;">"data"</span></span><span style="font-family: &amp;apos;Courier New&amp;apos;; font-size: large;"><span style="font-size: 16pt;">:{</span></span></div>
 <div><span style="font-family: &amp;apos;Courier New&amp;apos;; font-size: large;"><span style="font-size: 16pt;">       </span></span></div>
 <div><span style="font-family: &amp;apos;Courier New&amp;apos;; font-size: large;"><span style="font-size: 16pt;">    }</span></span><span style="font-family: &amp;apos; courier new&amp;apos;; font-size: 21px;">//返回结果的数据，是一个map集合</span></div>
 <div><span style="font-family: &amp;apos;Courier New&amp;apos;; font-size: large;"><span style="font-size: 16pt;">}</span></span></div>
-</div>
 <div><br/></div>
 </td>
 </tr>
+</tbody>
 </table>
 <div><br/></div>
 <div><span style="font-size: 18px;"><b>目前服务器定义的状态码</b></span></div>
 <div><br/></div>
 <table style="-evernote-table:true;border-collapse:collapse;width:100%;table-layout:fixed;margin-left:0px;">
+<tbody>
 <tr>
 <td style="border-style:solid;border-width:1px;border-color:rgb(219,219,219);padding:10px;width:100%;">
-<div><span style="font: 16.0px 'Courier New'">200L,</span> <span style="font: 16.0px 'Courier New'; color: #3933ff">"success"</span></div>
-<div><span style="font: 16.0px 'Courier New'">300L,</span> <span style="font: 16.0px 'Courier New'; color: #3933ff">"System Business Error."</span></div>
-<div><span style="font: 16.0px 'Courier New'">330L,</span> <span style="font: 16.0px 'Courier New'; color: #3933ff">"参数校验失败"</span></div>
-<div><span style="font: 16.0px 'Courier New'">402L,</span> <span style="font: 16.0px 'Courier New'; color: #3933ff">"用户名已经注册"</span></div>
-<div><span style="font: 16.0px 'Courier New'">403L,</span> <span style="font: 16.0px 'Courier New'; color: #3933ff">"注册失败"</span></div>
-<div><span style="font: 16.0px 'Courier New'">500L,</span> <span style="font: 16.0px 'Courier New'; color: #3933ff">"登录失败"</span></div>
-<div><span style="font: 16.0px 'Courier New'">600L,</span> <span style="font: 16.0px 'Courier New'; color: #3933ff">"查询文章结果为空"</span></div>
-<div><span style="font: 16.0px 'Courier New'">601L,</span> <span style="font: 16.0px 'Courier New'; color: #3933ff">"文章不存在"</span></div>
-<div><span style="font: 16.0px 'Courier New'">700L,</span> <span style="font: 16.0px 'Courier New'; color: #3933ff">"Token校验失败"</span></div>
-<div><span style="font: 16.0px 'Courier New'">800L,</span> <span style="font: 16.0px 'Courier New'; color: #3933ff">"无收藏的文章"</span></div>
-<div><span style="font: 16.0px 'Courier New'">900L,</span> <span style="font: 16.0px 'Courier New'; color: #3933ff">"图片上传失败"</span></div>
-<div><span style="font: 16.0px 'Courier New'">901L,</span> <span style="font: 16.0px 'Courier New'; color: #3933ff">"图片不存在"</span></div>
-<div><span style="font: 16.0px 'Courier New'">1000L,</span> <span style="font: 16.0px 'Courier New'; color: #3933ff">"压缩包上传失败"</span></div>
-<div><span style="font-family: 'Courier New';"><span style="font-size: 16px;"><span style="font: 16.0px 'Courier New'">1001L,</span> <span style="font: 16.0px 'Courier New'; color: #3933ff">"压缩包不存在"</span></span></span><span style="font-size: 16px;"><span style="font-family: 'Courier New';"><span style="color: rgb(57, 51, 255);"><br/></span></span></span></div>
+<div><span style="font: 16.0px &amp;apos;Courier New&amp;apos;">200L,</span> <span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">"success"</span></div>
+<div><span style="font: 16.0px &amp;apos;Courier New&amp;apos;">300L,</span> <span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">"System Business Error."</span></div>
+<div><span style="font: 16.0px &amp;apos;Courier New&amp;apos;">330L,</span> <span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">"参数校验失败"</span></div>
+<div><span style="font: 16.0px &amp;apos;Courier New&amp;apos;">402L,</span> <span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">"用户名已经注册"</span></div>
+<div><span style="font: 16.0px &amp;apos;Courier New&amp;apos;">403L,</span> <span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">"注册失败"</span></div>
+<div><span style="font: 16.0px &amp;apos;Courier New&amp;apos;">500L,</span> <span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">"登录失败"</span></div>
+<div><span style="font: 16.0px &amp;apos;Courier New&amp;apos;">600L,</span> <span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">"查询文章结果为空"</span></div>
+<div><span style="font: 16.0px &amp;apos;Courier New&amp;apos;">601L,</span> <span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">"文章不存在"</span></div>
+<div><span style="font: 16.0px &amp;apos;Courier New&amp;apos;">700L,</span> <span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">"Token校验失败"</span></div>
+<div><span style="font: 16.0px &amp;apos;Courier New&amp;apos;">800L,</span> <span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">"无收藏的文章"</span></div>
+<div><span style="font: 16.0px &amp;apos;Courier New&amp;apos;">900L,</span> <span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">"图片上传失败"</span></div>
+<div><span style="font: 16.0px &amp;apos;Courier New&amp;apos;">901L,</span> <span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">"图片不存在"</span></div>
+<div><span style="font: 16.0px &amp;apos;Courier New&amp;apos;">1000L,</span> <span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">"压缩包上传失败"</span></div>
+<div><span style="font-family: &amp;apos;Courier New&amp;apos;;"><span style="font-size: 16px;"><span style="font: 16.0px &amp;apos;Courier New&amp;apos;">1001L,</span> <span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">"压缩包不存在"</span></span></span><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;"><span style="color: rgb(57, 51, 255);"><br/></span></span></span></div>
 <div><br/></div>
 </td>
 </tr>
+</tbody>
 </table>
 <div><br/></div>
 <div><br/></div>
 <div><span style="font-size: 18px;"><b>特殊说明</b></span></div>
-<div>安全考虑，服务器和客户端的交互不直接暴露用户ID，而是使用<span style="font-size: 16px;"><span style="font-family: 'Courier New';">open_id，</span></span><span style="font-size: 16px;"><span style="font-family: 'Courier New';">access_token进行交互，这三个参数能够唯一确定一个用户ID，用户注册或者登录以后都会拿到这三个参数，</span></span><span style="font-size: 16px;"><span style="font-family: 'Courier New';">access_token是有时效性的，一定时间会过期，过期之后客户端需要重新登录申请访问凭证，过期时间是可以在客户端配置的，目前是3个月，类似QQ的登录方式。</span></span></div>
+<div>安全考虑，服务器和客户端的交互不直接暴露用户ID，而是使用<span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">open_id，</span></span><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">access_token进行交互，这三个参数能够唯一确定一个用户ID，用户注册或者登录以后都会拿到这三个参数，</span></span><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">access_token是有时效性的，一定时间会过期，过期之后客户端需要重新登录申请访问凭证，过期时间是可以在客户端配置的，目前是3个月，类似QQ的登录方式。</span></span></div>
 <div><br/></div>
 <div><span style="font-size: 18px;"><b>接口列表</b></span></div>
 <div><b>1、注册接口</b></div>
-<div>接口地址： <span style="font: 16.0px 'Courier New'; color: #3933ff">/account</span><span style="font: 16.0px 'Courier New'; color: #3933ff">/register (如：</span>https://121.42.44.23<span style="font: 16.0px 'Courier New'; color: #3933ff">/account</span><span style="font: 16.0px 'Courier New'; color: #3933ff">/register</span><span style="font: 16.0px 'Courier New'; color: #3933ff">)</span></div>
+<div>接口地址： <span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/account</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/register (如：</span>https://121.42.44.23<span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/account</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/register</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">)</span></div>
 <div>参数列表</div>
-<div><span style="font: 16.0px 'Courier New'; color: #0326cc">deviceId:设备ID</span><span style="font-size: 16px;"><span style="font-family: 'Courier New';"><span style="color: rgb(3, 38, 204);"><br/></span></span></span></div>
+<div><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #0326cc">deviceId:设备ID</span></div>
+<div>token<span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: &amp;apos;Courier New&amp;apos;;">:设备的push token</span></span><span style="color: rgb(3, 38, 204);"><br/></span></div>
 <div>返回数据</div>
 <div><br/></div>
 <table style="-evernote-table:true;border-collapse:collapse;width:100%;table-layout:fixed;margin-left:0px;">
+<tbody>
 <tr>
 <td style="border-style:solid;border-width:1px;border-color:rgb(219,219,219);padding:10px;width:100%;">
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">{</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">    "code": 200,</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">    "message": "成功",</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">    "data": {</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">        "user": {</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">            "open_id":open_id,</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">            "access_token":access_token</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">        }<br/>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">{</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">    "code": 200,</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">    "message": "成功",</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">    "data": {</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">        "user": {</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">            "open_id":open_id,</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">            "access_token":access_token</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">        }<br/>
     }</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">}</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">}</span></span></div>
 </td>
 </tr>
+</tbody>
 </table>
 <div><br/></div>
 <div><br/></div>
 <div><b>2、登录接口</b></div>
 <div><br/></div>
-<div>接口地址： <span style="font: 16.0px 'Courier New'; color: #3933ff">/account</span><span style="font: 16.0px 'Courier New'; color: #3933ff">/</span><span style="font: 16.0px 'Courier New'; color: #3933ff">login</span> <span style="font: 16.0px 'Courier New'; color: #3933ff">(如：</span>https://121.42.44.23<span style="font: 16.0px 'Courier New'; color: #3933ff">/account</span><span style="font: 16.0px 'Courier New'; color: #3933ff">/</span><span style="font: 16.0px 'Courier New'; color: #3933ff">login</span><span style="font: 16.0px 'Courier New'; color: #3933ff">)</span></div>
-<div>
+<div>接口地址： <span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/account</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">login</span> <span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">(如：</span>https://121.42.44.23<span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/account</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">login</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">)</span></div>
 <div>参数列表</div>
-</div>
-<div><span style="font: 16.0px 'Courier New'; color: #0326cc">deviceId:设备ID</span><br/></div>
-<div>
+<div><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #0326cc">deviceId:设备ID</span><br/></div>
 <div>返回数据</div>
 <div><br/></div>
-</div>
 <table style="-evernote-table:true;border-collapse:collapse;width:100%;table-layout:fixed;margin-left:0px;">
+<tbody>
 <tr>
 <td style="border-style:solid;border-width:1px;border-color:rgb(219,219,219);padding:10px;width:100%;">
-<div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">{</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">    "code": 200,</span></span></div>
-</div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">    "message": "成功",<br/>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">{</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">    "code": 200,</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">    "message": "成功",<br/>
     "data": {</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">        "user": {</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">           </span></span> <span style="font-size: 16px;"><span style="font-family: 'Courier New';">"open_id":open_id,</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">            "access_token":access_token</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">        }<br/>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">        "user": {</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">           </span></span> <span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">"open_id":open_id,</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">            "access_token":access_token</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">        }<br/>
     }</span></span></div>
-<div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">}</span></span></div>
-</div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">}</span></span></div>
 <div><br/></div>
 </td>
 </tr>
+</tbody>
 </table>
-<div>
 <div><br/></div>
-</div>
 <div><b>3、文章列表</b></div>
-<div>接口地址： <span style="font: 16.0px 'Courier New'; color: #3933ff">/</span><span style="font: 16.0px 'Courier New'; color: #3933ff">article</span><span style="font: 16.0px 'Courier New'; color: #3933ff">/</span><span style="font: 16.0px 'Courier New'; color: #3933ff">list</span> <span style="font: 16.0px 'Courier New'; color: #3933ff">(如：</span>https://121.42.44.23<span style="font: 16.0px 'Courier New'; color: #3933ff">/</span><span style="font: 16.0px 'Courier New'; color: #3933ff">article</span><span style="font: 16.0px 'Courier New'; color: #3933ff">/</span><span style="font: 16.0px 'Courier New'; color: #3933ff">list</span><span style="font: 16.0px 'Courier New'; color: #3933ff">)</span></div>
+<div>接口地址： <span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">article</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">list</span> <span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">(如：</span>https://121.42.44.23<span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">article</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">list</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">)</span></div>
 <div>参数列表</div>
-<div><span style="font: 16.0px 'Courier New'; color: #0326cc">id</span><span style="font: 16.0px 'Courier New'; color: #0326cc">:文章ID</span></div>
-<div><span style="font: 16.0px 'Courier New'; color: #0326cc">title</span><span style="font: 16.0px 'Courier New'; color: #0326cc">：文章标题（模糊匹配）</span></div>
-<div><span style="font: 16.0px 'Courier New'; color: #0326cc">page</span><span style="font: 16.0px 'Courier New'; color: #0326cc">：页码</span></div>
+<div><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #0326cc">id</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #0326cc">:文章ID</span></div>
+<div><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #0326cc">title</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #0326cc">：文章标题（模糊匹配）</span></div>
+<div><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #0326cc">page</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #0326cc">：页码</span></div>
 <div><br/></div>
-<div><span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: 'Courier New';">open_id</span><span style="font-size: 16px; font-family: 'Courier New';">：OpenID</span></span> <span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: 'Courier New';">登录之后带上 不登录无需传给服务器</span></span></div>
-<div><span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: 'Courier New';">access_token</span><span style="font-size: 16px; font-family: 'Courier New';">：访问凭证</span></span> <span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: 'Courier New';">登录之后带上 不登录无需传给服务器</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';"><span style="color: rgb(206, 91, 138);"><br/></span></span></span></div>
+<div><span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: &amp;apos;Courier New&amp;apos;;">open_id</span><span style="font-size: 16px; font-family: &amp;apos;Courier New&amp;apos;;">：OpenID</span></span> <span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: &amp;apos;Courier New&amp;apos;;">登录之后带上 不登录无需传给服务器</span></span></div>
+<div><span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: &amp;apos;Courier New&amp;apos;;">access_token</span><span style="font-size: 16px; font-family: &amp;apos;Courier New&amp;apos;;">：访问凭证</span></span> <span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: &amp;apos;Courier New&amp;apos;;">登录之后带上 不登录无需传给服务器</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;"><span style="color: rgb(206, 91, 138);"><br/></span></span></span></div>
 <div><br/></div>
-<div>
 <div>返回数据</div>
-</div>
 <div><br/></div>
 <table style="-evernote-table:true;border-collapse:collapse;width:100%;table-layout:fixed;margin-left:0px;">
+<tbody>
 <tr>
 <td style="border-style:solid;border-width:1px;border-color:rgb(219,219,219);padding:10px;width:100%;">
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">{<br/>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">{<br/>
     "code": 200,<br/>
     "message": "成功",<br/>
     "data": {<br/>
@@ -163,33 +164,31 @@
     "status": 0<br/>
     gmt_created:<br/>
   }</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">]</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">      }</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">}</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">]</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">      }</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">}</span></span></div>
 </td>
 </tr>
+</tbody>
 </table>
 <div><br/></div>
 <div><b>4、文章详情</b></div>
-<div>接口地址： <span style="font: 16.0px 'Courier New'; color: #3933ff">/</span><span style="font: 16.0px 'Courier New'; color: #3933ff">article</span><span style="font: 16.0px 'Courier New'; color: #3933ff">/</span><span style="font: 16.0px 'Courier New'; color: #3933ff">{articleId}</span> <span style="font: 16.0px 'Courier New'; color: #3933ff">(如：</span>https://121.42.44.23<span style="font: 16.0px 'Courier New'; color: #3933ff">/</span><span style="font: 16.0px 'Courier New'; color: #3933ff">article</span><span style="font: 16.0px 'Courier New'; color: #3933ff">/</span><span style="font: 16.0px 'Courier New'; color: #3933ff">5</span><span style="font: 16.0px 'Courier New'; color: #3933ff">)</span></div>
+<div>接口地址： <span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">article</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">{articleId}</span> <span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">(如：</span>https://121.42.44.23<span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">article</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">5</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">)</span></div>
 <div>参数列表</div>
-<div><span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: 'Courier New';">open_id</span><span style="font-size: 16px; font-family: 'Courier New';">：OpenID 登录之后带上 不登录无需传给服务器</span></span></div>
-<div><span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: 'Courier New';">access_token</span><span style="font-size: 16px; font-family: 'Courier New';">：访问凭证</span></span> <span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: 'Courier New';">登录之后带上 不登录无需传给服务器</span></span></div>
+<div><span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: &amp;apos;Courier New&amp;apos;;">open_id</span><span style="font-size: 16px; font-family: &amp;apos;Courier New&amp;apos;;">：OpenID 登录之后带上 不登录无需传给服务器</span></span></div>
+<div><span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: &amp;apos;Courier New&amp;apos;;">access_token</span><span style="font-size: 16px; font-family: &amp;apos;Courier New&amp;apos;;">：访问凭证</span></span> <span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: &amp;apos;Courier New&amp;apos;;">登录之后带上 不登录无需传给服务器</span></span></div>
 <div><br/></div>
-<div>
 <div>返回数据</div>
-</div>
-<div>
 <div><br/></div>
-</div>
 <table style="-evernote-table:true;border-collapse:collapse;width:100%;table-layout:fixed;margin-left:0px;">
+<tbody>
 <tr>
 <td style="border-style:solid;border-width:1px;border-color:rgb(219,219,219);padding:10px;width:100%;">
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">{<br/>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">{<br/>
     "code": 200,<br/>
     "message": "成功",</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">    "data": {</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">        "article": </span><span style="font-family: 'Courier New';">{<br/>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">    "data": {</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">        "article": </span><span style="font-family: &amp;apos;Courier New&amp;apos;;">{<br/>
     "id": 0,//文章ID<br/>
     "catId": 0,//文章类别<br/>
     "title": "",//文章标题<br/>
@@ -199,70 +198,60 @@
     "<u>gzip</u>": 0,//文章压缩包ID<br/>
     "status": 0,//文章状态<br/>
     gmt_created://文章创建时间</span></span></div>
-<div><span style="font-family: 'Courier New';"><span style="font-size: 16px;">  }</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">      }</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">}</span></span></div>
+<div><span style="font-family: &amp;apos;Courier New&amp;apos;;"><span style="font-size: 16px;">  }</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">      }</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">}</span></span></div>
 </td>
 </tr>
+</tbody>
 </table>
 <div><br/></div>
 <div><br/></div>
 <div><b>5、收藏文章</b></div>
-<div>接口地址： <span style="font: 16.0px 'Courier New'; color: #3933ff">/</span><span style="font: 16.0px 'Courier New'; color: #3933ff">rel</span><span style="font: 16.0px 'Courier New'; color: #3933ff">/</span><span style="font: 16.0px 'Courier New'; color: #3933ff">fav</span> <span style="font: 16.0px 'Courier New'; color: #3933ff">(如：</span>https://121.42.44.23<span style="font: 16.0px 'Courier New'; color: #3933ff">/</span><span style="font: 16.0px 'Courier New'; color: #3933ff">rel</span><span style="font: 16.0px 'Courier New'; color: #3933ff">/</span><span style="font: 16.0px 'Courier New'; color: #3933ff">fav</span><span style="font: 16.0px 'Courier New'; color: #3933ff">)</span></div>
+<div>接口地址： <span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">rel</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">fav</span> <span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">(如：</span>https://121.42.44.23<span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">rel</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">fav</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">)</span></div>
 <div>参数列表</div>
-<div><span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: 'Courier New';">article_id</span><span style="font-size: 16px; font-family: 'Courier New';">:收藏的文章ID</span></span></div>
-<div><span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: 'Courier New';">open_id</span><span style="font-size: 16px; font-family: 'Courier New';">：OpenID</span></span></div>
-<div><span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: 'Courier New';">access_token</span><span style="font-size: 16px; font-family: 'Courier New';">：访问凭证</span></span></div>
+<div><span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: &amp;apos;Courier New&amp;apos;;">article_id</span><span style="font-size: 16px; font-family: &amp;apos;Courier New&amp;apos;;">:收藏的文章ID</span></span></div>
+<div><span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: &amp;apos;Courier New&amp;apos;;">open_id</span><span style="font-size: 16px; font-family: &amp;apos;Courier New&amp;apos;;">：OpenID</span></span></div>
+<div><span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: &amp;apos;Courier New&amp;apos;;">access_token</span><span style="font-size: 16px; font-family: &amp;apos;Courier New&amp;apos;;">：访问凭证</span></span></div>
 <div><br/></div>
-<div>
 <div>返回数据</div>
-</div>
-<div>
 <div><br/></div>
-</div>
 <table style="-evernote-table:true;border-collapse:collapse;width:100%;table-layout:fixed;margin-left:0px;">
+<tbody>
 <tr>
 <td style="border-style:solid;border-width:1px;border-color:rgb(219,219,219);padding:10px;width:100%;">
-<div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">{<br/>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">{<br/>
     "code": 200,<br/>
     "message": "成功",</span></span></div>
-</div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">    "data": {</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">     }</span></span></div>
-<div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">}</span></span></div>
-</div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">    "data": {</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">     }</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">}</span></span></div>
 <div><br/></div>
 </td>
 </tr>
+</tbody>
 </table>
 <div><br/></div>
 <div><b>6、</b><b>收藏的</b><b>文章列表</b></div>
-<div>接口地址： <span style="font: 16.0px 'Courier New'; color: #3933ff">/</span><span style="font: 16.0px 'Courier New'; color: #3933ff">rel</span><span style="font: 16.0px 'Courier New'; color: #3933ff">/</span><span style="font: 16.0px 'Courier New'; color: #3933ff">fav</span><span style="font: 16.0px 'Courier New'; color: #3933ff">/</span><span style="font: 16.0px 'Courier New'; color: #3933ff">list</span> <span style="font: 16.0px 'Courier New'; color: #3933ff">(如：</span>https://121.42.44.23<span style="font: 16.0px 'Courier New'; color: #3933ff">/</span><span style="font: 16.0px 'Courier New'; color: #3933ff">rel</span><span style="font: 16.0px 'Courier New'; color: #3933ff">/</span><span style="font: 16.0px 'Courier New'; color: #3933ff">fav</span><span style="font: 16.0px 'Courier New'; color: #3933ff">/</span><span style="font: 16.0px 'Courier New'; color: #3933ff">list</span><span style="font: 16.0px 'Courier New'; color: #3933ff">)</span></div>
+<div>接口地址： <span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">rel</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">fav</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">list</span> <span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">(如：</span>https://121.42.44.23<span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">rel</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">fav</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">list</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">)</span></div>
 <div>参数列表</div>
 <div><br/></div>
-<div><span style="font: 16.0px 'Courier New'; color: #0326cc">page</span><span style="font: 16.0px 'Courier New'; color: #0326cc">:页码</span></div>
-<div>
-<div><span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: 'Courier New';">open_id</span><span style="font-size: 16px; font-family: 'Courier New';">：OpenID</span></span></div>
-<div><span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: 'Courier New';">access_token</span><span style="font-size: 16px; font-family: 'Courier New';">：访问凭证</span></span></div>
-</div>
+<div><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #0326cc">page</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #0326cc">:页码</span></div>
+<div><span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: &amp;apos;Courier New&amp;apos;;">open_id</span><span style="font-size: 16px; font-family: &amp;apos;Courier New&amp;apos;;">：OpenID</span></span></div>
+<div><span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: &amp;apos;Courier New&amp;apos;;">access_token</span><span style="font-size: 16px; font-family: &amp;apos;Courier New&amp;apos;;">：访问凭证</span></span></div>
 <div><br/></div>
-<div>
 <div>返回数据</div>
-</div>
-<div>
 <div><br/></div>
-</div>
 <table style="-evernote-table:true;border-collapse:collapse;width:100%;table-layout:fixed;margin-left:0px;">
+<tbody>
 <tr>
 <td style="border-style:solid;border-width:1px;border-color:rgb(219,219,219);padding:10px;width:100%;">
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">{<br/>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">{<br/>
     "code": 200,<br/>
     "message": "成功",</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">    "data": {</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">    "data": {</span></span></div>
 <div><font face="Courier New"><span style="font-size: 16px;">        </span><span style="font-size: 16px;">“</span><span style="font-size: 16px;">likeArticleList": [</span></font></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">  {<br/>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">  {<br/>
     "id": 0,//文章ID<br/>
     "catId": 0,//文章类别<br/>
     "title": "",//文章标题<br/>
@@ -285,137 +274,109 @@
     gmt_created:<br/>
   }<br/>
 ]</span></span></div>
-<div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">}</span></span></div>
-</div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">}</span></span></div>
 <div><br/></div>
 </td>
 </tr>
+</tbody>
 </table>
 <div><br/></div>
 <div><b>7、文章压缩包下载接口</b></div>
-<div>接口地址： <span style="font: 16.0px 'Courier New'; color: #3933ff">/gzip/${gzipId}</span><span style="font: 16.0px 'Courier New'; color: #3933ff"> (如：</span>https://121.42.44.23<span style="font: 16.0px 'Courier New'; color: #3933ff">/</span><span style="font: 16.0px 'Courier New'; color: #3933ff">gzip/3</span><span style="font: 16.0px 'Courier New'; color: #3933ff">)</span></div>
+<div>接口地址： <span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/gzip/${gzipId}</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff"> (如：</span>https://121.42.44.23<span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">gzip/3</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">)</span></div>
 <div>参数列表</div>
 <div><font color="#0326CC" face="Courier New"><span style="font-size: 16px;">无</span></font></div>
-<div>
-<div>
 <div>返回数据</div>
-</div>
-<div>
 <div><br/></div>
-</div>
-</div>
 <table style="-evernote-table:true;border-collapse:collapse;width:100%;table-layout:fixed;margin-left:0px;">
+<tbody>
 <tr>
 <td style="border-style:solid;border-width:1px;border-color:rgb(219,219,219);padding:10px;width:100%;">
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">如果压缩包不存在就返回</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">{</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">    "code": 1001,</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">    "message": "</span></span> <span style="font: 16.0px 'Courier New'; color: #3933ff">压缩包不存在</span><span style="font-size: 16px;"><span style="font-family: 'Courier New';">",</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">    "data": {</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">如果压缩包不存在就返回</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">{</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">    "code": 1001,</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">    "message": "</span></span> <span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">压缩包不存在</span><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">",</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">    "data": {</span></span></div>
 <div><font face="Courier New"><span style="font-size: 16px;">    }</span></font></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">}</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';"><br/></span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">如果压缩包存在就是正常的文件下载，服务器会将文件流返回</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">}</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;"><br/></span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">如果压缩包存在就是正常的文件下载，服务器会将文件流返回</span></span></div>
 <div><br/></div>
 </td>
 </tr>
+</tbody>
 </table>
 <div><br/></div>
 <div><br/></div>
 <div><b>8、图片下载接口</b></div>
-<div>接口地址： <span style="font: 16.0px 'Courier New'; color: #3933ff">/image/${imageId}</span><span style="font: 16.0px 'Courier New'; color: #3933ff"> (如：</span>https://121.42.44.23<span style="font: 16.0px 'Courier New'; color: #3933ff">/</span><span style="font: 16.0px 'Courier New'; color: #3933ff">image</span><span style="font: 16.0px 'Courier New'; color: #3933ff">/3</span><span style="font: 16.0px 'Courier New'; color: #3933ff">)</span></div>
-<div>
+<div>接口地址： <span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/image/${imageId}</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff"> (如：</span>https://121.42.44.23<span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">image</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/3</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">)</span></div>
 <div>参数列表</div>
 <div><font color="#0326CC" face="Courier New"><span style="font-size: 16px;">无</span></font></div>
-<div>
-<div>
 <div>返回数据</div>
-</div>
-<div>
 <div><br/></div>
-</div>
-</div>
-</div>
 <table style="-evernote-table:true;border-collapse:collapse;width:100%;table-layout:fixed;margin-left:0px;">
+<tbody>
 <tr>
 <td style="border-style:solid;border-width:1px;border-color:rgb(219,219,219);padding:10px;width:100%;">
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">如果图片不存在就返回</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">{</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">    "code": 901,</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">    "message": "</span></span> <span style="font: 16.0px 'Courier New'; color: #3933ff">图片不存在</span><span style="font-size: 16px;"><span style="font-family: 'Courier New';">",</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">    "data": {</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">如果图片不存在就返回</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">{</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">    "code": 901,</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">    "message": "</span></span> <span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">图片不存在</span><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">",</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">    "data": {</span></span></div>
 <div><font face="Courier New"><span style="font-size: 16px;">    }</span></font></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">}</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';"><br/></span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">如果</span></span><span style="font-size: 16px;"><span style="font-family: 'Courier New';">图片</span></span><span style="font-size: 16px;"><span style="font-family: 'Courier New';">存在就是正常的图片下载，服务器会将图片文件流返回</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">}</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;"><br/></span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">如果</span></span><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">图片</span></span><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">存在就是正常的图片下载，服务器会将图片文件流返回</span></span></div>
 <div><br/></div>
 </td>
 </tr>
+</tbody>
 </table>
 <div><br/></div>
 <div><b>9、图片上传接口</b></div>
-<div>接口地址： <span style="font: 16.0px 'Courier New'; color: #3933ff">/image/upload</span><span style="font: 16.0px 'Courier New'; color: #3933ff"> (如：</span>https://121.42.44.23<span style="font: 16.0px 'Courier New'; color: #3933ff">/</span><span style="font: 16.0px 'Courier New'; color: #3933ff">image</span><span style="font: 16.0px 'Courier New'; color: #3933ff">/</span><span style="font: 16.0px 'Courier New'; color: #3933ff">upload</span><span style="font: 16.0px 'Courier New'; color: #3933ff">)</span></div>
+<div>接口地址： <span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/image/upload</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff"> (如：</span>https://121.42.44.23<span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">image</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">upload</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">)</span></div>
 <div>参数列表</div>
-<div><span style="font: 16.0px 'Courier New'; color: #3933ff">image:图片文件</span><br/></div>
-<div>
-<div>
-<div>
+<div><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">image:图片文件</span><br/></div>
 <div>返回数据</div>
-</div>
-<div>
 <div><br/></div>
-</div>
-</div>
-</div>
 <table style="-evernote-table:true;border-collapse:collapse;width:100%;table-layout:fixed;margin-left:0px;">
+<tbody>
 <tr>
 <td style="border-style:solid;border-width:1px;border-color:rgb(219,219,219);padding:10px;width:100%;">
 <div><br/></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">{</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">    "code": 901,</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">    "message": "</span></span> <span style="font: 16.0px 'Courier New'; color: #3933ff">成功</span><span style="font-size: 16px;"><span style="font-family: 'Courier New';">",</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">    "data": {</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">      “</span></span> <span style="font: 16.0px 'Courier New'; color: #3933ff">image_id”：图片ID</span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';"><span style="color: rgb(57, 51, 255);">      “</span></span></span> <span style="font: 16.0px 'Courier New'; color: #3933ff">image_key</span><span style="font-size: 16px;"><span style="font-family: 'Courier New';"><span style="color: rgb(57, 51, 255);">”：图片key</span></span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">{</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">    "code": 901,</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">    "message": "</span></span> <span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">成功</span><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">",</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">    "data": {</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">      “</span></span> <span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">image_id”：图片ID</span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;"><span style="color: rgb(57, 51, 255);">      “</span></span></span> <span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">image_key</span><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;"><span style="color: rgb(57, 51, 255);">”：图片key</span></span></span></div>
 <div><font face="Courier New"><span style="font-size: 16px;">    }</span></font></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">}</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';"><br/></span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">}</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;"><br/></span></span></div>
 <div><br/></div>
 <div><br/></div>
 </td>
 </tr>
+</tbody>
 </table>
-<div>
 <div><br/></div>
-</div>
 <div><br/></div>
 <div><br/></div>
 <div><b>10、应用风格列表</b></div>
-<div>接口地址： <span style="font: 16.0px 'Courier New'; color: #3933ff">/style/list</span><span style="font: 16.0px 'Courier New'; color: #3933ff"> (如：</span>https://121.42.44.23<span style="font: 16.0px 'Courier New'; color: #3933ff">/style/list</span><span style="font: 16.0px 'Courier New'; color: #3933ff">)</span></div>
-<div>
-<div>
+<div>接口地址： <span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/style/list</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff"> (如：</span>https://121.42.44.23<span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/style/list</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">)</span></div>
 <div>参数列表</div>
 <div><font color="#0326CC" face="Courier New"><span style="font-size: 16px;">无</span></font></div>
-<div>
-<div>
 <div>返回数据</div>
-</div>
-<div>
 <div><br/></div>
-</div>
-</div>
-</div>
-</div>
 <table style="-evernote-table:true;border-collapse:collapse;width:100%;table-layout:fixed;margin-left:0px;">
+<tbody>
 <tr>
 <td style="border-style:solid;border-width:1px;border-color:rgb(219,219,219);padding:10px;width:100%;">
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">{<br/>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">{<br/>
     "code": 200,<br/>
     "message": "成功",</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">    "data": {</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">    "data": {</span></span></div>
 <div><font face="Courier New"><span style="font-size: 16px;">        </span><span style="font-size: 16px;">“</span><span style="font-size: 16px;">styleList": [</span></font></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">  {<br/>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">  {<br/>
     "id": 0,//应用风格ID<br/>
     "name": "",//应用风格名称<br/>
     "description": "",//应用风格描述<br/>
@@ -433,31 +394,21 @@
   }<br/>
 ]<br/>
 }</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">}</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">}</span></span></div>
 <div><br/></div>
 </td>
 </tr>
+</tbody>
 </table>
 <div><br/></div>
 <div><b>11、应用风格详情</b></div>
-<div>接口地址： <span style="font: 16.0px 'Courier New'; color: #3933ff">/style/${styleId}</span><span style="font: 16.0px 'Courier New'; color: #3933ff"> (如：</span>https://121.42.44.23<span style="font: 16.0px 'Courier New'; color: #3933ff">/style/5</span><span style="font: 16.0px 'Courier New'; color: #3933ff">)</span></div>
-<div>
-<div>
-<div>
+<div>接口地址： <span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/style/${styleId}</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff"> (如：</span>https://121.42.44.23<span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/style/5</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">)</span></div>
 <div>参数列表</div>
 <div><font color="#0326CC" face="Courier New"><span style="font-size: 16px;">无</span></font></div>
-<div>
-<div>
 <div>返回数据</div>
-</div>
-<div>
 <div><br/></div>
-</div>
-</div>
-</div>
-</div>
-</div>
 <table style="-evernote-table:true;border-collapse:collapse;width:100%;table-layout:fixed;margin-left:0px;">
+<tbody>
 <tr>
 <td style="border-style:solid;border-width:1px;border-color:rgb(219,219,219);padding:10px;width:100%;">
 <div><font face="Courier New"><span style="font-size: 16px;">{</span></font><br/>
@@ -473,56 +424,73 @@
 <font face="Courier New"><span style="font-size: 16px;">    "floater": 0//风格漂浮物ID</span></font></div>
 <div><font face="Courier New"><span style="font-size: 16px;">  }</span></font></div>
 <div><font face="Courier New"><span style="font-size: 16px;">}</span></font></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">}</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">}</span></span></div>
 <div><br/></div>
 </td>
 </tr>
+</tbody>
 </table>
-<div>
-<div>
 <div><br/></div>
-</div>
-</div>
 <div><br/></div>
 <div><b>12、取消收藏文章</b></div>
-<div>接口地址： <span style="font: 16.0px 'Courier New'; color: #3933ff">/</span><span style="font: 16.0px 'Courier New'; color: #3933ff">rel</span><span style="font: 16.0px 'Courier New'; color: #3933ff">/fav/cancel</span> <span style="font: 16.0px 'Courier New'; color: #3933ff">(如：</span>https://121.42.44.23<span style="font: 16.0px 'Courier New'; color: #3933ff">/</span><span style="font: 16.0px 'Courier New'; color: #3933ff">rel</span><span style="font: 16.0px 'Courier New'; color: #3933ff">/fav/cancel</span><span style="font: 16.0px 'Courier New'; color: #3933ff">)</span></div>
+<div>接口地址： <span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">rel</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/fav/cancel</span> <span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">(如：</span>https://121.42.44.23<span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">rel</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">/fav/cancel</span><span style="font: 16.0px &amp;apos;Courier New&amp;apos;; color: #3933ff">)</span></div>
 <div>
 <div>参数列表</div>
-<div><span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: 'Courier New';">article_id</span><span style="font-size: 16px; font-family: 'Courier New';">:收藏的文章ID</span></span></div>
-<div><span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: 'Courier New';">open_id</span><span style="font-size: 16px; font-family: 'Courier New';">：OpenID</span></span></div>
-<div><span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: 'Courier New';">access_token</span><span style="font-size: 16px; font-family: 'Courier New';">：访问凭证</span></span></div>
+<div><span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: &amp;apos;Courier New&amp;apos;;">article_id</span><span style="font-size: 16px; font-family: &amp;apos;Courier New&amp;apos;;">:收藏的文章ID</span></span></div>
+<div><span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: &amp;apos;Courier New&amp;apos;;">open_id</span><span style="font-size: 16px; font-family: &amp;apos;Courier New&amp;apos;;">：OpenID</span></span></div>
+<div><span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: &amp;apos;Courier New&amp;apos;;">access_token</span><span style="font-size: 16px; font-family: &amp;apos;Courier New&amp;apos;;">：访问凭证</span></span></div>
 <div><br/></div>
-<div>
 <div>返回数据</div>
-</div>
-<div>
 <div><br/></div>
-</div>
 <table style="-evernote-table:true;border-collapse:collapse;width:100%;table-layout:fixed;margin-left:0px;">
+<tbody>
 <tr>
 <td style="border-style:solid;border-width:1px;border-color:rgb(219,219,219);padding:10px;width:100%;">
-<div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">{<br/>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">{<br/>
     "code": 200,<br/>
     "message": "成功",</span></span></div>
-</div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">    "data": {</span></span></div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">     }</span></span></div>
-<div>
-<div><span style="font-size: 16px;"><span style="font-family: 'Courier New';">}</span></span></div>
-</div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">    "data": {</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">     }</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">}</span></span></div>
 <div><br/></div>
 </td>
 </tr>
+</tbody>
 </table>
 <div><br/></div>
 </div>
-<div><br/></div>
-<div><br/></div>
-<div><br/></div>
 <div>
+<div><b>13、上传token</b></div>
+<div>接口地址：  /account/token<span style="font-family: &amp;apos;Courier New&amp;apos;; font-size: 16px; color: rgb(57, 51, 255);">(如：</span>https://121.42.44.23/account/token<span style="color: rgb(57, 51, 255); font-family: &amp;apos;Courier New&amp;apos;; font-size: 16px;">)</span></div>
+<div>
+<div>参数列表</div>
+<div>token<span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: &amp;apos;Courier New&amp;apos;;">:设备的push token</span></span></div>
+<div><span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: &amp;apos;Courier New&amp;apos;;">open_id</span><span style="font-size: 16px; font-family: &amp;apos;Courier New&amp;apos;;">：OpenID</span></span></div>
+<div><span style="color: rgb(206, 91, 138);"><span style="font-size: 16px; font-family: &amp;apos;Courier New&amp;apos;;">access_token</span><span style="font-size: 16px; font-family: &amp;apos;Courier New&amp;apos;;">：访问凭证</span></span></div>
+<div><br/></div>
+<div>返回数据</div>
+<div><br/></div>
+<table style="border-collapse: collapse; width: 856px; table-layout: fixed; margin-left: 0px;">
+<tbody>
+<tr>
+<td style="border: 1px solid rgb(219, 219, 219); padding: 10px; width: 835px;">
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">{<br/>
+    "code": 200,<br/>
+    "message": "成功",</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">    "data": {</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">     }</span></span></div>
+<div><span style="font-size: 16px;"><span style="font-family: &amp;apos;Courier New&amp;apos;;">}</span></span></div>
+<div><br/></div>
+</td>
+</tr>
+</tbody>
+</table>
 <div><br/></div>
 </div>
+<br/></div>
+<div><br/></div>
+<div><br/></div>
+<div><br/></div>
 <div><br/></div>
 <div><br/></div>
 <div><br/></div>
