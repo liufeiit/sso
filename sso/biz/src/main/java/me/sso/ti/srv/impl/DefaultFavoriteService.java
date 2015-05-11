@@ -77,7 +77,7 @@ public class DefaultFavoriteService extends BaseService implements FavoriteServi
 		PageQuery pageQuery = new PageQuery(page);
 		args.put("start", pageQuery.getIndex());
 		args.put("size", pageQuery.getSize());
-		String sql = "SELECT * FROM article WHERE id IN (SELECT article_id FROM favorite WHERE user_id = :user_id ORDER BY gmt_created DESC LIMIT :start, :size )";
+		String sql = "SELECT * FROM article WHERE id IN (SELECT article_id FROM favorite WHERE user_id = :user_id) ORDER BY gmt_created DESC LIMIT :start, :size ";
 		List<ArticleDO> list = articleDAO.queryNative(sql, args);
 		if (CollectionUtils.isEmpty(list)) {
 			return Result.newError().with(ResultCode.Error_Fav_Article_Empty);
