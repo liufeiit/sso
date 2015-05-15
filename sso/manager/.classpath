@@ -5,6 +5,8 @@
   <classpathentry kind="src" path="src/main/java" including="**/*.java"/>
   <classpathentry kind="src" path="src/main/resources" excluding="**/*.java"/>
   <classpathentry kind="output" path="target/classes"/>
+  <classpathentry kind="var" path="M2_REPO/javax/mail/mail/1.4.5/mail-1.4.5.jar" sourcepath="M2_REPO/javax/mail/mail/1.4.5/mail-1.4.5-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/javax/activation/activation/1.1/activation-1.1.jar" sourcepath="M2_REPO/javax/activation/activation/1.1/activation-1.1-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/javax/servlet/servlet-api/2.3/servlet-api-2.3.jar" sourcepath="M2_REPO/javax/servlet/servlet-api/2.3/servlet-api-2.3-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/javax/servlet/jstl/1.0.6/jstl-1.0.6.jar" sourcepath="M2_REPO/javax/servlet/jstl/1.0.6/jstl-1.0.6-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/javax/validation/validation-api/1.0.0.GA/validation-api-1.0.0.GA.jar" sourcepath="M2_REPO/javax/validation/validation-api/1.0.0.GA/validation-api-1.0.0.GA-sources.jar">
@@ -46,6 +48,7 @@
       <attribute value="jar:file:/Users/yp/m2/repo/com/fasterxml/jackson/core/jackson-core/2.1.4/jackson-core-2.1.4-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/session/spring-session/1.0.1.RELEASE/spring-session-1.0.1.RELEASE.jar" sourcepath="M2_REPO/org/springframework/session/spring-session/1.0.1.RELEASE/spring-session-1.0.1.RELEASE-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/apache/commons/commons-compress/1.9/commons-compress-1.9.jar" sourcepath="M2_REPO/org/apache/commons/commons-compress/1.9/commons-compress-1.9-sources.jar">
     <attributes>
       <attribute value="jar:file:/Users/yp/m2/repo/org/apache/commons/commons-compress/1.9/commons-compress-1.9-javadoc.jar!/" name="javadoc_location"/>
@@ -334,6 +337,7 @@
       <attribute value="jar:file:/Users/yp/m2/repo/org/springframework/security/oauth/spring-security-oauth/2.0.5.RELEASE/spring-security-oauth-2.0.5.RELEASE-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/spring-context-support/4.0.7.RELEASE/spring-context-support-4.0.7.RELEASE.jar" sourcepath="M2_REPO/org/springframework/spring-context-support/4.0.7.RELEASE/spring-context-support-4.0.7.RELEASE-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/springframework/spring-aspects/4.0.7.RELEASE/spring-aspects-4.0.7.RELEASE.jar" sourcepath="M2_REPO/org/springframework/spring-aspects/4.0.7.RELEASE/spring-aspects-4.0.7.RELEASE-sources.jar">
     <attributes>
       <attribute value="jar:file:/Users/yp/m2/repo/org/springframework/spring-aspects/4.0.7.RELEASE/spring-aspects-4.0.7.RELEASE-javadoc.jar!/" name="javadoc_location"/>
@@ -441,7 +445,7 @@
       <attribute value="jar:file:/Users/yp/m2/repo/org/json/org.json/chargebee-1.0/org.json-chargebee-1.0-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
-  <classpathentry kind="src" path="/ocs-commons"/>
+  <classpathentry kind="src" path="/ocs-comm"/>
   <classpathentry kind="src" path="/ocs-oauth"/>
   <classpathentry kind="src" path="/ocs-oss"/>
   <classpathentry kind="var" path="M2_REPO/batik/batik-transcoder/1.6-1/batik-transcoder-1.6-1.jar"/>
