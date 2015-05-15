@@ -49,7 +49,6 @@
 			<param-value>true</param-value>
 		</init-param>
 	</filter>
-
 	
 	<filter>
 		<filter-name>log4jMDCLoggingFilter</filter-name>
