@@ -4,6 +4,10 @@
   <comment>Shoes Story One BIZ. NO_M2ECLIPSE_SUPPORT: Project files created with the maven-eclipse-plugin are not supported in M2Eclipse.</comment>
   <projects>
     <project>sso-core</project>
+    <project>ocs-apns</project>
+    <project>ocs-comm</project>
+    <project>ocs-oauth</project>
+    <project>ocs-oss</project>
   </projects>
   <buildSpec>
     <buildCommand>
@@ -20,6 +24,7 @@
     </buildCommand>
   </buildSpec>
   <natures>
+    <nature>org.eclipse.jem.workbench.JavaEMFNature</nature>
     <nature>org.eclipse.m2e.core.maven2Nature</nature>
     <nature>org.eclipse.jdt.core.javanature</nature>
     <nature>org.eclipse.wst.common.project.facet.core.nature</nature>
