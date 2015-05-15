@@ -50,9 +50,22 @@
 		</init-param>
 	</filter>
 
+	
 	<filter>
-		<filter-name>log4jNDCFilter</filter-name>
-		<filter-class>org.springframework.web.filter.Log4jNestedDiagnosticContextFilter</filter-class>
+		<filter-name>log4jMDCLoggingFilter</filter-name>
+		<filter-class>me.ocs.commons.log4j.Log4jMDCLoggingFilter</filter-class>
+		<init-param>
+			<param-name>includeQueryString</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>includeClientInfo</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>includePayload</param-name>
+			<param-value>true</param-value>
+		</init-param>
 	</filter>
 
 	<servlet>
@@ -85,7 +98,7 @@
 	</filter-mapping>
 
 	<filter-mapping>
-		<filter-name>log4jNDCFilter</filter-name>
+		<filter-name>log4jMDCLoggingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
