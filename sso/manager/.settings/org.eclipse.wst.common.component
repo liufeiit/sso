@@ -6,97 +6,25 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
-        <dependent-module archiveName="af-dap-api-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/af-dap-api/af-dap-api">
+        <dependent-module archiveName="sso-biz-1.0.0-RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sso-biz/sso-biz">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="af-dap-srv-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/af-dap-srv/af-dap-srv">
+        <dependent-module archiveName="sso-core-1.0.0-RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sso-core/sso-core">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="ti-dfs-client-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ti-dfs-client/ti-dfs-client">
+        <dependent-module archiveName="ocs-apns-1.0.0.Beta7-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ocs-apns/ocs-apns">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="ti-dfs-api-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ti-dfs-api/ti-dfs-api">
+        <dependent-module archiveName="ocs-comm-1.0.0-RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ocs-comm/ocs-comm">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="ti-base-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ti-base/ti-base">
+        <dependent-module archiveName="ocs-oauth-1.0.0-RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ocs-oauth/ocs-oauth">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="ti-lnk-spring-1.1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ti-lnk-spring/ti-lnk-spring">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="ti-lnk-rpc-1.1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ti-lnk-rpc/ti-lnk-rpc">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="ti-lnk-inter-api-1.1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ti-lnk-inter-api/ti-lnk-inter-api">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="ti-lnk-protocol-1.1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ti-lnk-protocol/ti-lnk-protocol">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="ti-lnk-transport-amqp-1.1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ti-lnk-transport-amqp/ti-lnk-transport-amqp">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="ti-lnk-transport-wsock-common-1.1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ti-lnk-transport-wsock-common/ti-lnk-transport-wsock-common">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="ti-lnk-transport-wsock-server-1.1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ti-lnk-transport-wsock-server/ti-lnk-transport-wsock-server">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="ti-srv-redis-util-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ti-srv-redis-util/ti-srv-redis-util">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="ti-lnk-session-redis-1.1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ti-lnk-session-redis/ti-lnk-session-redis">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="ti-cache-spring-1.1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ti-cache-spring/ti-cache-spring">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="ti-cache-api-1.1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ti-cache-api/ti-cache-api">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="ti-cache-impl-1.1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ti-cache-impl/ti-cache-impl">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="ti-cache-redis-1.1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ti-cache-redis/ti-cache-redis">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="ti-srv-config-ctx-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ti-srv-config-ctx/ti-srv-config-ctx">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="ti-seq-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ti-seq/ti-seq">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="ti-s3-api-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ti-s3-api/ti-s3-api">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="ti-util-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ti-util/ti-util">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="ac-const-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ac-const/ac-const">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="ac-common-api-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ac-common-api/ac-common-api">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="ac-cif-api-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ac-cif-api/ac-cif-api">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="ti-quartz-api-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ti-quartz-api/ti-quartz-api">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="ti-ttl-api-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ti-ttl-api/ti-ttl-api">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="ti-srv-util-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ti-srv-util/ti-srv-util">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="ti-daf-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ti-daf/ti-daf">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="ti-lnk-api-1.1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ti-lnk-api/ti-lnk-api">
+        <dependent-module archiveName="ocs-oss-1.0.0-RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ocs-oss/ocs-oss">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="java-output-path" value="/financial-web/target/classes"/>
-        <property name="context-root" value="af-dap-web"/>
+        <property name="context-root" value="sso-manager"/>
     </wb-module>
 </project-modules>

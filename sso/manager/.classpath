@@ -21,10 +21,10 @@
   </classpathentry>
   <classpathentry kind="var" path="M2_REPO/javax/servlet/jsp/jsp-api/2.1/jsp-api-2.1.jar" sourcepath="M2_REPO/javax/servlet/jsp/jsp-api/2.1/jsp-api-2.1-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/javax/inject/javax.inject/1/javax.inject-1.jar" sourcepath="M2_REPO/javax/inject/javax.inject/1/javax.inject-1-sources.jar"/>
-  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
   <classpathentry kind="src" path="/sso-biz"/>
   <classpathentry kind="src" path="/sso-core"/>
-  <classpathentry kind="src" path="/ocs-apns"/>
+  <classpathentry kind="var" path="M2_REPO/me/ocs/apns/ocs-apns/1.0.0.Beta7-SNAPSHOT/ocs-apns-1.0.0.Beta7-SNAPSHOT.jar" sourcepath="M2_REPO/me/ocs/apns/ocs-apns/1.0.0.Beta7-SNAPSHOT/ocs-apns-1.0.0.Beta7-SNAPSHOT-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar" sourcepath="M2_REPO/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar" sourcepath="M2_REPO/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/commons-codec/commons-codec/1.10/commons-codec-1.10.jar" sourcepath="M2_REPO/commons-codec/commons-codec/1.10/commons-codec-1.10-sources.jar">
@@ -445,9 +445,9 @@
       <attribute value="jar:file:/Users/yp/m2/repo/org/json/org.json/chargebee-1.0/org.json-chargebee-1.0-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
-  <classpathentry kind="src" path="/ocs-comm"/>
-  <classpathentry kind="src" path="/ocs-oauth"/>
-  <classpathentry kind="src" path="/ocs-oss"/>
+  <classpathentry kind="var" path="M2_REPO/me/ocs/comm/ocs-comm/1.0.0-RELEASE/ocs-comm-1.0.0-RELEASE.jar" sourcepath="M2_REPO/me/ocs/comm/ocs-comm/1.0.0-RELEASE/ocs-comm-1.0.0-RELEASE-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/me/ocs/oauth/ocs-oauth/1.0.0-RELEASE/ocs-oauth-1.0.0-RELEASE.jar" sourcepath="M2_REPO/me/ocs/oauth/ocs-oauth/1.0.0-RELEASE/ocs-oauth-1.0.0-RELEASE-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/me/ocs/oss/ocs-oss/1.0.0-RELEASE/ocs-oss-1.0.0-RELEASE.jar" sourcepath="M2_REPO/me/ocs/oss/ocs-oss/1.0.0-RELEASE/ocs-oss-1.0.0-RELEASE-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/batik/batik-transcoder/1.6-1/batik-transcoder-1.6-1.jar"/>
   <classpathentry kind="var" path="M2_REPO/batik/batik-bridge/1.6-1/batik-bridge-1.6-1.jar"/>
   <classpathentry kind="var" path="M2_REPO/batik/batik-gvt/1.6-1/batik-gvt-1.6-1.jar"/>
