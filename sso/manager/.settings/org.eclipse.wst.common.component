@@ -13,18 +13,6 @@
         <dependent-module archiveName="sso-core-1.0.0-RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sso-core/sso-core">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="ocs-apns-1.0.0.Beta7-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ocs-apns/ocs-apns">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="ocs-comm-1.0.0-RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ocs-comm/ocs-comm">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="ocs-oauth-1.0.0-RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ocs-oauth/ocs-oauth">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="ocs-oss-1.0.0-RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ocs-oss/ocs-oss">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <property name="java-output-path" value="/financial-web/target/classes"/>
         <property name="context-root" value="sso-manager"/>
     </wb-module>
